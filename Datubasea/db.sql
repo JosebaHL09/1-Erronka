@@ -117,6 +117,7 @@ CREATE TABLE `jatetxea` (
   `Izena` varchar(45) DEFAULT NULL,
   `Helbidea` varchar(45) DEFAULT NULL,
   `Telefonoa` int DEFAULT NULL,
+  `Mota` varchar(45) DEFAULT NULL,
   `Izarrak` int DEFAULT NULL,
   `Oharrak` varchar(255) DEFAULT NULL,
   `img_path` varchar(255) DEFAULT NULL,
@@ -130,7 +131,7 @@ CREATE TABLE `jatetxea` (
 
 LOCK TABLES `jatetxea` WRITE;
 /*!40000 ALTER TABLE `jatetxea` DISABLE KEYS */;
-INSERT INTO `jatetxea` VALUES (1,'Tolibar','Durango',2564814,5,'El mejor bar de durango',NULL),(2,'Bar2','Iurreta',3456575,3,'algo',NULL);
+INSERT INTO `jatetxea` VALUES (1,'Tolibar','Durango',2564814,NULL,5,'El mejor bar de durango',NULL),(2,'Bar2','Iurreta',3456575,NULL,3,'algo',NULL);
 /*!40000 ALTER TABLE `jatetxea` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,6 +146,9 @@ CREATE TABLE `produktua` (
   `id` int NOT NULL AUTO_INCREMENT,
   `Izena` varchar(45) DEFAULT NULL,
   `Prezioa` float DEFAULT NULL,
+  `Mota` varchar(45) DEFAULT NULL,
+  `Deskontua` tinyint DEFAULT '0',
+  `Portzentaia` int DEFAULT NULL,
   `id_restaurante` int NOT NULL,
   `img_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -159,7 +163,7 @@ CREATE TABLE `produktua` (
 
 LOCK TABLES `produktua` WRITE;
 /*!40000 ALTER TABLE `produktua` DISABLE KEYS */;
-INSERT INTO `produktua` VALUES (1,'Bocadillo',5,1,NULL),(2,'Sopa do macaco',10,2,NULL),(3,'Nalopitanas',2,1,NULL);
+INSERT INTO `produktua` VALUES (1,'Bocadillo',5,NULL,0,NULL,1,'https://www.gourmetkebab.es/wp-content/uploads/2020/04/durum-kebab.jpg'),(2,'Sopa do macaco',10,NULL,0,NULL,2,'https://media-cdn.tripadvisor.com/media/photo-s/1b/8a/86/a6/ach-s-kebab.jpg'),(3,'Nalopitanas',2,NULL,0,NULL,1,NULL);
 /*!40000 ALTER TABLE `produktua` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,4 +205,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-21  8:55:20
+-- Dump completed on 2021-09-22 14:01:53
