@@ -24,6 +24,30 @@ def sortuErosketa(id_saskia, id_produktua, kantitatea):
     mycursor.execute(sql, val)
     mydb.commit()
 
+def deleteErosketa(id):
+    sql = "DELETE FROM erosketa WHERE id = %s"
+    val = (id,)
+    mycursor.execute(sql, val)
+    mydb.commit()
+
+def deleteSaskia(id):
+    sql = "DELETE FROM saskia WHERE id = %s"
+    val = (id,)
+    mycursor.execute(sql, val)
+    mydb.commit()
+
+def deleteIruzkina(id):
+    sql = "DELETE FROM iruzkinak WHERE id = %s"
+    val = (id,)
+    mycursor.execute(sql, val)
+    mydb.commit()
+
+def updateIruzkina(id, nota, testua):
+    sql = "UPDATE iruzkinak SET testua = %s,  kalifikazioa = %s WHERE id = %s"
+    val = (testua, nota, id)
+    mycursor.execute(sql, val)
+    mydb.commit()
+
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -36,3 +60,5 @@ mycursor = mydb.cursor()
 #sortuIruzkina(9,"Muy buen producto, extremadamente rico y todo bien preparado, recomendable 100%",1,1)
 #sortuSaskia("c/Landako etorbidea 20 4E,Durango",655495415,"2021-09-27",1)
 #sortuErosketa(3,1,4)
+#deleteErosketa(5)
+updateIruzkina(1,2,"Basura, lo peor que he probado en mucho tiempo")
