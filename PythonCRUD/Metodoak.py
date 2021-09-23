@@ -29,6 +29,6 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-#sortuErabiltzailea("Juanito23","juan123","Juan","Lopez","Juanitogolondrina@gmail.com")
+#sortuErabiltzailea("Manolo2354","manolo123","Manolo","Lopez","Manolete@gmail.com")
 #sortuIruzkina(9,"Muy buen producto, extremadamente rico y todo bien preparado, recomendable 100%",1,1)
 #sortuSaskia("c/Landako etorbidea 20 4E,Durango",655495415,"2021-09-27",1)
