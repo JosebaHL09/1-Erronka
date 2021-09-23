@@ -18,8 +18,11 @@ def sortuSaskia(helbidea, telefonoa, data, id_erabil):
     mycursor.execute(sql, val)
     mydb.commit()
 
-def sortuErosketa():
-    print("")
+def sortuErosketa(id_saskia, id_produktua, kantitatea):
+    sql = "INSERT INTO erosketa (id_saskia, id_produktua, kantitatea) VALUES (%s, %s, %s)"
+    val = (id_saskia, id_produktua, kantitatea)
+    mycursor.execute(sql, val)
+    mydb.commit()
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -32,3 +35,4 @@ mycursor = mydb.cursor()
 #sortuErabiltzailea("Manolo2354","manolo123","Manolo","Lopez","Manolete@gmail.com")
 #sortuIruzkina(9,"Muy buen producto, extremadamente rico y todo bien preparado, recomendable 100%",1,1)
 #sortuSaskia("c/Landako etorbidea 20 4E,Durango",655495415,"2021-09-27",1)
+#sortuErosketa(3,1,4)
