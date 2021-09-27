@@ -3,9 +3,10 @@
 import cgitb
 import mysql.connector
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="admin123",
+    host="192.168.73.6",
+    port="3306",
+    user="erabiltzailea",
+    password="1234",
     database="jatetxea"
 )
 def produktuaTabla():
@@ -19,8 +20,8 @@ def produktuaTabla():
         col = 0
         for y in x:
 
-            if (col == 4):
-                s1 += "<td><img src='" + str(y) + "' style='width:100px;height:100px;'></td>"
+            if (col == 7):
+                s1 += "<td><img src='" + str(y) + "' style='width:100px;height:100px;'></img></td>"
             else:
                 # print('Y: '+ str(y))
                 s1 += "<td>" + str(y) + "</td>"
@@ -41,15 +42,6 @@ def jatetxeaTabla():
     return s2
 s2 =jatetxeaTabla()
 s1 =produktuaTabla()
-
-
-
-
-
-
-
-
-
 cgitb.enable()
 print("Content-Type: text/html;charset=utf-8 \n")
 print("<style> table, th, td { border:1px solid black; } </style>")

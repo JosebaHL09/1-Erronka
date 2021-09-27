@@ -1,4 +1,3 @@
-import mysql.connector
 
 def sortuErabiltzailea(erabiltzailea, pasahitza, izena, abizena, posta):
     sql = "INSERT INTO erabiltzailea (erabiltzailea, izena, abizena, posta, pasahitza) VALUES (%s, %s, %s, %s, %s)"
