@@ -29,5 +29,8 @@ function gorde() {
         posta: document.getElementById('posta_txt').value
     }
 
+    var erabArray = []
+    erabArray.push(user)
+
     alert("Egun on " + user.izena + " " + user.abizena) 
 }
