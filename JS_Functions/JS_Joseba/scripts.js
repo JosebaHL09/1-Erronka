@@ -34,9 +34,8 @@ function gordeErabiltzailea() {
     alert("Egun on " + user.izena + " " + user.abizena) 
 }
 function deskontuaKalkulatu(){
-    var select = document.getElementById("produktuak");
-    var produktua = select.value;
-
+    var produktua = document.getElementById("produktuak").value;
+    
 
     if(produktua == "Kebab"){
         deskontua = 10 - 10 * 0.25
