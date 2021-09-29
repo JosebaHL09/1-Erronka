@@ -34,14 +34,33 @@ function gordeErabiltzailea() {
     alert("Egun on " + user.izena + " " + user.abizena) 
 }
 function deskontuaKalkulatu(){
-    var produktua = document.getElementById("produktuak").value;
-    
+    var produktua = document.getElementById("produktuak").value
+    var prezioa
 
     if(produktua == "Kebab"){
-        deskontua = 10 - 10 * 0.25
-        alert(produktua + " produktua deskontuarekin dago, prezio berria: " + deskontua)
+        const kebab ={
+            prezio:10,
+            deskontua:true,
+            portzentaia:25
+        }
+        prezioa = kebab.prezio
+        if (kebab.deskontua){
+            prezioa = kebab.prezio - kebab.prezio * (kebab.portzentaia/100)
+        }
+
+        alert(produktua + " hurrengo prezioa dauka: " + prezioa)
     }else{
-        alert(produktua + " ez dauka deskontua")
+        const bocadillo ={
+            prezio:5,
+            deskontua:false,
+            portzentaia:null
+        }
+        prezioa = bocadillo.prezio
+        if (bocadillo.deskontua){
+            prezioa = prezio - prezio * (portzentaia/100)
+        }
+
+        alert(produktua + " hurrengo prezioa dauka: " + prezioa)
     }
 
 }
