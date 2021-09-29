@@ -48,6 +48,30 @@ def updateIruzkina(id, nota, testua):
     mycursor.execute(sql, val)
     mydb.commit()
 
+def getErabiltzaileak(erab, pas):
+    mycursor.execute("SELECT erabiltzailea, pasahitza FROM erabiltzailea")
+    myresult = mycursor.fetchall()
+    userArray = []
+    passwArray = []
+    for x in range(0,len(myresult),1):
+        userArray.append(myresult[x][0])
+        passwArray.append(myresult[x][1])
+    i = userArray.index(erab)
+    if erab in userArray[i] and pas in passwArray[i]:
+        return True
+    else:
+        return False
+
+def erabArray():
+    mycursor.execute("SELECT erabiltzailea FROM erabiltzailea")
+    myresult = mycursor.fetchall()
+    userArray = []
+
+    for x in range(0, len(myresult), 1):
+        userArray.append(myresult[x][0])
+    return userArray
+
+
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -62,3 +86,4 @@ mycursor = mydb.cursor()
 #sortuErosketa(3,1,4)
 #deleteErosketa(5)
 #updateIruzkina(1,2,"Basura, lo peor que he probado en mucho tiempo")
+erabArray()

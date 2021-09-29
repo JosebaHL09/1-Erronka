@@ -1,7 +1,6 @@
+var userArray = ["Paco", "Admin"]
+var passwordArray = ["123", "admin123"]
 function balidatu() {
-    var userArray = ["Paco", "Admin"]
-    var passwordArray = ["123", "admin123"]
-
     var usuario = document.getElementById('usuario_txt').value
     var contrasena = document.getElementById('contraseña_txt').value
     var valid = false;
@@ -29,8 +28,7 @@ function gorde() {
         posta: document.getElementById('posta_txt').value
     }
 
-    var erabArray = []
-    erabArray.push(user)
-
+    userArray.push(user.username)
+    passwordArray.push(user.pasahitza)
     alert("Egun on " + user.izena + " " + user.abizena) 
 }
