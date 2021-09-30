@@ -1,6 +1,23 @@
 var userArray = ["Paco", "Admin"]
 var passwordArray = ["123", "admin123"]
-var produktuak = []
+
+/*window.onload = function name(){
+    if(localStorage.getItem("user")!='null'){
+        document.getElementById("login").innerHTML = localStorage.getItem('user') + " kaixo!";
+    };
+    
+} */
+
+
+function logout(){
+    
+    if(localStorage.getItem('loged').value == "true"){
+        localStorage.setItem('loged', "false")
+        document.getElementById('login').style.visibility = 'visible';
+        document.getElementById('logout').style.visibility = 'hidden';    
+    }
+}
+
 function balidatu() {
     var usuario = document.getElementById('usuario_txt').value
     var contrasena = document.getElementById('contraseña_txt').value
@@ -13,6 +30,10 @@ function balidatu() {
     }
     if (valid) {
         alert("Bienvenido!")
+        localStorage.setItem('user', usuario);
+        localStorage.setItem('pw', contrasena);
+        localStorage.setItem('loged', "true")
+
     } else {
         alert("usuario no encontrado: " + usuario + " - " + contrasena)
     }
@@ -21,6 +42,7 @@ function balidatu() {
 }
 
 function gordeErabiltzailea() {
+    
     const user = {
         username: document.getElementById('erabiltzailea_txt').value,
         pasahitza: document.getElementById('pasahitza_txt').value,
@@ -31,33 +53,33 @@ function gordeErabiltzailea() {
 
     userArray.push(user.username)
     passwordArray.push(user.pasahitza)
-    alert("Egun on " + user.izena + " " + user.abizena) 
+    alert("Egun on " + user.izena + " " + user.abizena)
 }
-function deskontuaKalkulatu(){
+function deskontuaKalkulatu() {
     var produktua = document.getElementById("produktuak").value
     var prezioa
 
-    if(produktua == "Kebab"){
-        const kebab ={
-            prezio:10,
-            deskontua:true,
-            portzentaia:25
+    if (produktua == "Kebab") {
+        const kebab = {
+            prezio: 10,
+            deskontua: true,
+            portzentaia: 25
         }
         prezioa = kebab.prezio
-        if (kebab.deskontua){
-            prezioa = kebab.prezio - kebab.prezio * (kebab.portzentaia/100)
+        if (kebab.deskontua) {
+            prezioa = kebab.prezio - kebab.prezio * (kebab.portzentaia / 100)
         }
 
         alert(produktua + " hurrengo prezioa dauka: " + prezioa)
-    }else{
-        const bocadillo ={
-            prezio:5,
-            deskontua:false,
-            portzentaia:null
+    } else {
+        const bocadillo = {
+            prezio: 5,
+            deskontua: false,
+            portzentaia: null
         }
         prezioa = bocadillo.prezio
-        if (bocadillo.deskontua){
-            prezioa = prezio - prezio * (portzentaia/100)
+        if (bocadillo.deskontua) {
+            prezioa = prezio - prezio * (portzentaia / 100)
         }
 
         alert(produktua + " hurrengo prezioa dauka: " + prezioa)

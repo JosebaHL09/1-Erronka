@@ -3,9 +3,9 @@
 <head>
     <script type="text/javascript" src="scripts.js"></script>
 </head>
-
 <body>
     <form name="formu" id="formu">
+        <h1 id="login"></h1>
         <h1>Login</h1>
         <table>
             <tr>
@@ -17,8 +17,9 @@
                 <td><input type="password" id="contraseña_txt"></td>
             </tr>
         </table>
-        <button onclick="balidatu()">Validar</button>
-        <br/>
+        <button id="login" onclick="balidatu()">Validar</button>
+        <button id="logout" onclick="logout()">Irten</button>
+        <br />
         <h1>Erabiltzailea sortu eta gorde</h1>
         <table>
             <tr>
@@ -43,7 +44,7 @@
             </tr>
         </table>
         <button onclick="gordeErabiltzailea()">Gorde</button>
-        <br/>
+        <br />
         <h1>Produktua erabaki</h1>
         <select name="produktuak" id="produktuak">
             <option value="Bocadillo">Bocadillo - 5€ - %0</option>
