@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 
 </head>
 
@@ -25,11 +26,12 @@
             <button class="nav-toggle">
                 <span class="hamburger"></span>
             </button>
-        </div>      
+        </div>
         <nav class="nav" id="navbar">
             <div class="logo">
                 <a href="nav.html" id="logo">
-                    <h1> <i class="fas fa-code" style="font-size: 20px;"></i>JJ&M <span style="color:#FFE48F;">.</span></h1>
+                    <h1> <i class="fas fa-code" style="font-size: 20px;"></i>JJ&M <span style="color:#FFE48F;">.</span>
+                    </h1>
                 </a>
             </div>
 
@@ -52,51 +54,100 @@
             </ul>
         </nav>
     </header>
-
     <section class="section one" id="home-section">
+        <div class="main-info">
+            <h4 class="titulo">Jota Jota & M</h4>
+            <h2 class="titulo">Dezagun gutxi dezagun beti</h2>
+            <p>Euskadiko etxez etxeko janari-salmentako liderrak.Gu <b style="color: black;">J.J & M </b> gara.</p>
+            <span class="form">
+                <input type="text" placeholder="Non bizi zara?" />
+                <button class="ubi-image" onclick="getLocation()"></button>
+            </span>
+            <span class="button">
+                <button type="button" class="button">Erosi Orain</input>
+                    <span class="buy-image"></span>
+            </span>
+        </div>
+        <div class="chef-recomendation">
+            <img src="Component 30.png">
+            <span class="infochef">
+                <h4>Geure bezeroen gomendioak</h4>
+                <h2>Ikusi bezeroen iritziak</h2>
+            </span>
+        </div>
         <div class="carousel">
             <span>Gure Produktuak</span>
 
             <div class="carousel-item">
-               <div class="image-carrusell">
-                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png" class="image"></span><span class="b tittle"><div class="div1"> Pizza Kebap </div>
-                      <div class="div2"> 7.90€</div></span>
+                <div class="image-carrusell">
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
                 </div>
                 <div class="time-carrusell">
-                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30 min.</time>
+                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="image-carrusell">
-                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png" class="image"></span><span class="b tittle"><div class="div1"> Pizza Kebap </div>
-                      <div class="div2"> 7.90€</div></span>
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
                 </div>
                 <div class="time-carrusell">
-                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30 min.</time>
+                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="image-carrusell">
-                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png" class="image"></span><span class="b tittle"><div class="div1"> Pizza Kebap </div>
-                      <div class="div2"> 7.90€</div></span>
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
                 </div>
                 <div class="time-carrusell">
-                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30 min.</time>
+                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="image-carrusell">
-                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png" class="image"></span><span class="b tittle"><div class="div1"> Pizza Kebap </div>
-                      <div class="div2"> 7.90€</div></span>
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
                 </div>
                 <div class="time-carrusell">
-                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30 min.</time>
+                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
                 </div>
             </div>
-          </div>
+        </div>
     </section>
     <section class="section two" id="about-section">
+        <h2>Los mejores restaurantes y mucho más en España</h2>
+        <div class="content2">
+            <div class="parent">
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+    
+                    </div>
+                   
+                </div>
+               
 
+            </div>
+        </div>
     </section>
     <section class="section three" id="skills-section">
 
