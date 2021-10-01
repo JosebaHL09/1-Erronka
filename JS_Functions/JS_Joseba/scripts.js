@@ -1,23 +1,6 @@
 var userArray = ["Paco", "Admin"]
 var passwordArray = ["123", "admin123"]
 
-/*window.onload = function name(){
-    if(localStorage.getItem("user")!='null'){
-        document.getElementById("login").innerHTML = localStorage.getItem('user') + " kaixo!";
-    };
-    
-} */
-
-
-function logout(){
-    
-    if(localStorage.getItem('loged').value == "true"){
-        localStorage.setItem('loged', "false")
-        document.getElementById('login').style.visibility = 'visible';
-        document.getElementById('logout').style.visibility = 'hidden';    
-    }
-}
-
 function balidatu() {
     var usuario = document.getElementById('usuario_txt').value
     var contrasena = document.getElementById('contraseña_txt').value
@@ -30,10 +13,6 @@ function balidatu() {
     }
     if (valid) {
         alert("Bienvenido!")
-        localStorage.setItem('user', usuario);
-        localStorage.setItem('pw', contrasena);
-        localStorage.setItem('loged', "true")
-
     } else {
         alert("usuario no encontrado: " + usuario + " - " + contrasena)
     }
@@ -42,7 +21,7 @@ function balidatu() {
 }
 
 function gordeErabiltzailea() {
-    
+
     const user = {
         username: document.getElementById('erabiltzailea_txt').value,
         pasahitza: document.getElementById('pasahitza_txt').value,
