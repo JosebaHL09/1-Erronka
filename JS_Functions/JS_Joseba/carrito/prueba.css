@@ -6,12 +6,11 @@ html {
   * {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
+    
   }
   
-  @font-face {
-      font-family: 'Shopper';
-      src: url('http://www.shopperfont.com/font/Shopper-Std.ttf');
+  body{
+    font-family: 'Prompt', sans-serif;
   }
   
   .shopper {
