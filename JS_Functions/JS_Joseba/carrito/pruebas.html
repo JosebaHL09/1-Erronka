@@ -40,20 +40,20 @@
                     </div>
 
                     <div class="col col-price col-numeric align-center ">
-                        <p>8€</p>
+                        <p id="price_1">8</p>
                     </div>
 
                     <div class="col col-qty layout-inline">
-                        <a href="#" class="qty qty-minus">-</a>
-                        <input type="numeric" value="3" />
-                        <a href="#" class="qty qty-plus">+</a>
+                        <a href="#" class="qty qty-minus" onclick="restar('prod1_qty','price_1','total_1')">-</a>
+                        <input type="numeric" value="0" id="prod1_qty" />
+                        <a href="#" class="qty qty-plus" onclick="sumar('prod1_qty','price_1','total_1')">+</a>
                     </div>
 
                     <div class="col col-vat col-numeric">
                         <p>£2.95</p>
                     </div>
                     <div class="col col-total col-numeric">
-                        <p> £182.95</p>
+                        <p id="total_1">0€</p>
                     </div>
                 </div>
 
@@ -65,27 +65,25 @@
                     </div>
 
                     <div class="col col-price col-numeric align-center ">
-                        <p>5€</p>
+                        <p id="price_2">5</p>
                     </div>
 
                     <div class="col col-qty  layout-inline">
-                        <a href="#" class="qty qty-minus ">-</a>
-                        <input type="numeric" value="1" />
-                        <a href="#" class="qty qty-plus">+</a>
+                        <a href="#" class="qty qty-minus " onclick="restar('prod2_qty','price_2','total_2')" >-</a>
+                        <input type="numeric" value="0" id="prod2_qty"/>
+                        <a href="#" class="qty qty-plus" onclick="sumar('prod2_qty','price_2','total_2')">+</a>
                     </div>
 
                     <div class="col col-vat col-numeric">
                         <p>£1.95</p>
                     </div>
                     <div class="col col-total col-numeric">
-                        <p>£25.94</p>
+                        <p id="total_2">0€</p>
                     </div>
 
                 </div>
 
                 <div class="layout-inline row">
-
-
                     <div class="col col-pro layout-inline">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Rolled_kebab.jpg/1200px-Rolled_kebab.jpg"
                             alt="kitten" />
@@ -93,20 +91,20 @@
                     </div>
 
                     <div class="col col-price col-numeric align-center ">
-                        <p>10€</p>
+                        <p id="price_3">10</p>
                     </div>
 
                     <div class="col col-qty layout-inline">
-                        <a href="#" class="qty qty-minus">-</a>
-                        <input type="numeric" value="3" />
-                        <a href="#" class="qty qty-plus">+</a>
+                        <a href="#" class="qty qty-minus" onclick="restar('prod3_qty','price_3','total_3')">-</a>
+                        <input type="numeric" value="0" id="prod3_qty"/>
+                        <a href="#" class="qty qty-plus" onclick="sumar('prod3_qty','price_3','total_3')">+</a>
                     </div>
 
                     <div class="col col-vat col-numeric">
                         <p>£2.95</p>
                     </div>
                     <div class="col col-total col-numeric">
-                        <p>£182.95</p>
+                        <p id="total_3">0€</p>
                     </div>
                 </div>
 

@@ -1,68 +1,20 @@
-$('.visibility-cart').on('click',function(){
-       
-    var $btn =  $(this);
-    var $cart = $('.cart');
-    console.log($btn);
-    
-    if ($btn.hasClass('is-open')) {
-       $btn.removeClass('is-open');
-       $btn.text('O')
-       $cart.removeClass('is-open');     
-       $cart.addClass('is-closed');
-       $btn.addClass('is-closed');
-    } else {
-       $btn.addClass('is-open');
-       $btn.text('X')
-       $cart.addClass('is-open');     
-       $cart.removeClass('is-closed');
-       $btn.removeClass('is-closed');
-    }
-  
-                    
-  });
-  
-    // SHOPPING CART PLUS OR MINUS
-    $('a.qty-minus').on('click', function(e) {
-      e.preventDefault();
-      var $this = $(this);
-      var $input = $this.closest('div').find('input');
-      var value = parseInt($input.val());
-      
-      if (value > 1) {
-        value = value - 1;
-      } else {
-        value = 0;
-      }
-      
-      $input.val(value);
-          
-    });
-  
-    $('a.qty-plus').on('click', function(e) {
-      e.preventDefault();
-      var $this = $(this);
-      var $input = $this.closest('div').find('input');
-      var value = parseInt($input.val());
-  
-      if (value < 100) {
-      value = value + 1;
-      } else {
-        value =100;
-      }
-  
-      $input.val(value);
-    });
-  
-  // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
-  $('input').on('blur', function(){
-  
-    var input = $(this);
-    var value = parseInt($(this).val());
-  
-      if (value < 0 || isNaN(value)) {
-        input.val(0);
-      } else if
-        (value > 100) {
-        input.val(100);
-      }
-  });
+function sumar(qty_id,price_id,total_id) {
+  var sum = parseInt(document.getElementById(qty_id).value) + 1
+  document.getElementById(qty_id).value = sum
+  total(qty_id,price_id,total_id)
+}
+function restar(qty_id,price_id,total_id) {
+  var qty = document.getElementById(qty_id).value
+  if (qty != 0) {
+    document.getElementById(qty_id).value -= 1
+    total(qty_id,price_id,total_id)
+  }
+}
+
+function total(qty_id,price_id,total_id) {
+  var x = document.getElementById(qty_id).value
+  var y = document.getElementById(price_id).innerHTML
+  var total = x * y
+  document.getElementById(total_id).innerHTML = total+"€"
+}
+
