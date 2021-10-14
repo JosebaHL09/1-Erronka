@@ -11,3 +11,12 @@ class Erabiltzailea(models.Model):
 
     def __unicode__(self):
         return self.erabiltzailea
+
+class Saskia(models.Model):
+    helbidea = models.CharField(max_length=1000)
+    telefonoa = models.IntegerField(max_length=9)
+    data = models.DateTimeField()
+    erabiltzailea = models.ForeignKey(Erabiltzailea,related_name='saskia',on_delete =models.CASCADE)
+
+    def __unicode__(self):
+        return self.helbidea
