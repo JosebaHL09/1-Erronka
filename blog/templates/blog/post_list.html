@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1><a href="">Hello WORLD</a></h1>
+    {% for post in posts%}
+        <h2>{{post.title}}||{{post.slug}}||{{post.published_date}}</h2>
+    {% endfor %}
+</body>
+</html>
