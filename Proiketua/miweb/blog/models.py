@@ -14,9 +14,50 @@ class Erabiltzailea(models.Model):
 
 class Saskia(models.Model):
     helbidea = models.CharField(max_length=1000)
-    telefonoa = models.IntegerField(max_length=9)
+    telefonoa = models.IntegerField()
     data = models.DateTimeField()
-    erabiltzailea = models.ForeignKey(Erabiltzailea,related_name='saskia',on_delete =models.CASCADE)
+    erabiltzailea = models.ForeignKey(Erabiltzailea,related_name='erabiltzailea_saskia',on_delete =models.CASCADE)
 
     def __unicode__(self):
         return self.helbidea
+
+class Jatetxea(models.Model):
+    izena = models.CharField(max_length=1000)
+    helbidea = models.CharField(max_length=1000)
+    telefonoa = models.IntegerField()
+    mota = models.CharField(max_length=1000)
+    izarrak= models.IntegerField()
+    oharrak = models.CharField(max_length=1000)
+    img_path = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+        return self.izena
+
+class Produktua(models.Model):
+    izena = models.CharField(max_length=1000)
+    prezioa = models.FloatField()
+    mota = models.CharField(max_length=1000)
+    deskontua = models.BooleanField()
+    portzentaia = models.FloatField(blank=True, null=True)
+    jatetxea = models.ForeignKey(Jatetxea, related_name='jatetxea_produktua', on_delete=models.CASCADE)
+    img_path = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+        return self.izena
+
+class Erosketa(models.Model):
+    saskia = models.ForeignKey(Saskia, related_name='saskia', on_delete=models.CASCADE)
+    produktua = models.ForeignKey(Produktua, related_name='produktua_erosketa', on_delete=models.CASCADE)
+    kantitatea = models.IntegerField()
+
+    def __unicode__(self):
+        return self.izena
+
+class Iruzkina(models.Model):
+    testua = models.CharField(max_length=1000)
+    erabiltzailea = models.ForeignKey(Erabiltzailea, related_name='erabiltzailea_iruzkina', on_delete=models.CASCADE)
+    produktua = models.ForeignKey(Produktua, related_name='produktua_iruzkina', on_delete=models.CASCADE)
+    kalifikazioa = models.IntegerField()
+
+    def __unicode__(self):
+        return self.testua
