@@ -28,6 +28,8 @@ class Jatetxea(models.Model):
     mota = models.CharField(max_length=1000)
     img_path = models.CharField(max_length=1000)
     distantzia=models.IntegerField()
+    latitud = models.FloatField(null=True)
+    longitud = models.FloatField(null=True)
 
 
     def __unicode__(self):

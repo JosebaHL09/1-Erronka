@@ -1,10 +1,21 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="prueba.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Carrito</button>
+        <div id="myDropdown" class="dropdown-content">
+            <label for="cubiertos">¿Añadir cubiertos?</label>
+            <input type="checkbox" id="cubiertos" name="cubiertos" value="cubiertos">
+        </div>
+        <div id="myDropdown" class="dropdown-content"></div>
+    </div>
+
     <div class="container">
         <div class="heading">
             <h1>
@@ -15,10 +26,7 @@
         </div>
 
         <div class="cart transition is-open">
-
             <a href="#" class="btn btn-update">Update cart</a>
-
-
             <div class="table">
 
                 <div class="layout-inline row th">
@@ -27,8 +35,8 @@
                         Price
                     </div>
                     <div class="col col-qty align-center">QTY</div>
-                    <div class="col">VAT</div>
                     <div class="col">Total</div>
+                    <div class="col">Add</div>
                 </div>
 
                 <div class="layout-inline row">
@@ -44,16 +52,19 @@
                     </div>
 
                     <div class="col col-qty layout-inline">
-                        <a href="#" class="qty qty-minus" onclick="restar('prod1_qty','price_1','total_1')">-</a>
-                        <input type="numeric" value="0" id="prod1_qty" />
-                        <a href="#" class="qty qty-plus" onclick="sumar('prod1_qty','price_1','total_1')">+</a>
+                        <a href="#" class="qty qty-minus"
+                            onclick="restar('prod1_qty','price_1','total_1','Kebab')">-</a>
+                        <input type="numeric" value="0" id="prod1_qty" readonly class="quantity" />
+                        <a href="#" class="qty qty-plus" onclick="sumar('prod1_qty','price_1','total_1','Kebab')">+</a>
                     </div>
 
-                    <div class="col col-vat col-numeric">
-                        <p>£2.95</p>
-                    </div>
+
                     <div class="col col-total col-numeric">
-                        <p id="total_1">0€</p>
+                        <p class="total" id="total_1">0</p>
+                    </div>
+                    <div class="col col-vat col-numeric">
+                        <a id="comprar" href="#" class="btn btn-update"
+                            onclick="addCarrito('Kebab','prod1_qty','price_1')">Buy</a>
                     </div>
                 </div>
 
@@ -69,16 +80,20 @@
                     </div>
 
                     <div class="col col-qty  layout-inline">
-                        <a href="#" class="qty qty-minus " onclick="restar('prod2_qty','price_2','total_2')" >-</a>
-                        <input type="numeric" value="0" id="prod2_qty"/>
-                        <a href="#" class="qty qty-plus" onclick="sumar('prod2_qty','price_2','total_2')">+</a>
+                        <a href="#" class="qty qty-minus "
+                            onclick="restar('prod2_qty','price_2','total_2','Manzana')">-</a>
+                        <input type="numeric" value="0" id="prod2_qty" class="quantity" readonly />
+                        <a href="#" class="qty qty-plus"
+                            onclick="sumar('prod2_qty','price_2','total_2','Manzana')">+</a>
+                    </div>
+
+                    <div class="col col-total col-numeric">
+                        <p class="total" id="total_2">0</p>
                     </div>
 
                     <div class="col col-vat col-numeric">
-                        <p>£1.95</p>
-                    </div>
-                    <div class="col col-total col-numeric">
-                        <p id="total_2">0€</p>
+                        <a id="comprar" href="#" class="btn btn-update"
+                            onclick="addCarrito('Manzana','prod2_qty','price_2')">Buy</a>
                     </div>
 
                 </div>
@@ -95,16 +110,19 @@
                     </div>
 
                     <div class="col col-qty layout-inline">
-                        <a href="#" class="qty qty-minus" onclick="restar('prod3_qty','price_3','total_3')">-</a>
-                        <input type="numeric" value="0" id="prod3_qty"/>
-                        <a href="#" class="qty qty-plus" onclick="sumar('prod3_qty','price_3','total_3')">+</a>
+                        <a href="#" class="qty qty-minus"
+                            onclick="restar('prod3_qty','price_3','total_3','Durum')">-</a>
+                        <input type="numeric" value="0" id="prod3_qty" class="quantity" readonly />
+                        <a href="#" class="qty qty-plus" onclick="sumar('prod3_qty','price_3','total_3','Durum')">+</a>
+                    </div>
+
+                    <div class="col col-total col-numeric">
+                        <p class="total" id="total_3">0</p>
                     </div>
 
                     <div class="col col-vat col-numeric">
-                        <p>£2.95</p>
-                    </div>
-                    <div class="col col-total col-numeric">
-                        <p id="total_3">0€</p>
+                        <a id="comprar" href="#" class="btn btn-update"
+                            onclick="addCarrito('Durum','prod3_qty','price_3')">Buy</a>
                     </div>
                 </div>
 
@@ -125,15 +143,16 @@
                         <div class="col">
                             <p>Total</p>
                         </div>
-                        <div class="col"></div>
+                        <div class="col">
+                            <p id="total">0</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <a href="#" class="btn btn-update">Update cart</a>
-
         </div>
-        <script src="prueba.js"></script>
+    </div>
+
+    <script src="prueba.js"></script>
 </body>
 
 </html>
