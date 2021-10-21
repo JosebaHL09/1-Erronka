@@ -26,7 +26,7 @@ class Jatetxea(models.Model):
     helbidea = models.CharField(max_length=1000)
     telefonoa = models.IntegerField()
     mota = models.CharField(max_length=1000)
-    oharrak = models.CharField(max_length=1000)
+    #oharrak = models.CharField(max_length=1000)
     img_path = models.CharField(max_length=1000)
     distantzia=models.IntegerField()
 
