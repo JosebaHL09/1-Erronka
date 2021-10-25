@@ -59,10 +59,14 @@ function addCarrito(izena, qty_id, price_id) {
   } else if (id) {
     alert("Ya has comprado eso ape??")
   } else {
-    $("#myDropdown").append("<a id=" + izena + " href='#'>" + izena + " - X<span id=" + izena + 'Kantitatea' + ">" + kantitatea + "</span> - " + price + " &euro; </a>");
+    $("<a id=" + izena + " href='#'>" + izena + " - X<span id=" + izena + 'Kantitatea' + ">" + kantitatea + "</span> - " + price + " &euro; </a>").insertBefore(".divExtra");
   }
 
 }
 function myFunction() {
+  var id = document.getElementById("comprar")
   document.getElementById("myDropdown").classList.toggle("show");
+  if(!id){
+    $("<a id='comprar' href='#'> prueba&euro; </a>").insertAfter(".divExtra");
+  }
 }
