@@ -1,6 +1,6 @@
 .container {
     text-align: center;
-    padding: 1%;
+    padding: 2%;
     margin: auto;
     border: 2px solid black;
     margin-top: 8%;
@@ -34,37 +34,37 @@
     box-sizing: border-box;
 }
 .name{
-    background: url(/registro/gris/account_circle.png) no-repeat center;
+    background: url(gris/account_circle.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
 }
 .lastname{
-    background: url(/registro/gris/person_outline.png) no-repeat center;
+    background: url(gris/person_outline.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
 }
 .pass1{
-    background: url(/registro/gris/lock.png) no-repeat center;
+    background: url(gris/lock.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
 }
 .pass2{
-    background: url(/registro/gris/lock_open.png) no-repeat center;
+    background: url(gris/lock_open.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
 }
 .email{
-    background: url(/registro/gris/mail.png) no-repeat center;
+    background: url(gris/mail.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
 }
 .user{
-    background: url(/registro/gris/assignment_ind.png) no-repeat center;
+    background: url(gris/assignment_ind.png) no-repeat center;
     width: 2rem;
     height: 2rem;
     background-size: 95%;
