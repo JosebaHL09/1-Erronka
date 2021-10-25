@@ -45,7 +45,7 @@ class Produktua(models.Model):
     img_path = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.jatetxea , self.izena
+        return self.izena
 
 class Erosketa(models.Model):
     saskia = models.ForeignKey(Saskia, related_name='saskia', on_delete=models.CASCADE)
@@ -62,4 +62,4 @@ class Iruzkina(models.Model):
     kalifikazioa = models.IntegerField()
 
     def __str__(self):
-        return self.erabiltzailea , self.testua
+        return self.testua
