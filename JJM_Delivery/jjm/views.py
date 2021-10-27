@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.http import *
 from django.shortcuts import render, redirect
-
+from django.db.models import Count
 from .forms import *
 
 
@@ -22,6 +22,12 @@ from .forms import *
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
     best_jatetxe = Jatetxea.objects.all()[:8]
-    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe} )
+    #La cosita esta es como un group by
+    hiriak = (Jatetxea.objects
+    .values('helbidea')
+    .annotate(dcount=Count('helbidea'))
+    .order_by()
+)
+    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak} )
 
     

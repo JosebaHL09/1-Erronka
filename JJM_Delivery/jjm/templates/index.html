@@ -73,14 +73,16 @@
 
                 <img src="{% static 'images/AppIcons/icoBeer.png' %}">
                 <span><b>Mejores Productos</b></span>
-                <p>Seleccionamos los mejores productos de la localidad para que pueda disfrutar de todos ellos en cualquier momento.</p>
+                <p>Seleccionamos los mejores productos de la localidad para que pueda disfrutar de todos ellos en
+                    cualquier momento.</p>
             </div>
         </div>
         <div class="item-content2">
             <div class="info">
                 <img src="{% static 'images/AppIcons/icoChef2.png' %}">
                 <span><b>Restaurantes Unicos</b></span>
-                <p>Descubre nuestra seleccion de distintos restaurantes de todos los tipos de comida que se pueda imaginar. ¡Parecera que estas en otro pais!</p>
+                <p>Descubre nuestra seleccion de distintos restaurantes de todos los tipos de comida que se pueda
+                    imaginar. ¡Parecera que estas en otro pais!</p>
             </div>
         </div>
         <div class="item-content3">
@@ -98,11 +100,9 @@
         <img src="{% static 'images/AppIcons/icoCity.png' %}">
         <h2>Hiri Nagusiak Euskal Herria</h2>
         <div class="cities">
-            <span class="city">Eibar</span>
-            <span class="city">Durango</span>
-            <span class="city">Berriz</span>
-            <span class="city">Bilbo</span>
-            <span class="city">Ermua</span>
+            {% for hiria in hiriak %}
+            <span class="city">{{hiria.helbidea}}</span>
+            {% endfor %}
         </div>
     </div>
 </section>
