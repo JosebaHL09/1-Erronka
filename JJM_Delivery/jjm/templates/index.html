@@ -50,7 +50,7 @@
 
 
 <section class="section two" id="about-section">
-    <h2>Los mejores restaurantes y mucho más en España</h2>
+    <h2>Jatetxerik onenak eta askoz gehiago Euskadin</h2>
     <div class="content2">
         <div class="parent">
             {% for jatetxe in jatetxea %}
@@ -66,31 +66,28 @@
     </div>
 </section>
 <section class="section three" id="skills-section">
-    <h2>Todo lo que quieras</h2>
+    <h2>Nahi duzun guztia</h2>
     <div class="all-content">
         <div class="item-content1">
             <div class="info">
 
                 <img src="{% static 'images/AppIcons/icoBeer.png' %}">
-                <span><b>Mejores Productos</b></span>
-                <p>Seleccionamos los mejores productos de la localidad para que pueda disfrutar de todos ellos en
-                    cualquier momento.</p>
+                <span><b>Produkturik onenak</b></span>
+                <p>Herriko produkturik onenak aukeratzen ditugu, edonoiz gozatu ahal izateko.</p>
             </div>
         </div>
         <div class="item-content2">
             <div class="info">
                 <img src="{% static 'images/AppIcons/icoChef2.png' %}">
-                <span><b>Restaurantes Unicos</b></span>
-                <p>Descubre nuestra seleccion de distintos restaurantes de todos los tipos de comida que se pueda
-                    imaginar. ¡Parecera que estas en otro pais!</p>
+                <span><b>Jatetxe paregabeak</b></span>
+                <p>Ezagutu gure jatetxe mota desberdinak, imajina daitezkeen janari mota guztiekin. Beste herrialde batean zaudela ematen du!</p>
             </div>
         </div>
         <div class="item-content3">
             <div class="info">
                 <img src="{% static 'images/AppIcons/icoBike.png' %}">
-                <span><b>Entrega Rapida</b></span>
-                <p>Con una gran variedad de restaurantes, ¡podrás pedir tu comida favorita o explorar nuevos
-                    restaurantes cerca!</p>
+                <span><b>Entrega azkarra</b></span>
+                <p>Askotariko jatetxeekin, gustukoen duzun janaria eskatu ahal izango duzu, edo inguruan jatetxe berriak esploratu!</p>
             </div>
         </div>
     </div>
@@ -98,7 +95,7 @@
 <section class="section four" id="projects-section">
     <div class="wave1">
         <img src="{% static 'images/AppIcons/icoCity.png' %}">
-        <h2>Hiri Nagusiak Euskal Herria</h2>
+        <h2>Hiri Nagusiak Euskal Herrian</h2>
         <div class="cities">
             {% for hiria in hiriak %}
             <span class="city">{{hiria.helbidea}}</span>
