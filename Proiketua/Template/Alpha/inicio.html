@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="smalllogo">
+            <a href="#welcome-section" class="logolink">
+                <h2> <i class="fas fa-code"></i>JJ&M Delivery<span style="color:#FFE48F;">.</span></h2>
+            </a>
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+        <nav class="nav" id="navbar">
+            <div class="logo">
+                <a href="nav.html" id="logo">
+                    <h1> <i class="fas fa-code" style="font-size: 20px;"></i>JJ&M Delivery <span style="color:#FFE48F;">.</span>
+                    </h1>
+                </a>
+            </div>
+
+            <ul class="nav__list" id="navlinkitems">
+                <li class="nav__item">
+                    <a href="#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#skills-section" class="nav__link" id="nav__link1">Jatetxe Hoberenak</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contacts-section" class="register" id="nav__link3">Erregistratu</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contacts-section" class="login" id="contact">Saioa Hasi</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="section one" id="home-section">
+        <div class="main-info">
+            <h4 class="titulo">Jota Jota & M</h4>
+            <h2 class="titulo">Dezagun gutxi dezagun beti</h2>
+            <p>Euskadiko etxez etxeko janari-salmentako liderrak.Gu <b style="color: black;">J.J & M </b> gara.</p>
+            <span class="form">
+                <input type="text" placeholder="Non bizi zara?" />
+                <button class="ubi-image" onclick="getLocation()"></button>
+            </span>
+            <span class="button">
+                <button type="button" class="button">Erosi Orain</input>
+                    <span class="buy-image"></span>
+            </span>
+        </div>
+        <div class="chef-recomendation">
+            <img src="AppIcons/icoChef.png">
+            <span class="infochef">
+                <h4>Geure bezeroen gomendioak</h4>
+                <h2>Ikusi bezeroen iritziak</h2>
+            </span>
+        </div>
+        <div class="carousel">
+            <span>Gure Produktuak</span>
+
+            <div class="carousel-item">
+                <div class="image-carrusell">
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
+                </div>
+                <div class="time-carrusell">
+                    <time><img src="AppIcons/icoReloj.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="image-carrusell">
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
+                </div>
+                <div class="time-carrusell">
+                    <time><img src="AppIcons/icoReloj.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="image-carrusell">
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
+                </div>
+                <div class="time-carrusell">
+                    <time><img src="AppIcons/icoReloj.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="image-carrusell">
+                    <span class="b"><img src="design-465b7fd9-73ea-4e26-938a-ce28eaa9ab82.png"
+                            class="image"></span><span class="b tittle">
+                        <div class="div1"> Pizza Kebap </div>
+                        <div class="div2"> 7.90€</div>
+                    </span>
+                </div>
+                <div class="time-carrusell">
+                    <time><img src="4-41917_food-top-view-png-transparent-png.png" style="padding-right: 0.3rem;"> 30
+                        min.</time>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section two" id="about-section">
+        <h2>Los mejores restaurantes y mucho más en España</h2>
+        <div class="content2">
+            <div class="parent">
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>                
+                </div>
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+                <div class="grid-item">
+                    <div class="item">
+                        <img src="lidl.jpg">
+                        <span class="titlebest">Lidl</span>
+                    </div>
+                   
+                </div>
+               
+               
+
+            </div>
+        </div>
+    </section>
+    <section class="section three" id="skills-section">
+        <h2>Todo lo que quieras</h2>
+        <div class="all-content">
+            <div class="item-content1">
+                <div class="info">
+                    <img src="AppIcons/icoBeer.png">
+                    <span><b>Entrega Rapida</b></span>
+                    <p>Con una gran variedad de restaurantes, ¡podrás pedir tu comida favorita o explorar nuevos restaurantes cerca!</p>
+                </div>
+            </div>
+            <div class="item-content2">
+                <div class="info">
+                    <img src="AppIcons/icoChef2.png">
+                    <span><b>Entrega Rapida</b></span>
+                    <p>Con una gran variedad de restaurantes, ¡podrás pedir tu comida favorita o explorar nuevos restaurantes cerca!</p>
+                </div>
+            </div>
+            <div class="item-content3">
+                <div class="info">
+                    <img src="AppIcons/icoBike.png">
+                    <span><b>Entrega Rapida</b></span>
+                    <p>Con una gran variedad de restaurantes, ¡podrás pedir tu comida favorita o explorar nuevos restaurantes cerca!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section four" id="projects-section">
+        <div class="wave1">
+           <img src="AppIcons/icoCity.png">
+           <h2>Hiri Nagusiak Euskal Herria</h2>
+           <div class="cities">
+               <span class="city">Eibar</span>
+               <span class="city">Durango</span>
+               <span class="city">Berriz</span>
+               <span class="city">Bilbo</span>
+               <span class="city">Ermua</span>
+           </div>
+        </div>
+    </section>
+    <section class="section five" id="contacts-section">
+        <div class="footer-content">
+            <h1>JJ&M Delivery<span style="color:#FFE48F;">.</span></h1>
+            <div class="footer-info">
+                <div>
+                    <span class="follow"><b>Jarraitu</b></span><br>
+                    <span class="follow">Facebook</span><br>
+                    <span class="follow">Twitter</span><br>
+                    <span class="follow">Instagram</span>
+                </div>
+                <div>
+                    <img src="AppIcons/icoGooglePlay.png"><br>
+                    <img src="AppIcons/icoAppStore.png">
+                </div>
+                <div>
+                    <span class="condicion">CONDICIONES DE USO</span><br>
+                    <span class="follow">POLITICA DE PRIVACIDAD</span><br>
+                    <span class="follow">POLITICA DE COOKIES</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
