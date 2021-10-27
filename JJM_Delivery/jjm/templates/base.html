@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesBase.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesIndex.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <title>J.J&M Delivery</title>
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="smalllogo">
+            <a href="#welcome-section" class="logolink">
+                <h2> <i class="fas fa-code"></i>JJ&M Delivery<span style="color:#FFE48F;">.</span></h2>
+            </a>
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+        <nav class="nav" id="navbar">
+            <div class="logo">
+                <a href="nav.html" id="logo">
+                    <h1> <i class="fas fa-code" style="font-size: 20px;"></i>JJ&M Delivery <span style="color:#FFE48F;">.</span>
+                    </h1>
+                </a>
+            </div>
+
+            <ul class="nav__list" id="navlinkitems">
+                <li class="nav__item">
+                    <a href="#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#skills-section" class="nav__link" id="nav__link1">Jatetxe Hoberenak</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contacts-section" class="register" id="nav__link3">Erregistratu</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contacts-section" class="login" id="contact">Saioa Hasi</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock content %}
+    <section class="section five" id="contacts-section">
+        <div class="footer-content">
+            <h1>JJ&M Delivery<span style="color:#FFE48F;">.</span></h1>
+            <div class="footer-info">
+                <div>
+                    <span class="follow"><b>Jarraitu</b></span><br>
+                    <span class="follow">Facebook</span><br>
+                    <span class="follow">Twitter</span><br>
+                    <span class="follow">Instagram</span>
+                </div>
+                <div>
+                    <img src="{% static 'images/AppIcons/icoGooglePlay.png' %}"><br>
+                    <img src="{% static 'images/AppIcons/icoAppStore.png' %}">
+               
+                </div>
+                <div>
+                    <span class="condicion">CONDICIONES DE USO</span><br>
+                    <span class="follow">POLITICA DE PRIVACIDAD</span><br>
+                    <span class="follow">POLITICA DE COOKIES</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script  src="{% static 'scripts/scriptBase.js' %}"></script>
+    {% block page_scripts %}{ }{% endblock %}
+</body>
+
+</html>

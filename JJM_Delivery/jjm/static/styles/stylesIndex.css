@@ -1,0 +1,503 @@
+@media only screen and (max-width: 1100px) {
+ 
+    .main-info{
+        width: 60% !important;
+        left: 50% !important;
+    }
+    .one::before{
+        filter:brightness(20%) ;
+        background-color: rgba(21, 19, 20, 0.8) !important;
+    }
+    .chef-recomendation{
+        background-color: white;
+        padding: 0.3rem;
+        border-radius: 40px;
+        left: 25% !important;
+        bottom: 3% !important;
+        width: 40% !important;
+        font-size: 70% !important;
+    }
+    .titulo{
+        color: white;
+    }
+    .chef-recomendation img{
+        width: 20%;
+    }
+    .button button{
+        background-color: white !important;
+        color: #DFBF6F !important;
+        font-weight: bold !important;
+        padding-left: 0 !important;
+        height: 5vh !important;
+
+    }
+  
+  }
+  @media only screen and (max-width: 1400px) {
+    
+    .main-info, .chef-recomendation{
+        font-size: 80%;
+  
+    }
+
+  }
+  @media (max-width: 800px) {
+  
+    .all-content {
+        flex-direction: column !important;
+      }
+      .all-content img{
+        max-width: 70%;
+      }
+      .three h2{
+          display: none;
+      }
+      .form input[type="text"]{
+          padding-left: 30% !important;
+      }
+      .parent{
+          grid-template-columns: auto auto auto !important;
+      }
+}
+section {
+    width: 100%;
+    min-height: 100vh; 
+}
+
+.one {
+    padding: 1rem;
+    position: relative;
+    width: 101%;
+    height: 101%;
+    display: flex;
+}
+.one::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url(../images/AppImages/fonIndex.png) right bottom no-repeat;
+    background-size: cover ;
+}
+.carousel {
+    position: absolute;
+    width: 25%;
+    height: 10rem;
+    overflow: hidden;
+    border: 1px dashed #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    bottom: 3%;
+    right: 1.5%;
+    min-width: 20rem;
+
+}
+.carousel span{
+    color:white;
+    font-weight: normal;
+    font-size: 14px;
+    display: block;
+    height: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+.carousel-item {
+    left: 100%;
+    border-top: 1px dashed #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    bottom: -0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.carousel .carousel-item.active {
+    left: 0;
+    transition: all 0.5s ease-out;
+    -webkit-animation: shake .5s ease-in-out;
+  animation: shake .5s ease-in-out;
+}
+@keyframes shake {
+    0% {
+      -webkit-transform: translateX(0);
+    }
+  
+    20% {
+      -webkit-transform: translateX(-10px);
+    }
+  
+    40% {
+      -webkit-transform: translateX(10px);
+    }
+  
+    60% {
+      -webkit-transform: translateX(-10px);
+    }
+  
+    80% {
+      -webkit-transform: translateX(10px);
+    }
+  
+    100% {
+      -webkit-transform: translateX(0);
+    }
+  }
+.image-carrusell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    height: 100%;
+}
+
+.time-carrusell{
+    color: #151314;    
+    background: #FFE48F;
+    border-radius: 30px;
+    font-size: 80%;
+    padding: 0.5rem 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right:0.4rem;
+}
+span.b {
+    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+}
+.tittle{
+  position: relative;
+  height: 50% !important;
+  justify-content: flex-start;
+    left: -50%;
+}
+.div1 { position: absolute;top:0;white-space: nowrap;}
+.div2 { position: absolute;bottom: 0;}
+
+.image{
+    height: auto;
+    max-width: 45%;
+}
+.main-info{
+    position: absolute;
+    left: 25%;
+    transform: translate(-50%,-50%);
+    width: 35%;
+    min-width: 10rem;
+    height: 40%;
+    top: 45%;
+    box-sizing: border-box;
+    padding: 1rem;
+    
+}
+.main-info::after{
+    content: '';
+    left:-50px;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: url(../images/AppIcons/icoWave.png) no-repeat center;
+    background-size: cover;
+    position: absolute;
+}
+.main-info h4{
+    font-weight: normal;
+    font-size: 2rem;
+}
+.main-info h2{
+    font-size: 2.5rem;
+    margin-top: -1rem;
+}
+.main-info p{
+    width: 70%;
+    color: #C4C6C7;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+
+}
+.form{
+    margin-top: 10%;
+    position: relative;
+    width: 50%;
+    display: inline-block;
+}
+
+.button{
+    width: 40%;
+    display: inline-block;position: relative;
+    margin-left: 2rem;
+    min-width: 5rem;
+}
+.button button{
+    background: #000000;
+    border-radius: 50px;
+    color: white;
+    height: 7vh;
+    width: 85%;
+    border: none;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15%;
+
+}
+.form input[type="text"]{
+    background: #E5E5E5;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    width: 100%;
+    color: rgba(0, 0, 0,0.4);
+    padding-left: 20%;
+}
+::placeholder {
+    color: rgba(0, 0, 0,0.4);
+  }
+.form input[type="text"]:focus{
+  outline: none;
+}
+.ubi-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14%;
+    height: 100%;
+    display: block;
+    border-radius: 10px 0px 0px 10px;
+    background: url(../images/AppIcons/icoGPS.png) center no-repeat;
+    box-sizing: border-box;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+    min-width: 3rem;
+}
+.buy-image{
+    position: absolute;
+    top: 50%;
+    left: 18%;
+    transform: translate(-50%,-50%);
+    width: 28%;
+    height: 80%;
+    min-width: 3rem;
+    min-height: 3rem;
+    display: block;
+    border-radius:50%; 
+    background: url(../images/AppIcons/icoShop.png) center no-repeat;
+    box-sizing: border-box;
+    background-size: cover;
+}
+.chef-recomendation{
+    width: 25%;
+    position: absolute;
+    bottom: -5%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.chef-recomendation::after{
+    position: absolute;
+    content: '';
+    right: -50px;
+    top: 0;
+    background: url(../images/AppIcons/icoLine1.png) center no-repeat;
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+}
+.chef-recomendation::before{
+    position: absolute;
+    content: '';
+    right: -50px;
+    bottom: 0;
+    background: url(../images/AppIcons/icoLine1.png) center no-repeat;
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    transform: rotate(85deg);
+}
+.chef-recomendation img{
+    position: relative;
+    height: auto;
+    min-width: 20%;
+}
+.infochef{
+    display: inline-block;
+}
+.chef-recomendation h4{
+    font-weight: normal;
+}
+
+
+
+.two {
+    display: flex;
+    position: relative;
+
+}
+.two h2{
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 10%;
+}
+.parent {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 15px;
+    margin: auto;
+    height:80%;
+}
+.content2{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    height: 80vh;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+  .grid-item img{
+    height: 12rem;
+    width: 12rem;  
+      border-radius: 50%;
+  }
+  .item{
+      position: relative;
+
+  }
+  .titlebest{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    background-color: #FFE48F;
+    color: #000000;
+    min-width: 10rem;
+    text-align: center;
+    font: bold;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0.3rem 0.5rem;
+  }
+.three {
+    position: relative;
+}
+.three h2{
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+}
+.all-content{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.item-content1{
+    flex: 33,33%;
+       display: flex;
+
+}
+.item-content2{
+    flex: 33,33%;
+    padding: 10px;
+    margin: 0 10%;
+
+}
+.item-content3{
+    flex: 33,33%;
+    padding: 10px;
+    display: flex;
+
+}
+.all-content img{
+    align-self: flex-end; 
+    height: auto;  
+}
+.info{
+    text-align: center;  
+}
+.info *{
+    margin: 1rem 0 ;
+}
+.info span{
+    display: block;
+}
+
+.four {
+    position: relative;
+  
+}
+.wave1{
+    background: url(../images/AppImages/icoWaveBanner.png) no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.wave1 img{
+    margin: 5% auto;
+    display: block;
+}
+.wave1 h2{
+    display: block;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.cities{
+    margin: 2% auto;  
+    padding: 1rem;
+    max-width:25%; 
+    height: auto;
+    text-align: center;
+}
+.city{
+    width: auto;
+    height: auto;
+    background: #F2F2F2;
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 0.7rem 2rem;
+    display: inline-block;
+    margin-top: 1%;
+    font-size: 1.5rem;
+
+}
