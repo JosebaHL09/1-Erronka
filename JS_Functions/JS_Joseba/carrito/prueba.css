@@ -239,16 +239,17 @@ html {
   }
 
   .dropbtn {
-    background-color: #3498DB;
+    background-color: #2F2E41;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border-radius: 3rem;
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #514f6e;
   }
   
   .dropdown {
@@ -294,7 +295,7 @@ html {
     display: block;
   }
   .dropdown-content h2  span{
-    color: #f5a111;
+    color: #FFB600;
   }
   .dropdown-content .divExtra {
     background-color:lightgrey;

@@ -46,6 +46,8 @@ function restarGlobal(price_id) {
   document.getElementById("total").innerHTML = totalFinal
 }
 
+var contador = 0
+
 function addCarrito(izena, qty_id, price_id) {
   var kantitatea = document.getElementById(qty_id).value
   var price = parseInt(document.getElementById(price_id).innerHTML)
@@ -57,7 +59,8 @@ function addCarrito(izena, qty_id, price_id) {
     alert("Ya has comprado eso ape??")
   } else {
     $("<a class='produktua' id=" + izena + " href='#'>" + izena + "  <input id='" + izena + "Kantitatea' class='kantitateaInput' type='number' value ='" + kantitatea + "'></input>  <span class='precios'>" + price + "</span> &euro; <button id=" + izena + "btn class='deleteproduct'>&#x2715;</button></a>").insertBefore(".divExtra");
-
+    contador++
+    $('#contador').text(contador)
   }
 
 }
@@ -92,6 +95,7 @@ $(function () {
   })
 });
 
-$(".produktua").on("click", ".deleteproduct", function(){
-  $(this).remove()  
+$(".produktua").on("click", ".deleteproduct", function () {
+  $(this).remove()
+  contador--
 });
