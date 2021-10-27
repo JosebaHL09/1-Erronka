@@ -237,3 +237,115 @@ html {
   @media screen and ( max-width: 591px) {
     
   }
+
+  .dropbtn {
+    background-color: #2F2E41;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3rem;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #514f6e;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 20rem;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 1rem;
+  }
+
+  
+  .dropdown-content a {
+    color: black;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content input {
+    width: 3rem;
+    height: 1rem;
+    color: black;
+    font-size: 1rem;
+  }
+  .dropdown-content h1  {
+    color: black;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content h2  {
+    color: black;
+    padding: 0rem 1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content h2  span{
+    color: #FFB600;
+  }
+  .dropdown-content .divExtra {
+    background-color:lightgrey;
+    color: black;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content .totalCarrito {
+    background-color:black;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    display: block;
+    cursor: pointer;
+  }
+  .dropdown-content .totalCarrito p{
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .dropdown-content .divExtra label {
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:1rem;
+  } 
+  .show {display: block;}
+
+#extra{
+  background-color: #ddd;
+}
+#preciofinal{
+  text-align: right;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+a button{
+  border: none;
+  text-align: right;
+  font-size: 1rem;
+  clear: both;
+  float:right;
+  margin-right:1rem;
+  height: fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.dropdown a button:hover {
+  background-color: #ddd;
+}

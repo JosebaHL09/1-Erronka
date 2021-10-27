@@ -7,4 +7,5 @@ admin.site.register(Jatetxea)
 admin.site.register(Produktua)
 admin.site.register(Erosketa)
 admin.site.register(Iruzkina)
+
 # Register your models here.

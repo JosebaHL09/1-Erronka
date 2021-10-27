@@ -1,0 +1,94 @@
+.container {
+    text-align: center;
+    padding: 2%;
+    margin: auto;
+    border: 2px solid black;
+    margin-top: 8%;
+    width: 40%;
+    height: 70%;
+    color:grey
+}
+#login{
+    height: 40%;
+}
+.container form{
+    margin-top: 10%;
+}
+.container .formulario{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% auto;
+}
+.container .formulario .img{
+   display: inline-block;
+}
+.container input{
+    display: inline-block;
+    border:none;
+    border-bottom: 1px solid #c4c4c4;
+    outline: none;  
+    width: 50%;
+    padding: 0.3rem 0;
+    box-sizing: border-box;
+}
+.name{
+    background: url(gris/account_circle.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+.lastname{
+    background: url(gris/person_outline.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+.pass1{
+    background: url(gris/lock.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+.pass2{
+    background: url(gris/lock_open.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+.email{
+    background: url(gris/mail.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+.user{
+    background: url(gris/assignment_ind.png) no-repeat center;
+    width: 2rem;
+    height: 2rem;
+    background-size: 95%;
+}
+h1{
+    color: black;
+    font-weight: bold;
+}
+p span a{
+    color: #f5a111;
+    text-decoration: none;
+}
+
+button{
+    border: 1px solid grey;
+    background-color: grey;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 20%;
+    color: white;
+}
+button:hover{
+    cursor: pointer;
+}
+
+
+

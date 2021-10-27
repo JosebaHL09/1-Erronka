@@ -8,7 +8,7 @@ class Erabiltzailea(models.Model):
     abizena = models.CharField(max_length=1000)
     posta = models.EmailField(max_length=1000)
     pasahitza = models.CharField(max_length=1000)
-    def __unicode__(self):
+    def __str__(self):
         return self.erabiltzailea
 
 class Saskia(models.Model):
@@ -17,7 +17,7 @@ class Saskia(models.Model):
     data = models.DateTimeField()
     erabiltzailea = models.ForeignKey(Erabiltzailea,related_name='erabiltzailea_saskia',on_delete =models.CASCADE)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.helbidea
 
 class Jatetxea(models.Model):
@@ -26,12 +26,13 @@ class Jatetxea(models.Model):
     helbidea = models.CharField(max_length=1000)
     telefonoa = models.IntegerField()
     mota = models.CharField(max_length=1000)
-    oharrak = models.CharField(max_length=1000)
     img_path = models.CharField(max_length=1000)
     distantzia=models.IntegerField()
+    latitud = models.FloatField(null=True)
+    longitud = models.FloatField(null=True)
 
 
-    def __unicode__(self):
+    def __str__(self):
         return self.izena
 
 class Produktua(models.Model):
@@ -43,7 +44,7 @@ class Produktua(models.Model):
     jatetxea = models.ForeignKey(Jatetxea, related_name='jatetxea_produktua', on_delete=models.CASCADE)
     img_path = models.CharField(max_length=1000)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.izena
 
 class Erosketa(models.Model):
@@ -51,7 +52,7 @@ class Erosketa(models.Model):
     produktua = models.ForeignKey(Produktua, related_name='produktua_erosketa', on_delete=models.CASCADE)
     kantitatea = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.izena
 
 class Iruzkina(models.Model):
@@ -60,5 +61,5 @@ class Iruzkina(models.Model):
     jatetxea = models.ForeignKey(Jatetxea, related_name='jatetxea_iruzkina', on_delete=models.CASCADE)
     kalifikazioa = models.IntegerField()
 
-    def __unicode__(self):
-        return self.testua + self.erabiltzailea
+    def __str__(self):
+        return self.testua
