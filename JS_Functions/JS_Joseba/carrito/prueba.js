@@ -8,15 +8,8 @@ function restar(qty_id, price_id, total_id, izena) {
   var qty = document.getElementById(qty_id).value
   if (qty != 0) {
     document.getElementById(qty_id).value -= 1
-    var currentQty = document.getElementById(qty_id).value
     total(qty_id, price_id, total_id)
     restarGlobal(price_id)
-    if (currentQty != 0) {
-
-    } else {
-      $("#" + izena).remove()
-    }
-
   }
 }
 
@@ -53,12 +46,14 @@ function addCarrito(izena, qty_id, price_id) {
   var price = parseInt(document.getElementById(price_id).innerHTML)
   var id = document.getElementById(izena)
 
+
+
   if (kantitatea == 0) {
     alert("Como vas a comprar nada de algo???")
   } else if (id) {
     alert("Ya has comprado eso ape??")
   } else {
-    $("<a class='produktua' id=" + izena + " href='#'>" + izena + "  <input id='" + izena + "Kantitatea' class='kantitateaInput' type='number' value ='" + kantitatea + "'></input>  <span class='precios'>" + price + "</span> &euro; <button id=" + izena + "btn class='deleteproduct'>&#x2715;</button></a>").insertBefore(".divExtra");
+    $("<a class='produktua' id=" + izena + " href='#'>" + izena + "  <input id='" + izena + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input>  <span class='precios'>" + price + "</span> &euro; <button id='" + izena + "'btn class='deleteproduct' onclick=deleteRow('" + izena + "')>&#x2715;</button></a>").insertBefore(".divExtra");
     contador++
     $('#contador').text(contador)
   }
@@ -91,11 +86,13 @@ $(function () {
       alert("Total a pagar: " + total)
     } else {
       alert("No has comprado nada pedazo de mono")
+      document.getElementById("preciofinal").innerHTML = 0
     }
   })
 });
 
-$(".produktua").on("click", ".deleteproduct", function () {
-  $(this).remove()
+function deleteRow(a) {
   contador--
-});
+  $("#" + a).remove()
+  $('#contador').text(contador)
+}
