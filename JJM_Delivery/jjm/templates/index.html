@@ -8,7 +8,7 @@
         <h2 class="titulo">Dezagun gutxi dezagun beti</h2>
         <p>Euskadiko etxez etxeko janari-salmentako liderrak.Gu <b style="color: black;">J.J & M </b> gara.</p>
         <span class="form">
-            <input type="text" placeholder="Non bizi zara?" />
+            <input type="text" placeholder="Non bizi zara?" id="txt_adress" />
             <button class="ubi-image" onclick="getLocation()"></button>
         </span>
         <span class="button">
@@ -35,8 +35,9 @@
             </div>
 
             <time>
+                {% load random_number %}
                 <div class="time-carrusell"> <img src="{% static 'images/AppIcons/icoReloj.png' %}"
-                        style="padding-right: 0.3rem;"> 30
+                        style="padding-right: 0.3rem;"> {% random_int 10 30 %}
                     min.
                 </div>
             </time>
@@ -45,9 +46,6 @@
 
     </div>
 </section>
-
-<p></p>
-
 
 <section class="section two" id="about-section">
     <h2>Jatetxerik onenak eta askoz gehiago Euskadin</h2>

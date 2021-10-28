@@ -289,7 +289,7 @@ span.b {
 .buy-image{
     position: absolute;
     top: 50%;
-    left: 18%;
+    left: 15%;
     transform: translate(-50%,-50%);
     width: 28%;
     height: 80%;
@@ -299,7 +299,7 @@ span.b {
     border-radius:50%; 
     background: url(../images/AppIcons/icoShop.png) center no-repeat;
     box-sizing: border-box;
-    background-size: cover;
+    background-size: contain;
 }
 .chef-recomendation{
     width: 25%;
