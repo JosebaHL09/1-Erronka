@@ -26,8 +26,6 @@ def index (request):
     hiriak = (Jatetxea.objects
     .values('helbidea')
     .annotate(dcount=Count('helbidea'))
-    .order_by()
-)
-    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak} )
-
-    
+    .order_by()[:8]
+    )
+    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak})
