@@ -33,7 +33,7 @@
 <body>
     <header id="header">
         <div class="smalllogo">
-            <a href="../" class="logolink">
+            <a href="#" class="logolink">
                 <h2> <i class="fas fa-code"></i>JJ&M Delivery<span style="color:#FFE48F;">.</span></h2>
             </a>
             <button class="nav-toggle">
@@ -42,7 +42,7 @@
         </div>
         <nav class="nav" id="navbar">
             <div class="logo">
-                <a href="nav.html" id="logo">
+                <a href="{% url 'jjm_index' %}" id="logo">
                     <h1> <i class="fas fa-code" style="font-size: 20px;"></i>JJ&M Delivery <span
                             style="color:#FFE48F;">.</span>
                     </h1>
@@ -51,13 +51,13 @@
 
             <ul class="nav__list" id="navlinkitems">
                 <li class="nav__item">
-                    <a href="#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
+                    <a href="{% url 'jjm_index' %}#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#skills-section" class="nav__link" id="nav__link1">Jatetxe Hoberenak</a>
+                    <a href="{% url 'jjm_index' %}#skills-section" class="nav__link" id="nav__link1">Jatetxe Hoberenak</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
+                    <a href="{% url 'jjm_index' %}#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
                 </li>
                 <li class="nav__item">
                     <a href="#contacts-section" class="register" id="nav__link3">Erregistratu</a>
