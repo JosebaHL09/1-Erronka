@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.db.models import Count
 from .forms import *
 from math import sin, cos, sqrt, atan2, radians
+from django.http import Http404
+
 
 # Create your views here.
 """def erabiltzailea_new(request):
@@ -28,9 +30,22 @@ def index (request):
        # times = getDistanceTime(latitudeBez,longitudeBez,latitude,longitud)
     best_jatetxe = Jatetxea.objects.all()[:8]
     #La cosita esta es como un group by
-    hiriak = (Jatetxea.objects.values('helbidea').annotate(dcount=Count('helbidea')).order_by())
-    
+    hiriak = (Jatetxea.objects.values('helbidea').annotate(dcount=Count('helbidea')).order_by())   
     return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak} )
+
+def hiria(request):
+    hiria = request.GET.get('hiria',None)
+    try:
+        jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria)
+        filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
+    except Jatetxea.DoesNotExist:
+        raise Http404("Jatetxea does not exist")
+    return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
+
+
+
+
+
 
 def getDistanceTime(latitdue_bez,longitude_bez,latitude_jate,longitude_jate):
     R = 6373.0

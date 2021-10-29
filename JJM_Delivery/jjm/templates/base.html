@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesBase.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesIndex.css' %}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +33,7 @@
 <body>
     <header id="header">
         <div class="smalllogo">
-            <a href="#welcome-section" class="logolink">
+            <a href="../" class="logolink">
                 <h2> <i class="fas fa-code"></i>JJ&M Delivery<span style="color:#FFE48F;">.</span></h2>
             </a>
             <button class="nav-toggle">
@@ -70,7 +69,7 @@
         </nav>
     </header>
     {% block content %}{% endblock content %}
-    <section class="section five" id="contacts-section">
+    <footer class="section five" id="contacts-section">
         <div class="footer-content">
             <h1>JJ&M Delivery<span style="color:#FFE48F;">.</span></h1>
             <div class="footer-info">
@@ -92,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
     <script src="{% static 'scripts/scriptBase.js' %}"></script>
     {% block page_scripts %}{ }{% endblock %}
 </body>

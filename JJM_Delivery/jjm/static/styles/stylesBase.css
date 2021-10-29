@@ -56,7 +56,7 @@ body {
     }
 
   }
-::-webkit-scrollbar {
+  body::-webkit-scrollbar {
     display: none;
 }
 .nav {
@@ -325,7 +325,7 @@ a {
     background: url(../images/AppImages/footerImg.png) no-repeat bottom;
     background-size: cover;
      min-width: 100%;
-     height: 50vh;
+     height: 60vh;
  }
  .footer-content{
      position: absolute;

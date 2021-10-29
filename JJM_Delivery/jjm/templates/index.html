@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/stylesIndex.css' %}">
 
 <section class="section one" id="home-section">
     <div class="main-info">
@@ -96,7 +97,8 @@
         <h2>Hiri Nagusiak Euskal Herrian</h2>
         <div class="cities">
             {% for hiria in hiriak %}
-            <span class="city">{{hiria.helbidea}}</span>
+            <a href="/hiria?hiria={{hiria.helbidea}}" style="cursor: pointer;text-decoration: none;">
+            <span class="city">{{hiria.helbidea}}</span></a>
             {% endfor %}
         </div>
     </div>
