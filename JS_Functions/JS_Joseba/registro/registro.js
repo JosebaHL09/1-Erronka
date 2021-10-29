@@ -68,7 +68,10 @@ $(function () {
     })
 });
 
-
+function click(e){
+    e.preventDefault()
+    alert(document.getElementById("Fecha").innerHTML)
+}
 
 
 

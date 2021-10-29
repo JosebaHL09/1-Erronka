@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h1>Registrate en J.J. & M</h1>
-        <form action="">
+        <form onsubmit="click()">
             <div class="formulario">
                 <div class="name" id="name"></div>
                 <input type="text" placeholder="Nombre" id="nombre">
@@ -18,11 +18,11 @@
             </div>
             <div class="formulario">
                 <div class="pass1" id="pass1"></div>
-                <input type="password" placeholder="Contraseña" id="cont1">
+                <input type="password" placeholder="Contrase&ntilde;a" id="cont1">
             </div>
             <div class="formulario">
                 <div class="pass2" id="pass2"></div>
-                <input type="password" placeholder="Repetir Contraseña" id="cont2">
+                <input type="password" placeholder="Repetir Contrase&ntilde;a" id="cont2">
             </div>
             <div class="formulario">
                 <div class="email" id="email"></div>
@@ -32,9 +32,14 @@
                 <div class="user" id="user"></div>
                 <input type="text" placeholder="Usuario" id="usuario">
             </div>
+            <div class="formulario">
+                <div class="user" id="user"></div>
+                <input type="datetime-local" id="fecha">
+            </div>
+            <input class="btn" type="submit" value="Registrarse"></input>
         </form>
-        <button>Registrarse</button>
-        <p>¿Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>
+        
+        <p>Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>
         <p>Al registrarte, aceptas nuestras <span><a href="">Condiciones de servicio</a></span> y <span><a href="">Politica de privacidad</a></span></p>
     </div>
 

@@ -24,7 +24,7 @@
 .container .formulario .img{
    display: inline-block;
 }
-.container input{
+.container input[type=text], input[type=password], input[type=datetime-local]{
     display: inline-block;
     border:none;
     border-bottom: 1px solid #c4c4c4;
@@ -78,7 +78,8 @@ p span a{
     text-decoration: none;
 }
 
-button{
+.btn{
+    width: inherit;
     border: 1px solid grey;
     background-color: grey;
     border-radius: 1rem;
@@ -86,7 +87,7 @@ button{
     width: 20%;
     color: white;
 }
-button:hover{
+.btn:hover{
     cursor: pointer;
 }
 
