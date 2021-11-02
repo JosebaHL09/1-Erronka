@@ -68,11 +68,16 @@ $(function () {
     })
 });
 
-function click(e){
-    e.preventDefault()
-    alert(document.getElementById("Fecha").innerHTML)
+var el = document.getElementById('formu')
+function submit() {
+    alert(document.getElementById("fecha").value)
+    return false;
 }
-
+function handleForm(event) {
+    event.preventDefault();
+    submit();
+}
+el.addEventListener('submit', handleForm);
 
 
 
