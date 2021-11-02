@@ -70,7 +70,8 @@ $(function () {
 
 var el = document.getElementById('formu')
 function submit() {
-    alert(document.getElementById("fecha").value)
+    var data = document.getElementById("fecha").value
+    alert(data)
     return false;
 }
 function handleForm(event) {

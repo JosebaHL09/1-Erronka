@@ -12,7 +12,6 @@ function restar(qty_id, price_id, total_id, izena) {
     restarGlobal(price_id)
   }
 }
-
 function total(qty_id, price_id, total_id) {
   var x = document.getElementById(qty_id).value
   var y = document.getElementById(price_id).innerHTML
@@ -20,8 +19,6 @@ function total(qty_id, price_id, total_id) {
   document.getElementById(total_id).innerHTML = total
 
 }
-
-
 function totalGlobalGehitu() {
   var totalGlobal = 0
   $('.total').each(function () {
@@ -31,14 +28,12 @@ function totalGlobalGehitu() {
   $('#total').html(totalGlobal);
 
 }
-
 function restarGlobal(price_id) {
   var price = parseInt(document.getElementById(price_id).innerHTML)
   var totalGlobal = parseInt(document.getElementById("total").innerHTML)
   var totalFinal = totalGlobal - price
   document.getElementById("total").innerHTML = totalFinal
 }
-
 var contador = 0
 
 function addCarrito(izena, qty_id, price_id) {
@@ -56,12 +51,40 @@ function addCarrito(izena, qty_id, price_id) {
     $("<a class='produktua' id=" + izena + " href='#'>" + izena + "  <input id='" + izena + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input>  <span class='precios'>" + price + "</span> &euro; <button id='" + izena + "'btn class='deleteproduct' onclick=deleteRow('" + izena + "')>&#x2715;</button></a>").insertBefore(".divExtra");
     contador++
     $('#contador').text(contador)
+    addProduct(izena, kantitatea, price)
+
   }
 
 }
+function addCarritoLS(izena, kantitatea, price) {
+  $("<a class='produktua' id=" + izena + " href='#'>" + izena + "  <input id='" + izena + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input>  <span class='precios'>" + price + "</span> &euro; <button id='" + izena + "'btn class='deleteproduct' onclick=deleteRow('" + izena + "')>&#x2715;</button></a>").insertBefore(".divExtra");
+}
+function allStorage() {
+  $('.produktua').remove();
+  contador = 0
+  let products = []
+  products = JSON.parse(localStorage.getItem('products'));
+  products.forEach(element => {
+    contador++
+    addCarritoLS(element.id, element.kantitatea, element.price)
+  });
+  $('#contador').text(contador)
+}
+function addProduct(izena, kantitatea, price) {
+  let products = [];
+  if (localStorage.getItem('products')) {
+    products = JSON.parse(localStorage.getItem('products'));
+  }
+  products.push({ 'id': izena, 'kantitatea': kantitatea, 'price': price });
+  localStorage.setItem('products', JSON.stringify(products));
+}
+$( document ).ready(function() {
+  allStorage()
+});
 
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+  //allStorage()
 }
 
 $(function () {
@@ -92,7 +115,15 @@ $(function () {
 });
 
 function deleteRow(a) {
+  removeProduct(a)
   contador--
   $("#" + a).remove()
   $('#contador').text(contador)
+}
+
+
+function removeProduct(id){
+  let storageProducts = JSON.parse(localStorage.getItem('products'));
+  let products = storageProducts.filter(product => product.id !== id );
+  localStorage.setItem('products', JSON.stringify(products));
 }
