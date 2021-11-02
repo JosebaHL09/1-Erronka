@@ -38,7 +38,6 @@
     z-index: 999;
     display: flex;
     bottom: 0;
-    display: none;
 }
 .content-popup{
     margin: auto;
@@ -78,9 +77,11 @@
     height: 82vh;
     box-sizing: border-box;
     padding:0 1rem;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 
 }
+
 .filters ul{
     list-style: none;
     padding:1.5rem 1rem;
@@ -92,6 +93,53 @@
     border-bottom: 1px solid #C4C6C7;
     padding: 0.5rem 0;
     cursor: pointer;
+}
+.spinner{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+  z-index: 9999999;
+  display: none;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #191914;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+  background-color: #ffbd17;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  background-color: #b9a072;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
 }
 li:hover{
     filter: brightness(105%);
@@ -121,16 +169,16 @@ li:hover{
     right: 0;
     width: 85%;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 31% 31% 31%;
     grid-gap: 2.2rem;
-    padding: 2.5% 2%; 
+    padding: 3.2% 2%; 
     overflow-y: auto;
     overflow-x: hidden;
 
 }
 .content-main h1{
     position: absolute;
-    top: -1%;
+    top: 0;
     left: 2%;
     background: #fff;
     width: 100%;
@@ -140,7 +188,7 @@ li:hover{
 .filter-price{
     position: absolute;
     right: 0;
-    top: -2%;
+    top: -1.5%;
     background: transparent;
     padding: 1rem;
     width: 20%;
@@ -149,6 +197,7 @@ li:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9;
 }
 .filter-price input{
     background: black;

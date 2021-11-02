@@ -11,10 +11,10 @@
 <section class="section one" id="home-section">
     <div class="all-content">
         <div class="filters">
-            <h9 style="font-weight:bold;">Filtros Populares</h9>
+            <h9 style="font-weight:bold;">Filtros Populares</h9> &emsp;<a href="/hiria?hiria={{hiria}}" style="font-weight: bold;">x</a>
             <ul>
                 {% for filtroa in filtro %}  
-                    <li>
+                    <li id="{{filtroa.mota}}">
                         <img src="/static/images/AppIcons/filtros/{{filtroa.mota}}.png">
                         <span>{{filtroa.mota}}</span>
                     </li>
@@ -23,7 +23,12 @@
             </ul>
         </div>
         <div class="content-main">
-            <h1 id="titulo">Todos los restaurantes de <span style="color: #FFE48F;font-weight: bold;">{{hiria}}</span>
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            <h1 id="titulo">Todos los restaurantes de <span style="color: #FFE48F;font-weight: bold;" id="tituloHiria">{{hiria}}</span>
             </h1>
             <div class="filter-price">
                 <input type="range">
@@ -31,11 +36,13 @@
             {% for jatetxea in jatetxe %}   
             <div class="restaurant">
                 <img src="/{{jatetxea.img_path}}" class="image">
-                <h5>{{jatetxea.izena}}</h5>
-                <h7>{{jatetxea.mota}}</h7></img>
+                <h5 class="izena">{{jatetxea.izena}}</h5>
+                <h7 class="mota">{{jatetxea.mota}}</h7></img>
                 <div class="restaurant-val">
-                    <img src="{% static 'images/AppIcons/icoLike.png' %}"> <span>91%<span style="color: #C4C6C7;"> (350)</span></span>
+                    <img src="{% static 'images/AppIcons/icoLike.png' %}"><span>91%<span style="color: #C4C6C7;"> (350)</span></span>
                 </div>
+                <h1 class="latitud" style="display: none;">{{jatetxea.latitud}} </h1>
+                <h1 class="longitud" style="display: none;">{{jatetxea.longitud}} </h1>
             </div>
             {% endfor %}
 

@@ -1,3 +1,5 @@
+from json import dumps
+import json
 from django.contrib.auth.hashers import make_password
 from django.http import *
 from django.shortcuts import render, redirect
@@ -5,6 +7,8 @@ from django.db.models import Count
 from .forms import *
 from math import sin, cos, sqrt, atan2, radians
 from django.http import Http404
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 # Create your views here.
@@ -25,7 +29,6 @@ def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
     latitude = Jatetxea.objects.values('latitud')[:10]
     longitud = Jatetxea.objects.values('longitud')[:10]
-
     #if request.method == 'GET':
        # times = getDistanceTime(latitudeBez,longitudeBez,latitude,longitud)
     best_jatetxe = Jatetxea.objects.all()[:8]
@@ -33,19 +36,29 @@ def index (request):
     hiriak = (Jatetxea.objects.values('helbidea').annotate(dcount=Count('helbidea')).order_by())   
     return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak} )
 
+@csrf_exempt
 def hiria(request):
     hiria = request.GET.get('hiria',None)
     try:
-        jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria)
         filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
+        jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria)
     except Jatetxea.DoesNotExist:
         raise Http404("Jatetxea does not exist")
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
+@csrf_exempt
+def post_hiriak(request):
+    mota = request.GET.get('mota', None) 
+    hiria=request.GET.get('hiria',None)
+    jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria).filter(mota__icontains = mota)
+    filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
+    return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
 
-
-
+#def get_hiriakMap(request):
+    hiria=request.GET.get('hiria',None)
+    jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria)
+    return JsonResponse({"jatetxea": jatetxea}, status=200)
 
 def getDistanceTime(latitdue_bez,longitude_bez,latitude_jate,longitude_jate):
     R = 6373.0

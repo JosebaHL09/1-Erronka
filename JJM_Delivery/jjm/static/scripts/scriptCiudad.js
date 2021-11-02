@@ -1,17 +1,55 @@
-var mymap = L.map('mapid').setView([43.176749, -2.496166], 15);
+var hiria = $("#tituloHiria").html();
+$(".filters ul li").click(function (event) {
+    var id=this.id;
+    $(".spinner").show();
+    setTimeout(function(){ 
+        window.location.href = "../post_hiria?mota="+id+"&hiria="+hiria+"";
+        $(".spinner").hide();
+    }, 500);
+     
+})
+$( window ).on( "load", function() {
+    var latitud= $(".latitud").html();  
+    var longitud= $(".longitud").html(); 
+    var mymap = L.map('mapid').setView([latitud, longitud], 15);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWlpa2VsbTEiLCJhIjoiY2t2MHNwOTN5MWF3eTJ2cXE4NmJueDVjbiJ9.MUhKjmQk_k9sx8s54IMZug', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWlpa2VsbTEiLCJhIjoiY2t2MHNwOTN5MWF3eTJ2cXE4NmJueDVjbiJ9.MUhKjmQk_k9sx8s54IMZug', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1
-}).addTo(mymap);
+    var latitud=[];
+    var longitud=[];
+    var izena=[];
+    var mota=[];
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
+    $(".latitud").each(function(){
+        latitud.push($(this).text())
+    })
+    $(".longitud").each(function(){
+        longitud.push($(this).text())
+    })
+    $(".izena").each(function(){
+        izena.push($(this).text())
+    })
+    $(".mota").each(function(){
+        mota.push($(this).text())
+    })
+
+    for(var i = 0 ; i<izena.length;i++){
+        var marker = L.marker([latitud[i], longitud[i]]).addTo(mymap);
+        marker.bindPopup("<b>"+izena[i]+"</b><br>"+mota[i]+"").openPopup();
+    }
+  
+});
+
+
+
+
+
 
 //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
 function calcCrow(lat1, lon1, lat2, lon2) 
@@ -34,11 +72,8 @@ function toRad(Value)
     return Value * Math.PI / 180;
 }
 
-
 function closePopUp(){
     $("#pop-up").fadeOut();
 }
-function showSearch(){
-    document.getElementById('searchId').style.display="block";
 
-}
+
