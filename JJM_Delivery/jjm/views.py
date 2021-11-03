@@ -1,5 +1,7 @@
 from json import dumps
 import json
+
+from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.http import *
 from django.shortcuts import render, redirect
@@ -8,7 +10,7 @@ from .forms import *
 from math import sin, cos, sqrt, atan2, radians
 from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -24,6 +26,23 @@ from django.views.decorators.csrf import csrf_exempt
         form = ErabiltzaileaForm()
         redirect('index.html')
     return render(request, 'erabiltzailea_edit.html', {'form':form})"""
+def loginUser(request):
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    if request.method == 'POST':
+        erabiltzailea = request.POST.get('erabiltzailea')
+        pasahitza = request.POST.get('pasahitza')
+
+        user = authenticate(request, username=erabiltzailea, password=pasahitza)
+
+        if user is not None:
+            login(request, user)
+            return render(request, 'index.html')
+    context = {}
+    return render(request, 'login.html',context)
+def logoutUser(request):
+    logout(request)
+    return render(request, 'login.html')
 
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]

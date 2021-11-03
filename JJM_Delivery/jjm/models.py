@@ -1,21 +1,22 @@
 from django.db import models
 from django import forms
+from django.contrib.auth.models import User
 # Create your models here.
 
-class Erabiltzailea(models.Model):
+"""class Erabiltzailea(models.Model):
     erabiltzailea = models.CharField(max_length=1000)
     izena = models.CharField(max_length=1000)
     abizena = models.CharField(max_length=1000)
     posta = models.EmailField(max_length=1000)
     pasahitza = models.CharField(max_length=1000)
     def __str__(self):
-        return self.erabiltzailea
+        return self.erabiltzailea"""
 
 class Saskia(models.Model):
     helbidea = models.CharField(max_length=1000)
     telefonoa = models.IntegerField()
     data = models.DateTimeField()
-    erabiltzailea = models.ForeignKey(Erabiltzailea,related_name='erabiltzailea_saskia',on_delete =models.CASCADE)
+    erabiltzailea = models.ForeignKey(User,related_name='erabiltzailea_saskia',on_delete =models.CASCADE)
 
     def __str__(self):
         return self.helbidea
@@ -56,7 +57,7 @@ class Erosketa(models.Model):
 
 class Iruzkina(models.Model):
     testua = models.CharField(max_length=1000)
-    erabiltzailea = models.ForeignKey(Erabiltzailea, related_name='erabiltzailea_iruzkina', on_delete=models.CASCADE)
+    erabiltzailea = models.ForeignKey(User, related_name='erabiltzailea_iruzkina', on_delete=models.CASCADE)
     jatetxea = models.ForeignKey(Jatetxea, related_name='jatetxea_iruzkina', on_delete=models.CASCADE)
     kalifikazioa = models.IntegerField()
 
