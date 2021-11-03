@@ -8,7 +8,7 @@
     <h1>Login</h1>
     {% if user.is_authenticated %}
         <h1>Welcome {{user.username}}</h1>
-        <a href="{% url 'logout' %}">Log out</a>{% csrf_token %}
+        <a href="{% url 'jjm_index' %}">Log out</a>{% csrf_token %}
     {% endif %}
     <form method="POST" action="{% url 'login' %}">{% csrf_token %}
         <input type="text" name="erabiltzailea" id="erabiltzailea"><br>

@@ -37,12 +37,12 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
-            return render(request, 'index.html')
+            return HttpResponseRedirect('/')
     context = {}
     return render(request, 'login.html',context)
 def logoutUser(request):
     logout(request)
-    return render(request, 'login.html')
+    return HttpResponseRedirect('/')
 
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
