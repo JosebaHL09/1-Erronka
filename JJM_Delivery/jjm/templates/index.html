@@ -18,7 +18,7 @@
         </span>
     </div>
     <div class="chef-recomendation">
-        <img src="{% static 'images/AppIcons/icoChef.png' %}">
+        <img src="{% static 'images/AppIcons/icoChef.png' %}" loading="lazy">
         <span class="infochef">
             <h4>Geure bezeroen gomendioak</h4>
             <h2>Ikusi bezeroen iritziak</h2>
@@ -29,7 +29,7 @@
         {% for produktu in produktua %}
         <div class="carousel-item">
             <div class="image-carrusell">
-                <span class="b"><img src="static/images/produktuak/Top/{{produktu.id}}.jpg" class="image"></span><span class="b tittle">
+                <span class="b"><img src="static/images/produktuak/Top/{{produktu.id}}.jpg" loading="lazy" class="image"></span><span class="b tittle">
                     <div class="div1"> {{produktu.izena}}</div>
                     <div class="div2"> {{produktu.prezioa}}€</div>
                 </span>
@@ -37,7 +37,7 @@
 
             <time>
                 {% load random_number %}
-                <div class="time-carrusell"> <img src="{% static 'images/AppIcons/icoReloj.png' %}"
+                <div class="time-carrusell"> <img src="{% static 'images/AppIcons/icoReloj.png' %}" loading="lazy"
                         style="padding-right: 0.3rem;"> {% random_int 10 30 %}
                     min.
                 </div>
@@ -55,7 +55,7 @@
             {% for jatetxe in jatetxea %}
             <div class="grid-item">
                 <div class="item">
-                    <img src={{jatetxe.img_path}}>
+                    <img src={{jatetxe.img_path}} loading="lazy">
                     <span class="titlebest">{{jatetxe.izena}}</span>
                 </div>
             </div>
@@ -70,21 +70,21 @@
         <div class="item-content1">
             <div class="info">
 
-                <img src="{% static 'images/AppIcons/icoBeer.png' %}">
+                <img src="{% static 'images/AppIcons/icoBeer.png' %}" loading="lazy">
                 <span><b>Produkturik onenak</b></span>
                 <p>Herriko produkturik onenak aukeratzen ditugu, edonoiz gozatu ahal izateko.</p>
             </div>
         </div>
         <div class="item-content2">
             <div class="info">
-                <img src="{% static 'images/AppIcons/icoChef2.png' %}">
+                <img src="{% static 'images/AppIcons/icoChef2.png' %}" loading="lazy">
                 <span><b>Jatetxe paregabeak</b></span>
                 <p>Ezagutu gure jatetxe mota desberdinak, imajina daitezkeen janari mota guztiekin. Beste herrialde batean zaudela ematen du!</p>
             </div>
         </div>
         <div class="item-content3">
             <div class="info">
-                <img src="{% static 'images/AppIcons/icoBike.png' %}">
+                <img src="{% static 'images/AppIcons/icoBike.png' %}" loading="lazy">
                 <span><b>Entrega azkarra</b></span>
                 <p>Askotariko jatetxeekin, gustukoen duzun janaria eskatu ahal izango duzu, edo inguruan jatetxe berriak esploratu!</p>
             </div>
@@ -93,7 +93,7 @@
 </section>
 <section class="section four" id="projects-section">
     <div class="wave1">
-        <img src="{% static 'images/AppIcons/icoCity.png' %}">
+        <img src="{% static 'images/AppIcons/icoCity.png' %}" loading="lazy">
         <h2>Hiri Nagusiak Euskal Herrian</h2>
         <div class="cities">
             {% for hiria in hiriak %}

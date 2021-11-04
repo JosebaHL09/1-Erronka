@@ -31,7 +31,7 @@
     text-align: center;
 }
 .pop-up{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 92%;
     background-color: rgba(255, 255, 255, 0.8);
@@ -171,18 +171,16 @@ li:hover{
     display: grid;
     grid-template-columns: 31% 31% 31%;
     grid-gap: 2.2rem;
-    padding: 3.2% 2%; 
+    padding: 3rem 2%; 
     overflow-y: auto;
     overflow-x: hidden;
 
 }
 .content-main h1{
     position: absolute;
-    top: 0;
+    top: -0.5%;
     left: 2%;
     background: #fff;
-    width: 100%;
-    padding: 0.5rem 0 ;
    display: block;
 }
 .filter-price{
@@ -190,14 +188,13 @@ li:hover{
     right: 0;
     top: -1.5%;
     background: transparent;
-    padding: 1rem;
     width: 20%;
-    height: 5%;
+    height: 4%;
     transform: translate(0,0);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9;
+    z-index: 99;
 }
 .filter-price input{
     background: black;
@@ -271,12 +268,7 @@ h7{
     position: relative;
   }
   
-  input[type='range'] {
-    display: block;
-    width: 250px;
-    position: relative;
-  }
-  
+
   input[type='range']:focus {
     outline: none;
   }
@@ -348,4 +340,18 @@ h7{
     position: absolute;
     bottom:-700%;     
     right: 0;
+}
+.popUpMap{
+  text-align: center;
+  line-height: 1.8;
+  height: 12vh;
+}
+.popUpMap button{
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background: url(../images/AppIcons/icoGo.png) no-repeat center;
+  background-size: contain;
+  margin-top:0.2rem ;
 }

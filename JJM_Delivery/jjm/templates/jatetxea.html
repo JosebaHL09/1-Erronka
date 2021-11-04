@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/stylesJatetxea.css' %}">
+<section class="section one" id="home-section">
+    {% for jatetxea in jatetxe %}   
+    <div class="banner">
+        <h2>{{jatetxea.izena}}</h2>
+        <h7>1Km · 20-30 min</h7>
+        <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg" >
+
+    </div>
+    <div class="content" id="contentItems">
+        <span class="jat-info">{{jatetxea.deskripzioa}}</span>
+        <span class="jat-info price"><img src="{% static 'images/AppIcons/icoBike2.png' %}" loading="lazy"><span>3,93€</span></span>
+        <span class="jat-adreess">{{jatetxea.helbidea}} · {{jatetxea.telefonoa}} · {{jatetxea.mota}}</span>
+    {% endfor %}
+        <div class="jat-filter" id="jaxlist">
+            <ul class="list1">
+                {% for mota10 in motakAll|slice:"10" %}   
+              <li> <a href="#{{mota10.mota}}">{{mota10.mota}}</a></li>
+                {% endfor %}
+                <li><button id="buttonMore" class="buttonMore">Mas <img src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></button></li>
+                <li id="buttonShop" class="buttonShop"><button >Carrito · 0</button></li>
+            </ul>
+            <ul class="more-filter" id="more-filter">
+                {% for mota in motak %}   
+                <li>{{mota.mota}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% for mot in motakAll%}   
+        <div class="contentItems" >
+            <h1 class="titulos" id="{{mot.mota}}">{{mot.mota}}</h1>
+            <div class="gridItems">
+                {% for produktua in produktuak%}   
+                    {% if produktua.mota == mot.mota %}
+                        <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button>+</button></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% block page_scripts %}
+<script type="text/javascript" src="{% static 'scripts/scriptJatetxea.js' %}"></script>
+{% endblock %}
+{% endblock content %}

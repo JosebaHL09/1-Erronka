@@ -15,7 +15,7 @@
             <ul>
                 {% for filtroa in filtro %}  
                     <li id="{{filtroa.mota}}">
-                        <img src="/static/images/AppIcons/filtros/{{filtroa.mota}}.png">
+                        <img src="/static/images/AppIcons/filtros/{{filtroa.mota}}.png" loading="lazy">
                         <span>{{filtroa.mota}}</span>
                     </li>
                 {% endfor %}
@@ -31,18 +31,21 @@
             <h1 id="titulo">Todos los restaurantes de <span style="color: #FFE48F;font-weight: bold;" id="tituloHiria">{{hiria}}</span>
             </h1>
             <div class="filter-price">
-                <input type="range">
+                <div id="slider-range" style="width:200px;"></div>
             </div>
             {% for jatetxea in jatetxe %}   
-            <div class="restaurant">
-                <img src="/{{jatetxea.img_path}}" class="image">
+            <div class="restaurant" id="{{jatetxea.id}}">
+                <img src="/{{jatetxea.img_path}}" loading="lazy" class="image">
                 <h5 class="izena">{{jatetxea.izena}}</h5>
                 <h7 class="mota">{{jatetxea.mota}}</h7></img>
                 <div class="restaurant-val">
-                    <img src="{% static 'images/AppIcons/icoLike.png' %}"><span>91%<span style="color: #C4C6C7;"> (350)</span></span>
+                    <img src="{% static 'images/AppIcons/icoLike.png' %}" loading="lazy"><span>91%<span style="color: #C4C6C7;"> (350)</span></span>
                 </div>
                 <h1 class="latitud" style="display: none;">{{jatetxea.latitud}} </h1>
-                <h1 class="longitud" style="display: none;">{{jatetxea.longitud}} </h1>
+                <h1 class="longitud" style="display: none;">{{jatetxea.longitud}} </h1> 
+                <h1 class="telefonoa" style="display: none;">{{jatetxea.telefonoa}} </h1>
+                <h1 class="deskripzioa" style="display: none;">{{jatetxea.deskripzioa}} </h1>
+                <h1 class="id" style="display: none;">{{jatetxea.id}} </h1>
             </div>
             {% endfor %}
 

@@ -1,5 +1,7 @@
 from json import dumps
 import json
+
+from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.http import *
 from django.shortcuts import render, redirect
@@ -8,7 +10,7 @@ from .forms import *
 from math import sin, cos, sqrt, atan2, radians
 from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -24,6 +26,23 @@ from django.views.decorators.csrf import csrf_exempt
         form = ErabiltzaileaForm()
         redirect('index.html')
     return render(request, 'erabiltzailea_edit.html', {'form':form})"""
+def loginUser(request):
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    if request.method == 'POST':
+        erabiltzailea = request.POST.get('erabiltzailea')
+        pasahitza = request.POST.get('pasahitza')
+
+        user = authenticate(request, username=erabiltzailea, password=pasahitza)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+    context = {}
+    return render(request, 'login.html',context)
+def logoutUser(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
@@ -54,11 +73,24 @@ def post_hiriak(request):
     filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
+def show_jatetxea(request):
+    id = request.GET.get('id', None)
+    motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
+    motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
+    jatetxea = Jatetxea.objects.filter(id= id)
+    produktuak = (Produktua.objects.filter(id=id).annotate(dcount=Count('mota')).order_by())
+    return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak})
 
-#def get_hiriakMap(request):
+def get_queryset(request):
+    price = request.GET.get('price')
+    mota = request.GET.get('mota', None) 
     hiria=request.GET.get('hiria',None)
-    jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria)
-    return JsonResponse({"jatetxea": jatetxea}, status=200)
+    jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria).filter(mota__icontains = mota)
+    filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
+    if price:
+        print(price) #This gets printed
+        jatetxea= Jatetxea.objects.filter(deskripzioa__contains=price) #But this fails!?
+    return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
 def getDistanceTime(latitdue_bez,longitude_bez,latitude_jate,longitude_jate):
     R = 6373.0

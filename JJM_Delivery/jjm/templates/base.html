@@ -25,7 +25,9 @@
         crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://js.arcgis.com/4.21/"></script>
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <title>J.J&M Delivery</title>
 
 </head>
@@ -50,6 +52,9 @@
             </div>
 
             <ul class="nav__list" id="navlinkitems">
+                {% if user.is_authenticated %}
+                <h3>Logeado como {{user.username}}</h3>
+                {% endif %}
                 <li class="nav__item">
                     <a href="{% url 'jjm_index' %}#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
                 </li>
@@ -59,12 +64,18 @@
                 <li class="nav__item">
                     <a href="{% url 'jjm_index' %}#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav__item">
+                    <a href="{% url 'logout' %}" class="login" id="logout">Saioa Itxi</a>
+                </li>
+                {% else %}
                 <li class="nav__item">
                     <a href="#contacts-section" class="register" id="nav__link3">Erregistratu</a>
                 </li>
                 <li class="nav__item">
-                    <a href="#contacts-section" class="login" id="contact">Saioa Hasi</a>
+                    <a href="{% url 'login' %}" class="login" id="contact">Saioa Hasi</a>
                 </li>
+                {% endif %}
             </ul>
         </nav>
     </header>

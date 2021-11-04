@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Login</h1>
+    {% if user.is_authenticated %}
+        <h1>Welcome {{user.username}}</h1>
+        <a href="{% url 'jjm_index' %}">Log out</a>{% csrf_token %}
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+        <input type="text" name="erabiltzailea" id="erabiltzailea"><br>
+        <input type="password" name="pasahitza" id="pasahitza"><br>
+        <input type="submit" value="Iniciar sesion">
+    </form>
+
+</body>
+</html>
