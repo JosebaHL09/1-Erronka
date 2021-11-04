@@ -70,14 +70,11 @@ function addCarritoLS(izena, kantitatea, price) {
 //Borrar el div del carrito
 function deleteRow(id) {
   contador--
-  var kantitatea = $('#' + id + 'Kantitatea').val()
-  var price = parseInt($('#' + id + 'Prezioa').text())
-  var total = parseInt($('#preciofinal').text())
   $('#contador').text(contador)
-  total -= (price * kantitatea)
-  $('#preciofinal').text(total)
   $("#" + id).remove()
   removeProduct(id)
+  var total = precioFinal() 
+  $('#preciofinal').text(total)
 }
 //Funcion para crear los productos del carrito desde el local storage
 function allStorage() {
@@ -120,18 +117,7 @@ function myFunction() {
 //Logica del carrito
 $(function () {
   $(".totalCarrito").click(function () {
-    var totalCantidad = []
-    var totalPrecios = []
-    var total = 0
-    $('.kantitateaInput').each(function () {
-      totalCantidad.push(parseInt($(this).val()))
-    })
-    $('.precios').each(function () {
-      totalPrecios.push(parseInt($(this).text()))
-    })
-    for (i = 0; i < totalCantidad.length; i++) {
-      total += (totalCantidad[i] * totalPrecios[i])
-    }
+    var total = precioFinal()
     if ($(".kantitateaInput")[0]) {
       if ($('#cubiertos').prop('checked')) {
         total += 2
@@ -146,7 +132,22 @@ $(function () {
   })
 
 });
-
+//calcular lo que indica
+function precioFinal(){
+  var totalCantidad = []
+    var totalPrecios = []
+    var total = 0
+    $('.kantitateaInput').each(function () {
+      totalCantidad.push(parseInt($(this).val()))
+    })
+    $('.precios').each(function () {
+      totalPrecios.push(parseInt($(this).text()))
+    })
+    for (i = 0; i < totalCantidad.length; i++) {
+      total += (totalCantidad[i] * totalPrecios[i])
+    }
+    return total
+}
 //Limpiamos el carrito
 function limpiarCarrito() {
   contador = 0
