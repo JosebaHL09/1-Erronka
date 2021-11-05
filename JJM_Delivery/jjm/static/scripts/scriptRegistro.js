@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 +$(function () {
+=======
+$(function () {
+>>>>>>> Stashed changes
     $('#nombre').on('focus', function () {
         $('#name').css("background", "url(/static/images/AppIcons/LoginIcons/Amarillo/icoName.png) no-repeat")
             .css("background-size", "95%");
@@ -66,4 +70,9 @@ $(function () {
             .css("background-size", "95%")
         $('#erabiltzailea').css("border-color", "grey")
     })
+<<<<<<< Updated upstream
 });
+=======
+});
+
+>>>>>>> Stashed changes

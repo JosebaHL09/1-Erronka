@@ -32,9 +32,7 @@ def loginUser(request):
     if request.method == 'POST':
         erabiltzailea = request.POST.get('erabiltzailea')
         pasahitza = request.POST.get('pasahitza')
-
         user = authenticate(request, username=erabiltzailea, password=pasahitza)
-
         if user is not None:
             login(request, user)
             return HttpResponseRedirect('/')
