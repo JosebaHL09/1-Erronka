@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^show_jatetxea/', views.show_jatetxea, name='show_jatetxea'),
     url(r'^login/', views.loginUser, name='login'),
     url(r'^logout/', views.logoutUser, name='logout'),
+    url(r'^register/', views.registerUser, name='register'),
     #url(r'^get_hiriakMap/', views.get_hiriakMap, name='get_hiriakMap'),
 
 ]

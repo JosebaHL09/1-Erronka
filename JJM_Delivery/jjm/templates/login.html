@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/stylesRegistro.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>Login</h1>
-    {% if user.is_authenticated %}
-        <h1>Welcome {{user.username}}</h1>
-        <a href="{% url 'jjm_index' %}">Log out</a>{% csrf_token %}
-    {% endif %}
-    <form method="POST" action="{% url 'login' %}">{% csrf_token %}
-        <input type="text" name="erabiltzailea" id="erabiltzailea"><br>
-        <input type="password" name="pasahitza" id="pasahitza"><br>
-        <input type="submit" value="Iniciar sesion">
-    </form>
+<div class="container" id="login">
+        <h1>Inicie sesion en J.J. & M</h1>
+        <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+            <div class="formulario">
+                <div class="user" id="user"></div>
+                <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea">
+            </div>
+            <div class="formulario">
+                <div class="pass1" id="pass1"></div>
+                <input type="password" placeholder="Contraseña" id="pasahitza" name="pasahitza">
+            </div>
+            <input class="btn" type="submit" value="Iniciar sesion">
+        </form>
+        <!--<p>&iquest;No tienes una cuenta? <span><a href="registro.html">Registrate</a></span></p>-->
+    </div>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'scripts/scriptRegistro.js' %}"></script>
 
 </body>
 </html>

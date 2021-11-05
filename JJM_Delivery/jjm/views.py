@@ -43,7 +43,22 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/')
-
+def registerUser(request):
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    context = {}
+    if request.method == 'POST':
+        form = RegistrationForm(request.post)
+        if form.is_valid():
+            form.save()
+            erabiltzailea = request.POST.get('erabiltzailea')
+            pasahitza = request.POST.get('pasahitza')
+            user = authenticate(request, username=erabiltzailea, password=pasahitza)
+            login(request,user)
+            return HttpResponseRedirect('/')
+        else:
+            context['formu'] = form
+    return render(request, 'register.html', context)
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
     latitude = Jatetxea.objects.values('latitud')[:10]

@@ -1,0 +1,45 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/stylesRegistro.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+        <h1>Registrate en J.J. & M</h1>
+        <form name="formu" method="POST" action="{% url 'register' %}">{% csrf_token %}
+            <div class="formulario">
+                <div class="name" id="name"></div>
+                <input type="text" placeholder="Nombre" id="nombre" required>
+            </div>
+            <div class="formulario">
+                <div class="lastname" id="lastname"></div>
+                <input type="text" placeholder="Apellido" id="apellido" required>
+            </div>
+            <div class="formulario">
+                <div class="pass1" id="pass1"></div>
+                <input type="password" placeholder="Contrase&ntilde;a" id="pasahitza" name="pasahitza" required>
+            </div>
+            <div class="formulario">
+                <div class="pass2" id="pass2"></div>
+                <input type="password" placeholder="Repetir Contrase&ntilde;a" id="cont2" required>
+            </div>
+            <div class="formulario">
+                <div class="email" id="email"></div>
+                <input type="text" placeholder="Email" id="mail" name="mail" required>
+            </div>
+            <div class="formulario">
+                <div class="user" id="user"></div>
+                <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea" required>
+            </div>
+            <input class="btn" type="submit" value="Registrarse"></input>
+        </form>
+
+        <!--<p>&iquest;Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>-->
+        <p>Al registrarte, aceptas nuestras <span><a href="">Condiciones de servicio</a></span> y <span><a href="">Politica de privacidad</a></span></p>
+    </div>
+
+    <script type="text/javascript" src="{% static 'scripts/scriptRegistro.js' %}"></script>
+</body>
+</html>
