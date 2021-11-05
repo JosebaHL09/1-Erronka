@@ -78,7 +78,7 @@ def show_jatetxea(request):
     motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
     motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
     jatetxea = Jatetxea.objects.filter(id= id)
-    produktuak = (Produktua.objects.filter(id=id).annotate(dcount=Count('mota')).order_by())
+    produktuak = (Produktua.objects.filter(jatetxea=id).annotate(dcount=Count('mota')).order_by())
     return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak})
 
 def get_queryset(request):

@@ -74,7 +74,7 @@ $( window ).on( "load", function() {
       });
     for(var i = 0 ; i<izena.length;i++){
         var marker = L.marker([latitud[i], longitud[i]],{icon: greenIcon}).addTo(mymap)
-        marker.bindPopup("<div class='popUpMap'><b>"+izena[i]+"</b><br> "+deskripzioa[i]+"<br>"+mota[i]+"<br> " + telefonoa[i]+"<br> <button class='bottonMap' id='"+id[0]+"'></button></div>").openPopup().on("popupopen", () => {
+        marker.bindPopup("<div class='popUpMap'><b>"+izena[i]+"</b><br> "+deskripzioa[i]+"<br>"+mota[i]+"<br> " + telefonoa[i]+"<br> <button class='bottonMap' id='"+id[i]+"'></button></div>").openPopup().on("popupopen", () => {
             $(".bottonMap").click(function (event) {
                 var id = this.id;    
                 setTimeout(function(){ 
@@ -89,27 +89,21 @@ $( window ).on( "load", function() {
 $(function() { 
     $("#slider-range").slider({
         range: "min",
-        value:2,
+        value:50,
         min: 1,
-        max: 3,
+        max: 100,
         slide: function( event, ui ) {
-
-        },
-        stop: function( event, ui ) {
             var price = ui.value;
             var precio='';
-            switch(price) {
-                case 1:
-                    precio="€"
-                    break;
-                case 2:
-                    precio="€€"
-                  break;
-                case 3:
-                    precio="€€€"
-                    break;
-                default:
-              }
+            if(price <33){
+                precio="€"
+            }
+            if(price>33 && price < 66){
+                precio="€€"
+            }
+            if(price > 66){
+                precio="€€€"
+            }
               for(var i =0 ; i < deskripzioa.length;i++){
                 var a = deskripzioa[i].split('·');
                 var x =''
@@ -117,20 +111,21 @@ $(function() {
                 if(precio == x){
                     var ida = id[i]    
                     console.log(ida)
-                    $("#"+ida).show()
+                    $("#"+ida).show(300)
 
                 }else{     
                     var ida = id[i]   
                     console.log(ida)
-                    $("#"+ida).hide()
+                    $("#"+ida).hide(300)
                   
                 }
             }
+        },
+        stop: function( event, ui ) {
+         
         }
     });
 });
-
-
 
 //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
 function calcCrow(lat1, lon1, lat2, lon2) 
