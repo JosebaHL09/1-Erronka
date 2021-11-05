@@ -50,11 +50,15 @@ def registerUser(request):
         mail = request.POST.get('mail')
         erabiltzailea = request.POST.get('erabiltzailea')
         pasahitza = request.POST.get('pasahitza')
-        user = User.objects.create_user(username=erabiltzailea,password=pasahitza,email=mail,first_name=izena,last_name=abizena)
-        user.save()
-        user = authenticate(request, username=erabiltzailea, password=pasahitza)
-        login(request,user)
-        return HttpResponseRedirect('/')
+        if User.objects.filter(username=erabiltzailea).exists() or User.objects.filter(email=mail).exists():
+            print('Username or mail  taken')
+            return render(request, 'register.html')
+        else:
+            user = User.objects.create_user(username=erabiltzailea,password=pasahitza,email=mail,first_name=izena,last_name=abizena)
+            user.save()
+            user = authenticate(request, username=erabiltzailea, password=pasahitza)
+            login(request,user)
+            return HttpResponseRedirect('/')
     else:
         return render(request, 'register.html')
     context = {}
