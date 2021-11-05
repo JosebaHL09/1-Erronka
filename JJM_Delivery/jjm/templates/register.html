@@ -11,11 +11,11 @@
         <form name="formu" method="POST" action="{% url 'register' %}">{% csrf_token %}
             <div class="formulario">
                 <div class="name" id="name"></div>
-                <input type="text" placeholder="Nombre" id="nombre" required>
+                <input type="text" placeholder="Nombre" id="nombre" name="izena" required>
             </div>
             <div class="formulario">
                 <div class="lastname" id="lastname"></div>
-                <input type="text" placeholder="Apellido" id="apellido" required>
+                <input type="text" placeholder="Apellido" id="apellido" name="abizena" required>
             </div>
             <div class="formulario">
                 <div class="pass1" id="pass1"></div>
@@ -33,7 +33,7 @@
                 <div class="user" id="user"></div>
                 <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea" required>
             </div>
-            <input class="btn" type="submit" value="Registrarse"></input>
+            <input id="btn" class="btn" type="submit" value="Registrarse"></input>
         </form>
 
         <!--<p>&iquest;Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>-->

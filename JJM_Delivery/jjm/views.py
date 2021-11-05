@@ -2,7 +2,7 @@ from json import dumps
 import json
 
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User, auth
 from django.http import *
 from django.shortcuts import render, redirect
 from django.db.models import Count
@@ -28,7 +28,7 @@ from django.contrib.auth import authenticate, login, logout
     return render(request, 'erabiltzailea_edit.html', {'form':form})"""
 def loginUser(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
+        return HttpResponseRedirect('/')
     if request.method == 'POST':
         erabiltzailea = request.POST.get('erabiltzailea')
         pasahitza = request.POST.get('pasahitza')
@@ -43,19 +43,21 @@ def logoutUser(request):
     return HttpResponseRedirect('/')
 def registerUser(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
-    context = {}
+        return HttpResponseRedirect('/')
     if request.method == 'POST':
-        form = RegistrationForm(request.post)
-        if form.is_valid():
-            form.save()
-            erabiltzailea = request.POST.get('erabiltzailea')
-            pasahitza = request.POST.get('pasahitza')
-            user = authenticate(request, username=erabiltzailea, password=pasahitza)
-            login(request,user)
-            return HttpResponseRedirect('/')
-        else:
-            context['formu'] = form
+        izena = request.POST.get('izena')
+        abizena = request.POST.get('abizena')
+        mail = request.POST.get('mail')
+        erabiltzailea = request.POST.get('erabiltzailea')
+        pasahitza = request.POST.get('pasahitza')
+        user = User.objects.create_user(username=erabiltzailea,password=pasahitza,email=mail,first_name=izena,last_name=abizena)
+        user.save()
+        user = authenticate(request, username=erabiltzailea, password=pasahitza)
+        login(request,user)
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'register.html')
+    context = {}
     return render(request, 'register.html', context)
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]

@@ -1,5 +1,15 @@
-$(function () {
+$(document).ready(function() {
+    $('#cont2').on('keyup', function() {
+      if ($('#pasahitza').val() == $('#cont2').val()) {
+        $('#btn').prop('disabled', false);
 
+      } else {
+
+        $('#btn').prop('disabled', true);
+      }
+    })
+});
+$(function () {
     $('#nombre').on('focus', function () {
         $('#name').css("background", "url(/static/images/AppIcons/LoginIcons/Amarillo/icoName.png) no-repeat")
             .css("background-size", "95%");
@@ -68,5 +78,4 @@ $(function () {
         $('#erabiltzailea').css("border-color", "grey")
     })
 });
-
 
