@@ -52,9 +52,7 @@
             </div>
 
             <ul class="nav__list" id="navlinkitems">
-                {% if user.is_authenticated %}
-                <h3>Logeado como {{user.username}}</h3>
-                {% endif %}
+             
                 <li class="nav__item">
                     <a href="{% url 'jjm_index' %}#about-section" class="nav__link" id="nav__link">Guri Buruz</a>
                 </li>
@@ -65,12 +63,34 @@
                     <a href="{% url 'jjm_index' %}#projects-section" class="nav__link last" id="nav__link2">Hiriak</a>
                 </li>
                 {% if user.is_authenticated %}
+                <li class="nav__item erabil" id="erabil">
+                    <div class="datosErabil">
+                            <span class="welcome">
+                                Kaixo, {{user.first_name}} {{user.last_name}} !
+                            </span>
+                            <span class="welcome nombre">
+                                <label style="color:#E5E5E5;">Izena</label><br>
+                                <label>{{user.first_name}} {{user.last_name}}</label><br>
+                                <label style="color:#E5E5E5;">Email</label><br>
+                                <label>{{user.email}}</label><br>
+                            </span>
+                            <span class="welcome nombre">
+                                <label style="color:#E5E5E5;">Izena</label><br>
+                                <label>{{user.first_name}} {{user.last_name}}</label><br>
+                                <label style="color:#E5E5E5;">Email</label><br>
+                                <label>{{user.email}}</label><br>
+                            </span>
+                            <span class="welcome nombre">
+                                <a href="{% url 'logout' %}"  id="logout">Saioa Itxi</a>
+                            </span>
+                    </div>
+                </li>
                 <li class="nav__item">
-                    <a href="{% url 'logout' %}" class="login" id="logout">Saioa Itxi</a>
+                    <button id="buttonShop">Carrito · 0</button>
                 </li>
                 {% else %}
                 <li class="nav__item">
-                    <a href="{% url 'register' %}" class="register" id="nav__link3">Erregistratu</a>
+                    <a class="register" id="nav__link3">Erregistratu</a>
                 </li>
                 <li class="nav__item">
                     <a href="{% url 'login' %}" class="login" id="contact">Saioa Hasi</a>
@@ -79,6 +99,51 @@
             </ul>
         </nav>
     </header>
+    <div class="popRegister">
+    <div class="containerRegister">
+        <h1>Registrate en J.J. & M</h1>
+        <span id="closeRegister">X</span>
+        <form name="formu" id="formu" method="POST" action="{% url 'register' %}" autocomplete="off" role="form">{% csrf_token %}
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              </div>
+            <div class="formulario">
+                <div class="name" id="name"></div>
+                <input type="text" placeholder="Nombre" id="nombre" name="izena" autocomplete="off" required>
+                <span class="error">This field is required</span>
+            </div>
+            <div class="formulario">
+                <div class="lastname" id="lastname"></div>
+                <input type="text" placeholder="Apellido" id="apellido" name="abizena" autocomplete="off" required>
+                
+            </div>
+            <div class="formulario">
+                <div class="pass1" id="pass1"></div>
+                <input type="password" placeholder="Contrase&ntilde;a" id="pasahitza" class="contra" name="pasahitza" autocomplete="off" required></input>
+                <span class="errorPass" id="errorPasskonplexua">Pasahitza konplexua</span>
+                <span class="showPass"></span>
+            </div>
+            <div class="formulario">
+                <div class="pass2" id="pass2"></div>
+                <input type="password" placeholder="Repetir Contrase&ntilde;a" id="cont2" class="contra" autocomplete="off" required></input>
+                <span class="errorPass errorPassSame" id="errorPassSame">Pasahitzak berdinak izan behar dira</span>
+                <span class="showPass"></span>
+
+            </div>
+            <div class="formulario">
+                <div class="email" id="email"></div>
+                <input type="email" placeholder="Email" id="mail" name="mail" autocomplete="off" required>
+            </div>
+            <div class="formulario">
+                <div class="user" id="user"></div>
+                <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea" autocomplete="off" required>
+            </div>
+            <input class="btn" id="btn" type="submit" value="Registrarse"></input>
+        </form>
+        <p>&iquest;Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>
+        <p>Al registrarte, aceptas nuestras <span><a href="">Condiciones de servicio</a></span> y <span><a href="">Politica de privacidad</a></span></p>
+    </div>
+</div>
     {% block content %}{% endblock content %}
     <footer class="section five" id="contacts-section">
         <div class="footer-content">

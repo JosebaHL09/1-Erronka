@@ -103,6 +103,7 @@ body {
     border-radius: 30px;
     font-size: 80%;
     white-space: nowrap;
+    cursor: pointer;
 
 } 
 .login{
@@ -292,6 +293,7 @@ a {
     }
     .nav__item .register{
         left: 43% ;
+        cursor: pointer;
     }
 
     .nav__link::before {
@@ -320,6 +322,281 @@ a {
  
   
 }
+/*Info */
+.datosErabil{
+    position: absolute;
+    background: #fff;
+    border-radius: 100%;
+    top: 120%;
+    left: -200%;
+    transform: translate(-50%,0);
+    pointer-events: none;
+    display: none;
+    animation: opacity 0.5s ;
+}
+.datosErabil::after{
+    position: absolute;
+    top: -2%;
+    right:11%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    transform: rotate(180deg);
+    clear: both;
+}
+.welcome{
+    display: block;
+    background:#fff;
+    padding: 2.5rem 1rem;
+    font-weight: bold;
+    min-width: 35vh;
+    font-size: 1.8rem;
+    border-radius: 10px 10px 0 0 ;
+    border-bottom:1px solid #E5E5E5 ;
+}
+.nombre{
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    color: #7B7D80;
+    padding: 2rem 1rem;
+    border-radius: 0 !important;
+
+}
+.nombre a{
+    color: #151314;
+    float: right;
+    margin: auto;
+    font-weight: bold;
+    cursor: pointer;
+    pointer-events: visible;
+}
+.nav__item button{
+    display: block;
+    padding: 0.7rem 0.9rem 0.7rem 2.2rem;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 30px;
+    color: white;
+    background: url(../images/AppIcons/icosShopping.png) no-repeat 10% center;
+    background-color:transparent;
+    cursor: pointer;
+    
+}
+/*Register */
+.popRegister{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999999;
+    display: none;
+    animation: opacity 0.5s ;
+}
+@keyframes opacity {
+    from{
+        opacity: 0;
+    }
+}
+.containerRegister {
+    text-align: center;
+    padding: 2%;
+    margin: auto;
+    margin-top: 8%;
+    width: 45%;
+    height: auto;
+    color:#C4C6C7;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+#closeRegister{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: #C4C6C7;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+#login{
+    height: 40%;
+}
+.containerRegister form{
+    margin-top: 7%;
+}
+.containerRegister .formulario{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% auto;
+    position: relative;
+    width: 60%;
+}
+.containerRegister .formulario .img{
+   display: inline-block;
+}
+.containerRegister input[type=text], input[type=password], input[type=email]{
+    display: inline-block;
+    border:none;
+    border-bottom: 1px solid #C4C6C7;
+    outline: none;  
+    width: 100%;
+    padding: 0.3rem 0;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+.showPass{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../images/AppIcons/icoShowPass.png) no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+}
+.name{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoName.png) no-repeat center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+.lastname{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoLastname.png) no-repeat center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+.pass1{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoPassword.png) no-repeat center;
+    width: 2.3rem;
+    height: 2rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+.pass2{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoPasswordRepeat.png) no-repeat center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+.email{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoMail.png) no-repeat center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+.user{
+    background: url(../images/AppIcons/LoginIcons/Gris/icoUser.png) no-repeat center;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-size: 95%;
+    margin-right: 10px;
+
+}
+h1{
+    color: black;
+    font-weight: bold;
+}
+p span a{
+    color: #f5a111;
+    text-decoration: none;
+}
+.alert {
+    display: none;
+  }
+  .error {
+    color: #e74c3c;
+  }
+.containerRegister p{
+    margin-top: 4%;
+}
+.btn{
+    width: inherit;
+    border: 1px solid #f5a111;
+    background-color: #f5a111;
+    border-radius: 20px;
+    height: auto;
+    width: auto;
+    padding: 0.8rem 3.2rem;
+    color: white;
+    cursor: pointer;
+
+}
+.btn:disabled{
+    border: 1px solid #C4C6C7;
+    background-color: #C4C6C7;
+    cursor: not-allowed;
+}
+/*-----------ERROR CSS -----------------*/
+.error{
+	display: none;
+	margin-left: 10px;
+}		
+
+.error_show{
+	color: red;
+	margin-left: 10px;
+}
+.errorPass{
+    position: absolute;
+    left: 50%;
+    top:140%;
+    transform: translateX(-50%);
+    width: 11rem;
+    height: 3rem;
+    background-color: #FFDA7E;
+    z-index: 99999;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    display: none;
+    animation: opacity 0.5s;
+    text-align: center;
+}
+.errorPassSame{
+    height: 5rem !important;
+}
+.errorPass::after{
+    position: absolute;
+    top: -20%;
+    right:38%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #FFDA7E;
+    transform: rotate(180deg);
+    clear: both;
+}
+/*-----------REAL TIME VALIDATION-----------------*/
+
+input.invalid{
+	border-bottom: 1px solid red !important;
+}
+
+input.valid{
+	border-bottom: 1px solid #f5a111 !important;
+}
+
 .five {
     position: relative;
     background: url(../images/AppImages/footerImg.png) no-repeat bottom;

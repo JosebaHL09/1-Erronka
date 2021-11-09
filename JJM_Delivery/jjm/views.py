@@ -43,22 +43,31 @@ def logoutUser(request):
     return HttpResponseRedirect('/')
 def registerUser(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
-    context = {}
+        return HttpResponseRedirect('/')
     if request.method == 'POST':
-        form = RegistrationForm(request.post)
-        if form.is_valid():
-            form.save()
-            erabiltzailea = request.POST.get('erabiltzailea')
-            pasahitza = request.POST.get('pasahitza')
+        izena = request.POST.get('izena')
+        abizena = request.POST.get('abizena')
+        mail = request.POST.get('mail')
+        erabiltzailea = request.POST.get('erabiltzailea')
+        pasahitza = request.POST.get('pasahitza')
+        if User.objects.filter(username=erabiltzailea).exists() or User.objects.filter(email=mail).exists():
+            print('Username or mail  taken')
+            return render(request, 'register.html')
+        else:
+            user = User.objects.create_user(username=erabiltzailea,password=pasahitza,email=mail,first_name=izena,last_name=abizena)
+            user.save()
             user = authenticate(request, username=erabiltzailea, password=pasahitza)
             login(request,user)
             return HttpResponseRedirect('/')
-        else:
-            context['formu'] = form
+    else:
+        return render(request, 'register.html')
+    context = {}
     return render(request, 'register.html', context)
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:10]
+
+    tenjatetxeak = Jatetxea.objects.select_related('Jatetxea', 'Produktua')
+       
     latitude = Jatetxea.objects.values('latitud')[:10]
     longitud = Jatetxea.objects.values('longitud')[:10]
     #if request.method == 'GET':
@@ -66,7 +75,7 @@ def index (request):
     best_jatetxe = Jatetxea.objects.all()[:8]
     #La cosita esta es como un group by
     hiriak = (Jatetxea.objects.values('helbidea').annotate(dcount=Count('helbidea')).order_by())   
-    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak} )
+    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak,"tenjatetxeak":tenjatetxe} )
 
 @csrf_exempt
 def hiria(request):

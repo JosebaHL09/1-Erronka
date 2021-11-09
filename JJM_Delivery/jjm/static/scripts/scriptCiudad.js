@@ -93,6 +93,9 @@ $(function() {
         min: 1,
         max: 100,
         slide: function( event, ui ) {
+
+        },
+        stop: function( event, ui ) {
             var price = ui.value;
             var precio='';
             if(price <33){
@@ -120,9 +123,6 @@ $(function() {
                   
                 }
             }
-        },
-        stop: function( event, ui ) {
-         
         }
     });
 });

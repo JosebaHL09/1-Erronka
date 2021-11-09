@@ -186,7 +186,10 @@ span.b {
 
 .image{
     height: auto;
-    max-width: 50%;
+    width: 45%;
+    float: left;
+    object-fit: cover;
+
 }
 .main-info{
     position: absolute;
@@ -499,4 +502,14 @@ span.b {
     display: inline-block;
     margin-top: 1%;
     font-size: 1.5rem;
+}
+.erabil{
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
+    background:url(../images/AppIcons/LoginIcons/Amarillo/icoLogin.png) no-repeat center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+
 }
