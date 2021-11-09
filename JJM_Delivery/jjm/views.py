@@ -2,7 +2,7 @@ from json import dumps
 import json
 
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User, auth
 from django.http import *
 from django.shortcuts import render, redirect
 from django.db.models import Count
@@ -28,7 +28,7 @@ from django.contrib.auth import authenticate, login, logout
     return render(request, 'erabiltzailea_edit.html', {'form':form})"""
 def loginUser(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
+        return HttpResponseRedirect('/')
     if request.method == 'POST':
         erabiltzailea = request.POST.get('erabiltzailea')
         pasahitza = request.POST.get('pasahitza')

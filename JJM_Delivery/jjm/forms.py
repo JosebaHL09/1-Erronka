@@ -17,7 +17,7 @@ class RegistrationForm(UserCreationForm):
     def clean_user(self):
         username = self.cleaned_data['erabiltzailea'].lower()
         try:
-            email = User.objects.get(username=username)
+            username = User.objects.get(username=username)
         except Exception as e:
             return username
         raise forms.ValidationError(f"El usuario: {username} ya esta en uso")

@@ -15,11 +15,11 @@
         <form method="POST" action="{% url 'login' %}">{% csrf_token %}
             <div class="formulario">
                 <div class="user" id="user"></div>
-                <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea">
+                <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea" required>
             </div>
             <div class="formulario">
                 <div class="pass1" id="pass1"></div>
-                <input type="password" placeholder="Contraseña" id="pasahitza" name="pasahitza">
+                <input type="password" placeholder="Contraseña" id="pasahitza" name="pasahitza" required>
             </div>
             <input class="btn" type="submit" value="Iniciar sesion">
         </form>
