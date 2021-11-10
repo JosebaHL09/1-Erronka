@@ -7,37 +7,24 @@ from django.http import *
 from django.shortcuts import render, redirect
 from django.db.models import Count
 from .forms import *
-from math import sin, cos, sqrt, atan2, radians
 from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from math import sin, cos, sqrt, atan2, radians
 
 
-# Create your views here.
-"""def erabiltzailea_new(request):
-    if request.method == 'POST':
-        form = ErabiltzaileaForm(request.POST)
-        if form.is_valid():
-            erabiltzailea = form.save(commit=False)
-            erabiltzailea.pasahitza = make_password("123")
-            erabiltzailea.save()
-            return HttpResponseRedirect('../..')
-    else:
-        form = ErabiltzaileaForm()
-        redirect('index.html')
-    return render(request, 'erabiltzailea_edit.html', {'form':form})"""
 def loginUser(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('/')
     if request.method == 'POST':
-        erabiltzailea = request.POST.get('erabiltzailea')
-        pasahitza = request.POST.get('pasahitza')
+        erabiltzailea = request.POST.get('userLogin')
+        pasahitza = request.POST.get('pasLogin')
         user = authenticate(request, username=erabiltzailea, password=pasahitza)
         if user is not None:
             login(request, user)
             return HttpResponseRedirect('/')
-    context = {}
-    return render(request, 'login.html',context)
+
+    return render(request, 'index.html')
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/')
@@ -64,19 +51,21 @@ def registerUser(request):
     context = {}
     return render(request, 'register.html', context)
 def index (request):
-    last_ten = Produktua.objects.all().order_by('id')[:10]
-
-    tenjatetxeak = Jatetxea.objects.select_related('Jatetxea', 'Produktua')
-       
+    last_ten = Produktua.objects.all().order_by('id')[:9]
+    tenjatetxeak = last_ten.values('jatetxea_id')
     latitude = Jatetxea.objects.values('latitud')[:10]
     longitud = Jatetxea.objects.values('longitud')[:10]
+    lat = []
+    lon = []
+    for x in tenjatetxeak:
+        lat.append(Jatetxea.objects.values_list('latitud', flat=True).get(id=x['jatetxea_id']))
+        lon.append(Jatetxea.objects.values_list('longitud', flat=True).get(id=x['jatetxea_id']))
     #if request.method == 'GET':
        # times = getDistanceTime(latitudeBez,longitudeBez,latitude,longitud)
     best_jatetxe = Jatetxea.objects.all()[:8]
     #La cosita esta es como un group by
     hiriak = (Jatetxea.objects.values('helbidea').annotate(dcount=Count('helbidea')).order_by())   
-    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak,"tenjatetxeak":tenjatetxe} )
-
+    return render(request, 'index.html',{"produktua":last_ten , "jatetxea":best_jatetxe, "hiriak":hiriak , "latitude":lat, "longitude":lon} )
 @csrf_exempt
 def hiria(request):
     hiria = request.GET.get('hiria',None)
@@ -110,28 +99,44 @@ def get_queryset(request):
     jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria).filter(mota__icontains = mota)
     filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
     if price:
-        print(price) #This gets printed
         jatetxea= Jatetxea.objects.filter(deskripzioa__contains=price) #But this fails!?
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
-def getDistanceTime(latitdue_bez,longitude_bez,latitude_jate,longitude_jate):
+def kmRange(request):
+    if request.method == 'POST':
+        latitud = request.POST.get('latitud')
+        longitud = request.POST.get('longitud')
+        restaurantesenRango = Jatetxea.objects.none()
+        try:
+            jatetxea = Jatetxea.objects.all()
+            for jatetxe in jatetxea:
+                if getDistance(latitud,longitud,jatetxe.latitud,jatetxe.longitud) < 10.0:
+                   restaurantesenRango |=Jatetxea.objects.all().filter(id=jatetxe.id)   #Es para crear una union          
+        except Jatetxea.DoesNotExist:
+            raise Http404("Jatetxea does not exist")
+
+    return render(request, 'rangoJatetxeak.html',{"restautantes":restaurantesenRango} )
+
+
+
+
+
+
+
+def getDistance(lati1,long1,lati2,long2):
     R = 6373.0
-    times=[]
-    for x in range(0,len(latitude_jate)):
-        lat1 = radians(latitdue_bez)
-        lon1 = radians(longitude_bez)
-        lat2 = radians(latitude_jate[x])
-        lon2 = radians(longitude_jate[x])
 
-        dlon = lon2 - lon1
-        dlat = lat2 - lat1
+    lat1 = radians(float(lati1))
+    lon1 = radians(float(long1))
+    lat2 = radians(float(lati2))
+    lon2 = radians(float(long2))
 
-        a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-        c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
 
-        distance = R * c
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-        time = distance * 5
-        times.append(time)
-        
-    return times 
+    distance = R * c
+
+    return distance

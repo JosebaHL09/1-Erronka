@@ -1,6 +1,6 @@
 window.onscroll = function () { scrollFunction() };
 function scrollFunction() {
-    if (window.scrollY >= 50 ) {
+    if (window.scrollY >= 50) {
         document.getElementById("navbar").style.background = "#FFE48F";
         document.getElementById("nav__link").style.color = "#111111";
         document.getElementById("nav__link1").style.color = "#111111";
@@ -11,7 +11,7 @@ function scrollFunction() {
         document.getElementById("erabil").style.background = "url('/static/images/AppIcons/LoginIcons/Gris/icoLogin.png') no-repeat center";
         document.getElementById("erabil").style.backgroundSize = "cover";
 
-    }else{
+    } else {
         document.getElementById("navbar").style.background = "transparent";
         document.getElementById("nav__link").style.color = "#C4C6C7";
         document.getElementById("nav__link1").style.color = "#C4C6C7";
@@ -110,95 +110,130 @@ $(function () {
         $('#erabiltzailea').css("border-color", "grey")
     })
 });
+$(function () {
+    $('#userLogin').on('focus', function () {
+        $('#userImg').css("background", "url(/static/images/AppIcons/LoginIcons/Amarillo/icoUser.png) no-repeat")
+            .css("background-size", "95%")
+        $('#userLogin').css("border-color", "#f5a111")
+    }), $('#userLogin').on('focusout', function () {
+        $('#userImg').css("background", "url(/static/images/AppIcons/LoginIcons/Gris/icoUser.png) no-repeat")
+            .css("background-size", "95%")
+        $('#userLogin').css("border-color", "grey")
+    })
+});
+$(function () {
+    $('#pasLogin').on('focus', function () {
+        $('#passImg').css("background", "url(/static/images/AppIcons/LoginIcons/Amarillo/icoUser.png) no-repeat")
+            .css("background-size", "95%")
+        $('#pasLogin').css("border-color", "#f5a111")
+    }), $('#pasLogin').on('focusout', function () {
+        $('#passImg').css("background", "url(/static/images/AppIcons/LoginIcons/Gris/icoUser.png) no-repeat")
+            .css("background-size", "95%")
+        $('#pasLogin').css("border-color", "grey")
+    })
+});
 
 
-$(".showPass").hover(function() {
-    if($(".contra").attr('type') === 'password'){
-        $(".contra").attr('type', 'text'); 
-    }else if ($(".contra").attr('type') === 'text'){
-        $(".contra").attr('type', 'password'); 
+$(".showPass").hover(function () {
+    if ($(".contra").attr('type') === 'password') {
+        $(".contra").attr('type', 'text');
+    } else if ($(".contra").attr('type') === 'text') {
+        $(".contra").attr('type', 'password');
 
 
     }
 })
 
-$("#nav__link3").click(function(event){
+$("#nav__link3").click(function (event) {
     $(".popRegister").show();
 })
-$("#closeRegister").click(function(event){
+$("#closeRegister").click(function (event) {
     $(".popRegister").fadeOut();
 });
-$(document).ready(function() {
-$(".btn").prop("disabled", true);
-var nombre = false;
-var apellido = false;
-var pas1 = false;
-var pas2 = false;
-var email = false;
-var usuario = false;
-$('#nombre').on('input', function() {
-    var input=$(this);
-    var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
-    var is_name=re.test(input.val());
-	if(is_name){input.removeClass("invalid").addClass("valid");nombre=true;}
-	else{input.removeClass("valid").addClass("invalid");nombre=false;}
-});
-$('#apellido').on('input', function() {
-    var input=$(this);
-    var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
-    var is_name=re.test(input.val());
-    if(is_name){input.removeClass("invalid").addClass("valid");apellido=true;}
-    else{input.removeClass("valid").addClass("invalid");apellido=false;}
-});
-$('#pasahitza').on('input', function() {
-    var input=$(this);
-    var re = /^(?=.*[a-z])[A-Za-z0-9\d=!\-@._*]+$/;
-    var is_name=re.test(input.val());
-    if(is_name){input.removeClass("invalid").addClass("valid");pas1=true;document.getElementById("errorPasskonplexua").style.display='none'}
-    else{input.removeClass("valid").addClass("invalid");pas1=false;document.getElementById("errorPasskonplexua").style.display='flex'}
-});
-$('#cont2').on('input', function() {
-    var input=$(this);
-    var re = /^(?=.*[a-z])[A-Za-z0-9\d=!\-@._*]+$/;
-    var is_name=re.test(input.val());
-    if(is_name){input.removeClass("invalid").addClass("valid");pas2=true;}
-    else{input.removeClass("valid").addClass("invalid");pas2=false;}
-});
-$('#cont2').on('input', function() {
-    var input=$(this);
-    if ($('#pasahitza').val() == $('#cont2').val()) {
-        input.removeClass("invalid").addClass("valid");
-        document.getElementById("errorPassSame").style.display='none';
-    } else {
-        input.removeClass("valid").addClass("invalid");
-        document.getElementById("errorPassSame").style.display='flex';
-    }
+$(document).ready(function () {
+    $(".btn").prop("disabled", true);
+    var nombre = false;
+    var apellido = false;
+    var pas1 = false;
+    var pas2 = false;
+    var email = false;
+    var usuario = false;
+    $('#nombre').on('input', function () {
+        var input = $(this);
+        var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
+        var is_name = re.test(input.val());
+        if (is_name) { input.removeClass("invalid").addClass("valid"); nombre = true; }
+        else { input.removeClass("valid").addClass("invalid"); nombre = false; }
+    });
+    $('#apellido').on('input', function () {
+        var input = $(this);
+        var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
+        var is_name = re.test(input.val());
+        if (is_name) { input.removeClass("invalid").addClass("valid"); apellido = true; }
+        else { input.removeClass("valid").addClass("invalid"); apellido = false; }
+    });
+    $('#pasahitza').on('input', function () {
+        var input = $(this);
+        var re = /^(?=.*[a-z])[A-Za-z0-9\d=!\-@._*]+$/;
+        var is_name = re.test(input.val());
+        if (is_name) { input.removeClass("invalid").addClass("valid"); pas1 = true; document.getElementById("errorPasskonplexua").style.display = 'none' }
+        else { input.removeClass("valid").addClass("invalid"); pas1 = false; document.getElementById("errorPasskonplexua").style.display = 'flex' }
+    });
+    $('#cont2').on('input', function () {
+        var input = $(this);
+        var re = /^(?=.*[a-z])[A-Za-z0-9\d=!\-@._*]+$/;
+        var is_name = re.test(input.val());
+        if (is_name) { input.removeClass("invalid").addClass("valid"); pas2 = true; }
+        else { input.removeClass("valid").addClass("invalid"); pas2 = false; }
+    });
+    $('#cont2').on('input', function () {
+        var input = $(this);
+        if ($('#pasahitza').val() == $('#cont2').val()) {
+            input.removeClass("invalid").addClass("valid");
+            document.getElementById("errorPassSame").style.display = 'none';
+        } else {
+            input.removeClass("valid").addClass("invalid");
+            document.getElementById("errorPassSame").style.display = 'flex';
+        }
+    });
+
+    $('#mail').on('input', function () {
+        var input = $(this);
+        var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var is_email = re.test(input.val());
+        if (is_email) { input.removeClass("invalid").addClass("valid"); email = true; }
+        else { input.removeClass("valid").addClass("invalid"); email = false; }
+    });
+
+    $('#erabiltzailea').on('input', function () {
+        var input = $(this);
+        var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
+        var is_email = re.test(input.val());
+        if (is_email) { input.removeClass("invalid").addClass("valid"); usuario = true; }
+        else { input.removeClass("valid").addClass("invalid"); usuario = false; }
+
+    });
+
+    $("input").on('input', function () {
+        if (nombre && apellido && pas1 && pas2 && email && usuario) {
+            $(".btn").prop("disabled", false);
+        } else {
+            $(".btn").prop("disabled", true);
+        }
+    })
 });
 
-$('#mail').on('input', function() {
-	var input=$(this);
-	var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-	var is_email=re.test(input.val());
-	if(is_email){input.removeClass("invalid").addClass("valid");email=true;}
-	else{input.removeClass("valid").addClass("invalid");email=false;}
-});
 
-$('#erabiltzailea').on('input', function() {
-	var input=$(this);
-    var re = /^([A-Z][a-z]*((\s[A-Za-z])?[a-z]*)*)$/;
-	var is_email=re.test(input.val());
-	if(is_email){input.removeClass("invalid").addClass("valid");usuario=true;}
-	else{input.removeClass("valid").addClass("invalid");usuario=false;}
- 
-});
-
-$("input").on('input',function(){
-    if(nombre && apellido && pas1 && pas2 && email && usuario){
-        $(".btn").prop( "disabled", false);
-    }else{
-        $(".btn").prop( "disabled", true);
-    }     
+$("#loginBtn").click(function (event) {
+    $("#popLogin").fadeIn();
 })
+
+$(document).mouseup(function (e) {
+    var container = $("#popLogin");
+
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        container.fadeOut();
+    }
 });
 
 

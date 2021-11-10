@@ -113,6 +113,7 @@ body {
     border-radius: 30px;
     font-size: 80%;
     white-space: nowrap;
+    cursor: pointer;
 
 
 }
@@ -280,6 +281,7 @@ a {
         width: 100%;
         background-color: rebeccapurple;
         position: relative;
+      
     }
     .nav__item a{
         border: none !important;
@@ -385,7 +387,49 @@ a {
     cursor: pointer;
     
 }
+/*Login */
+.popLogin{
+    position: absolute;
+    bottom: 0;
+    width: 35vh;
+    height: auto;
+    left: -50%;
+    transform: translate(-50%,105%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.44) 0px 3px 8px;
+    display: none;
+}
+.loginClass{
+    position: relative;
+}
 /*Register */
+
+.popLogin input[type=text], input[type=password], input[type=email]{
+    display: inline-block;
+    border:none;
+    border-bottom: 1px solid #C4C6C7;
+    outline: none;  
+    width: 100%;
+    padding: 0.3rem 0;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+.popLogin .formulario{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10% auto;
+    position: relative;
+    width: 97%;
+}
+.popLogin .formulario .img{
+   display: inline-block;
+}
 .popRegister{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
@@ -537,6 +581,18 @@ p span a{
     color: white;
     cursor: pointer;
 
+}
+.btnLogin{
+    width: inherit;
+    border: 1px solid #f5a111;
+    background-color: #f5a111;
+    border-radius: 20px;
+    height: auto;
+    width: auto;
+    padding: 0.8rem 1.6rem;
+    color: white;
+    cursor: pointer;
+    margin: 1% auto;
 }
 .btn:disabled{
     border: 1px solid #C4C6C7;

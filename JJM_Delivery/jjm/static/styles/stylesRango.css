@@ -1,0 +1,121 @@
+.nav{
+    background-color: #FFE48F !important;
+  }
+  .nav__link{
+    color: black !important;
+  }
+  .register{
+    border-color: #151314 !important;
+    color: #151314 !important;
+  }
+  @media (max-width: 800px) {
+  
+      .content-main{
+          grid-template-columns: auto auto !important;
+      }
+      .filters li span {
+          display: none;
+      }
+  }
+.one {
+    position: relative;
+    width: 101%;
+    height: 170vh;
+}
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  /* Track */
+ ::-webkit-scrollbar-track {
+    background: #C4C6C7; 
+  }
+   
+ ::-webkit-scrollbar-thumb {
+     background: #FFDA7E;
+  }
+  
+::-webkit-scrollbar-thumb:hover {
+      background: #ffbd17;
+  }
+.content-main{
+    position: absolute;
+    max-height:90%;
+    top: 7%;
+    left: 50%;
+    width:75%;
+    transform: translateX(-50%);
+    display: inline-grid;
+    grid-template-columns: 31% 31% 31%;
+    grid-gap: 2.1rem;
+    padding: 3.2rem 2%;
+    overflow: auto;
+}
+.content-main h1{
+    position: absolute;
+    top: -0.5%;
+    left:50%;
+    transform: translateX(-50%);
+    background: #fff;
+    display: block;
+}
+
+.restaurant{
+    width: auto;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    height: auto;
+    max-height: 95%;
+    cursor: pointer;
+    overflow: hidden;
+}
+.restaurant .image{
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: brightness(0.7);
+    height: auto;
+    transition: all 0.3s;
+}
+.image:hover{
+  transform: scale(1.05);
+}
+.restaurant-val{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:0.8rem;
+    font-size: 100%;
+    position: relative;
+    top: -3%;
+}
+.restaurant span{
+    display: inline-block;
+}
+h5{
+    position: absolute;
+    display: block;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+h7{
+    position: absolute;
+    display: block;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    background: rgba(22, 20, 21, 0.3);
+    padding: 0.3rem 0.7rem;
+}

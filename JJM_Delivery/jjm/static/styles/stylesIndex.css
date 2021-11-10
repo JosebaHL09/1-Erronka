@@ -303,6 +303,8 @@ span.b {
     background: url(../images/AppIcons/icoShop.png) center no-repeat;
     box-sizing: border-box;
     background-size: contain;
+    cursor: pointer;
+
 }
 .chef-recomendation{
     width: 25%;

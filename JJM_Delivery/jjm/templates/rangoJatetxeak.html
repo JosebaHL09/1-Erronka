@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/stylesRango.css' %}">
+<section class="section one" id="home-section">
+    <div class="all-content">
+        <div class="content-main">
+        
+            <h1 id="titulo">Restaurantes cerca de ti <span style="color: #FFE48F;font-weight: bold;" id="tituloHiria">10km</span>
+            </h1>
+        
+            {% for jatetxea in restautantes %}   
+            <div class="restaurant" id="{{jatetxea.id}}">
+                <img src="/{{jatetxea.img_path}}" loading="lazy" class="image">
+                <h5 class="izena">{{jatetxea.izena}}</h5>
+                <h7 class="mota">{{jatetxea.mota}}</h7></img>
+                <div class="restaurant-val">
+                    <img src="{% static 'images/AppIcons/icoLike.png' %}" loading="lazy"><span>91%<span style="color: #C4C6C7;"> (350)</span></span>
+                </div>
+                <h1 class="latitud" style="display: none;">{{jatetxea.latitud}} </h1>
+                <h1 class="longitud" style="display: none;">{{jatetxea.longitud}} </h1> 
+                <h1 class="telefonoa" style="display: none;">{{jatetxea.telefonoa}} </h1>
+                <h1 class="deskripzioa" style="display: none;">{{jatetxea.deskripzioa}} </h1>
+                <h1 class="id" style="display: none;">{{jatetxea.id}} </h1>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+{% block page_scripts %}
+<script type="text/javascript" src="{% static 'scripts/scriptRango.js' %}"></script>
+{% endblock %}
+{% endblock content %}

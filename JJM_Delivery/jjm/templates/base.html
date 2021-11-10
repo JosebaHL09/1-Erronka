@@ -75,10 +75,10 @@
                                 <label>{{user.email}}</label><br>
                             </span>
                             <span class="welcome nombre">
-                                <label style="color:#E5E5E5;">Izena</label><br>
-                                <label>{{user.first_name}} {{user.last_name}}</label><br>
-                                <label style="color:#E5E5E5;">Email</label><br>
-                                <label>{{user.email}}</label><br>
+                                <label style="color:#E5E5E5;">Erabiltzailea</label><br>
+                                <label>{{user.username}}</label><br>
+                                <label style="color:#E5E5E5;">En nuestra familia desde</label><br>
+                                <label>{{user.date_joined}}</label><br>
                             </span>
                             <span class="welcome nombre">
                                 <a href="{% url 'logout' %}"  id="logout">Saioa Itxi</a>
@@ -92,15 +92,32 @@
                 <li class="nav__item">
                     <a class="register" id="nav__link3">Erregistratu</a>
                 </li>
-                <li class="nav__item">
-                    <a href="{% url 'login' %}" class="login" id="contact">Saioa Hasi</a>
+                <li class="nav__item loginClass">
+                    <a class="login" id="loginBtn">Saioa Hasi</a>
+                    <div class="popLogin" id="popLogin">
+                      
+                            <h1>Inicie sesion en J.J. & M</h1>
+                            <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+                                <div class="formulario">
+                                    <div class="user" id="userImg"></div>
+                                    <input type="text" placeholder="Usuario" id="userLogin" name="userLogin" autocomplete="off" required>
+                                </div>
+                                <div class="formulario">
+                                    <div class="pass1" id="passImg"></div>
+                                    <input type="password" placeholder="Contraseña" id="pasLogin" name="pasLogin" autocomplete="off" required>
+                                </div>
+                                <input class="btnLogin" type="submit" value="Iniciar sesion">
+                            </form>
+                            <!--<p>&iquest;No tienes una cuenta? <span><a href="registro.html">Registrate</a></span></p>-->
+                      
+                    </div>
                 </li>
                 {% endif %}
             </ul>
         </nav>
     </header>
     <div class="popRegister">
-    <div class="containerRegister">
+        <div class="containerRegister">
         <h1>Registrate en J.J. & M</h1>
         <span id="closeRegister">X</span>
         <form name="formu" id="formu" method="POST" action="{% url 'register' %}" autocomplete="off" role="form">{% csrf_token %}
