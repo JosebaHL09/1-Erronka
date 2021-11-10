@@ -35,7 +35,7 @@
             <div class="gridItems">
                 {% for produktua in produktuak %}   
                     {% if produktua.mota == mot.mota %}
-                        <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button>+</button></div>
+                        <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button></div>
                     {% endif %}
                 {% endfor %}
             </div>
