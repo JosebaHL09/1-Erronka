@@ -13,7 +13,11 @@
         grid-template-columns: 25% 25% 25% 25% !important;
     }
     .banner{
-        margin: 5% 0;
+        margin: -4% 0 !important;
+        height: 18vh !important;
+    }
+    .content{
+        padding: 6% 4% !important;
     }
 }
 .one {
@@ -23,10 +27,15 @@
 }
 .banner{
     width: 100%;
-    height: 25vh;
+    height: 40vh;
     font-size: 105%;
     position: relative;
-
+    transition: font-size 0.5s, height 0.5s;
+    -webkit-transition: font-size 0.5s, height 0.5s;
+    -moz-transition: font-size 0.5s, height 0.5s;
+}
+.small{
+    height: 25vh !important;
 }
 .banner img{
     width: 100%;
@@ -148,8 +157,14 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     z-index: 99;
     padding: 0 3rem;
+    animation: top 0.5s;
 
 
+}
+@keyframes top{
+    from{
+        top: -200px;
+    }
 }
 .active ul li,button{
     font-size: 1rem !important;
@@ -162,28 +177,16 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding: 1.5% 0;
+    padding: 2% 0;
     margin: 0 2% 0 0;
 }
-.buttonShop{
-    cursor: pointer;
-    border: none;
-    font-size: 1.3rem;
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    height: 100%;
-    transform: translate(0,-50%);
-    font-weight: bold;
-    display: none !important;
-    z-index: 999;
 
-}
+
 .display {
     display: block !important;
 
 }
-.buttonShop button{
+.active .buttonShopHide button  {
     display: block;
     padding: 0.7rem 0.9rem 0.7rem 2.2rem;
     border: 1px solid #2F2E41;
@@ -192,9 +195,10 @@
     color: white;
     background: url(../images/AppIcons/icosShopping.png) no-repeat 10% center;
     background-color: #2F2E41;
-    position: relative;   
+    position: absolute;   
     top:50%;
     transform: translateY(-50%);
+    right: 2%;
     
 }
 .active .buttonMore{
@@ -246,4 +250,28 @@
 }
 .borderBottom{
     border-bottom: 2px solid black;
+}
+.erabil{
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
+    background:url(../images/AppIcons/LoginIcons/Gris/icoLogin.png) no-repeat center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+
+}
+.deskontu{
+    position: absolute;
+    top: 0;
+    left: 70%;
+    padding: 0.3rem 1.2rem;
+    background: #FFDA7E;
+    border-radius: 0px 0px 10px 10px;
+    font-weight: bold;
+}
+.nav__item .buttonShop{
+    color:black !important;
+    border: 1px solid black !important;
+    background: url(../images/AppIcons/icosShoppingBlack.png) no-repeat 10% center !important;
 }

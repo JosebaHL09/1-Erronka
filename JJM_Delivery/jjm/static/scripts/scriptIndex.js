@@ -78,9 +78,10 @@ $(document).ready(function () {
     km.push(k)
   }
   tiempo = calcT(km)
-  $(".time").each(function () {
-    var id =this.id;
-    var tim = parseInt(tiempo[id-1])
+  var i =0 
+  $(".timeSpan").each(function () {
+    var tim = parseInt(tiempo[i])
+    console.log(tim)
     if(tim>60){
       var hours = Math.floor(tim / 60);          
       var minutes = tim % 60;
@@ -88,9 +89,9 @@ $(document).ready(function () {
     }else{
       $(this).last().html(tim+" min.");
     }
- 
+    i++;
   })
-
+console.log(i)
 })
 
 function calcCrow(lat1, lon1, lat2, lon2) {

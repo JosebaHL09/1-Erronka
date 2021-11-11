@@ -42,7 +42,7 @@
             <time>
                
                 <div class="time-carrusell"> <img src="{% static 'images/AppIcons/icoReloj.png' %}" loading="lazy"
-                        style="padding-right: 0.3rem;"> <span id="{{produktu.id}}" class="time" style="color: black;"></span>
+                        style="padding-right: 0.3rem;"> <span class="timeSpan" style="color: black;"></span>
                    
                 </div>
             </time>
@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<section class="section two" id="about-section">
+<section class="section two" id="skills-section">
     <h2>Jatetxerik onenak eta askoz gehiago Euskadin</h2>
     <div class="content2">
         <div class="parent">
@@ -73,7 +73,7 @@
         </div>
     </div>
 </section>
-<section class="section three" id="skills-section">
+<section class="section three" id="about-section">
     {% for jatetxea in tenjatetxeak%}
     <p>{{jatetxea}}</p>
     {% endfor %}

@@ -1,6 +1,7 @@
 window.onscroll = function () { scrollFunction() };
 function scrollFunction() {
     if (window.scrollY >= 50) {
+    
         document.getElementById("navbar").style.background = "#FFE48F";
         document.getElementById("nav__link").style.color = "#111111";
         document.getElementById("nav__link1").style.color = "#111111";
@@ -10,6 +11,7 @@ function scrollFunction() {
         document.getElementById("buttonShop").style.background = "#FFDA7E url('/static/images/AppIcons/icosShoppingBlack.png') no-repeat 10% center";
         document.getElementById("erabil").style.background = "url('/static/images/AppIcons/LoginIcons/Gris/icoLogin.png') no-repeat center";
         document.getElementById("erabil").style.backgroundSize = "cover";
+     
 
     } else {
         document.getElementById("navbar").style.background = "transparent";
@@ -221,7 +223,11 @@ $(document).ready(function () {
             $(".btn").prop("disabled", true);
         }
     })
+    allStorage()
 });
+$("#buttonShop").click(function(event){
+    $("#myDropdown").toggle();
+})
 
 
 $("#loginBtn").click(function (event) {
@@ -230,11 +236,127 @@ $("#loginBtn").click(function (event) {
 
 $(document).mouseup(function (e) {
     var container = $("#popLogin");
-
+    var containerShop = $("#myDropdown");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
         container.fadeOut();
     }
+ 
 });
 
+var contador = 0 //Items que hay en el carrito
 
+//Crear filas de carrito con validacion por si el usuario es retrasado
+function addCarrito(idprod, izena, price) {
+    var kantitatea = 1
+    var id = document.getElementById(idprod)
+    var precioCarrito = parseInt($('#preciofinal').text())
+    if (kantitatea == 0) {
+        alert("Como vas a comprar nada de algo???")
+    } else if (id) {
+        alert("Ya has comprado eso ape??")
+    } else {
+        $("<a class='produktua' id=" + idprod + " href='#'><div>  <input id='" + idprod + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + idprod + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + idprod + "'btn class='deleteproduct' onclick=deleteRow('" + idprod + "')>&#x2715;</button></a>").insertBefore(".divExtra");
+        contador++
+        $('#contador').text(contador)
+        addProduct(idprod, izena, kantitatea, price)
+        precioCarrito = precioCarrito + (price * kantitatea)
+        $('#preciofinal').text(precioCarrito)
+    }
+
+}
+//Lo mismo de arriba
+function addCarritoLS(id, izena, kantitatea, price) {
+    $("<a class='produktua' id=" + id + " href='#'><div>  <input id='" + id + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + id + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + id + "'btn class='deleteproduct' onclick=deleteRow('" + id + "')>&#x2715;</button></a>").insertBefore(".divExtra");
+}
+//Borrar el div del carrito
+function deleteRow(id) {
+    contador--
+    $('#contador').text(contador)
+    $("#" + id).remove()
+    removeProduct(id)
+    var total = precioFinal()
+    $('#preciofinal').text(parseFloat(total).toFixed(1))
+}
+//Funcion para crear los productos del carrito desde el local storage
+function allStorage() {
+    $('.produktua').remove();
+    contador = 0
+    var guztira = 0
+    let products = []
+    products = JSON.parse(localStorage.getItem('products'));
+    products.forEach(element => {
+        contador++
+        guztira = guztira + (element.kantitatea * element.price)
+        addCarritoLS(element.id, element.izena, element.kantitatea, element.price)
+    });
+    $('#contador').text(contador)
+    $('#preciofinal').text(guztira)
+}
+//Borrar el producto del local storage
+function removeProduct(id) {
+    let storageProducts = JSON.parse(localStorage.getItem('products'));
+    let products = storageProducts.filter(product => product.id !== id);
+    localStorage.setItem('products', JSON.stringify(products));
+}
+//Añadir lo necesario para el local storage
+function addProduct(id, izena, kantitatea, price) {
+    let products = [];
+    if (localStorage.getItem('products')) {
+        products = JSON.parse(localStorage.getItem('products'));
+    }
+    products.push({ 'id': id, 'izena': izena, 'kantitatea': kantitatea, 'price': price });
+    localStorage.setItem('products', JSON.stringify(products));
+}
+
+
+//Desplegar el carrito
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+//Logica del carrito
+$(function () {
+    $(".totalCarrito").click(function () {
+        var total = precioFinal()
+        if ($(".kantitateaInput")[0]) {
+            if ($('#cubiertos').prop('checked')) {
+                total += 2
+            }
+            document.getElementById("preciofinal").innerHTML = total
+            alert("Total a pagar: " + total)
+            limpiarCarrito()
+        } else {
+            alert("No has comprado nada pedazo de mono")
+            document.getElementById("preciofinal").innerHTML = 0
+        }
+    })
+
+});
+//calcular lo que indica
+function precioFinal() {
+    var totalCantidad = []
+    var totalPrecios = []
+    var total = 0
+    $('.kantitateaInput').each(function () {
+        totalCantidad.push(parseInt($(this).val()))
+    })
+    $('.precios').each(function () {
+        totalPrecios.push(parseInt($(this).text()))
+    })
+    for (i = 0; i < totalCantidad.length; i++) {
+        total += (totalCantidad[i] * totalPrecios[i])
+    }
+    return total
+}
+//Limpiamos el carrito
+$('#logout').click(function () {
+    localStorage.clear();
+});
+function limpiarCarrito() {
+    contador = 0
+    localStorage.clear();
+    $(".produktua").remove()
+    $('#contador').text(contador)
+    $('#preciofinal').text(0)
+    $('#cubiertos').prop('checked', false);
+}
 

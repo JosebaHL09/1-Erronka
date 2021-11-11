@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesJatetxea.css' %}">
 <section class="section one" id="home-section">
     {% for jatetxea in jatetxe %}   
-    <div class="banner">
+    <div class="banner" id="banner">
         <h2>{{jatetxea.izena}}</h2>
         <h7>1Km · 20-30 min</h7>
         <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg" >
@@ -21,7 +21,7 @@
               <li> <a href="#{{mota10.mota}}">{{mota10.mota}}</a></li>
                 {% endfor %}
                 <li><button id="buttonMore" class="buttonMore">Mas <img src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></button></li>
-                <li id="buttonShop" class="buttonShop"><button >Carrito · 0</button></li>
+                
             </ul>
             <ul class="more-filter" id="more-filter">
                 {% for mota in motak %}   
@@ -30,12 +30,12 @@
             </ul>
         </div>
         {% for mot in motakAll%}   
-        <div class="contentItems" >
-            <h1 class="titulos" id="{{mot.mota}}">{{mot.mota}}</h1>
+        <div class="contentItems" id="{{mot.mota}}" >
+            <h1 class="titulos" >{{mot.mota}}</h1>
             <div class="gridItems">
                 {% for produktua in produktuak %}   
                     {% if produktua.mota == mot.mota %}
-                        <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button>+</button></div>
+                    <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button></div>
                     {% endif %}
                 {% endfor %}
             </div>

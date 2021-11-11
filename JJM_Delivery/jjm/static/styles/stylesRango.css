@@ -119,3 +119,19 @@ h7{
     background: rgba(22, 20, 21, 0.3);
     padding: 0.3rem 0.7rem;
 }
+.erabil{
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
+    background:url(../images/AppIcons/LoginIcons/Gris/icoLogin.png) no-repeat center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+
+}
+.nav__item button{
+    color:black !important;
+    border: 1px solid black !important;
+    background: url(../images/AppIcons/icosShoppingBlack.png) no-repeat 10% center !important;
+
+}

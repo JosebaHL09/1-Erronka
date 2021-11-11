@@ -321,6 +321,14 @@ a {
         transform-origin: left top;
         transform: scale(1, 1);
     }
+    .popLogin{
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%,-50%) !important;
+        height: 27vh !important;
+
+    }
  
   
 }
@@ -375,7 +383,7 @@ a {
     cursor: pointer;
     pointer-events: visible;
 }
-.nav__item button{
+.nav__item .buttonShop{
     display: block;
     padding: 0.7rem 0.9rem 0.7rem 2.2rem;
     border: 1px solid #fff;
@@ -391,7 +399,7 @@ a {
 .popLogin{
     position: absolute;
     bottom: 0;
-    width: 35vh;
+    width: 28vh;
     height: auto;
     left: -50%;
     transform: translate(-50%,105%);
@@ -408,7 +416,7 @@ a {
 }
 /*Register */
 
-.popLogin input[type=text], input[type=password], input[type=email]{
+.popLogin input{
     display: inline-block;
     border:none;
     border-bottom: 1px solid #C4C6C7;
@@ -416,7 +424,12 @@ a {
     width: 100%;
     padding: 0.3rem 0;
     box-sizing: border-box;
-    font-size: 1.2rem;
+    font-size: 0.8rem !important;
+
+}
+.popLogin h3{
+    z-index: 99999999;
+    color: black !important;
 }
 .popLogin .formulario{
     text-align: left;
@@ -426,6 +439,7 @@ a {
     margin: 10% auto;
     position: relative;
     width: 97%;
+
 }
 .popLogin .formulario .img{
    display: inline-block;
@@ -452,6 +466,7 @@ a {
     margin: auto;
     margin-top: 8%;
     width: 45%;
+    min-width: 25vh;
     height: auto;
     color:#C4C6C7;
     background-color: #fff;
@@ -592,7 +607,7 @@ p span a{
     padding: 0.8rem 1.6rem;
     color: white;
     cursor: pointer;
-    margin: 1% auto;
+    margin: 3% auto;
 }
 .btn:disabled{
     border: 1px solid #C4C6C7;
@@ -696,3 +711,144 @@ input.valid{
      margin: auto;
      display: block;
  }
+ .erabil{
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: 1rem;
+    background:url(../images/AppIcons/LoginIcons/Amarillo/icoLogin.png) no-repeat center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+}
+ /* Carrito */
+ .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    right: 1px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 20rem;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 1rem;
+    z-index: 99999999;
+    
+}
+  .dropdown-content a {
+    color: black;
+    padding: 0.55rem 0;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+  .dropdown-content a .precio{
+      color: #C4C6C7 !important;
+  }
+  .dropdown-content a div{
+      display: flex;
+  }
+  .produkizena{
+      width: 18vh;
+  }
+  .dropdown-content a span{
+      display: block;
+  }
+  .dropdown-content input[type=checkbox] {
+    width: 1rem;
+    height: 1rem;
+    color: black;
+    font-size: 1rem;
+  }
+  .dropdown-content .kantitateaInput{
+    border: 2px solid rgba(131, 131, 131, 0.6);
+    background-color: transparent;
+    padding: 0.2rem;
+    color:black;
+    outline: none;
+    max-width: 1.5rem;
+    text-align: center;
+  }
+ 
+  .dropdown-content h1  {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 2.4rem;
+    font: bold;
+  }
+  .dropdown-content h4  {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 1.2rem;
+    margin:-0.4rem 0. 0 0.3rem ;
+    font-weight: 400;
+  }
+  .dropdown-content h4  span{
+    color: #FFB600;
+  }
+  .dropdown-content .divExtra {
+    background-color:#C4C4C4;
+    color: black;
+    padding: 0.45rem 0.6rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+  .dropdown-content .totalCarrito {
+    background-color:#1D1D1D;
+    margin-top: 1rem;
+    padding: 0.45rem 0.6rem;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+  }
+  .dropdown-content .totalCarrito p{
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .dropdown-content .divExtra label {
+    clear: both;
+    float:left;
+  } 
+  .show {display: block;}
+
+#extra{
+  background-color: #ddd;
+  font-weight: bold;
+
+}
+#preciofinalDolar{
+    float: right;
+    font-weight: 600;
+
+}
+#preciofinal{
+    float: right;
+    font-weight: 600;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+a button{
+  border: none;
+  text-align: right;
+  font-size: 1rem;
+  clear: both;
+  float:right;
+  height: fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
