@@ -364,7 +364,7 @@ $(document).on('click', '#cubiertos', function () {
     }
     document.getElementById("preciofinal").innerHTML = total
 })
-function moreQty(id) {
+function moreQty(id) {  
     kant = parseInt($('#' + id + "Kantitatea").val())
     var products = JSON.parse(localStorage.products);
     for (var i = 0; i < products.length; i++) {
@@ -376,6 +376,8 @@ function moreQty(id) {
         }
     }
     localStorage.setItem("products", JSON.stringify(products))
+    total = precioFinal()
+    document.getElementById("preciofinal").innerHTML = total
     
 }
 $(document).on('input', '.kantitateaInput', function () {
