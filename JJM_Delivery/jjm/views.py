@@ -85,12 +85,16 @@ def post_hiriak(request):
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
 
 def show_jatetxea(request):
+    if request.method == 'POST':
+        inputResena = request.POST.get('inputResena')
+        ratio = request.POST.get('ratio')
     id = request.GET.get('id', None)
     motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
     motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
     jatetxea = Jatetxea.objects.filter(id= id)
+    iruzkinak = Iruzkina.objects.filter(jatetxea_id= id)
     produktuak = (Produktua.objects.filter(jatetxea=id).annotate(dcount=Count('mota')).order_by())
-    return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak})
+    return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak,"iruzkinak":iruzkinak})
 
 def get_queryset(request):
     price = request.GET.get('price')
@@ -116,6 +120,7 @@ def kmRange(request):
             raise Http404("Jatetxea does not exist")
 
     return render(request, 'rangoJatetxeak.html',{"restautantes":restaurantesenRango} )
+
 
 
 

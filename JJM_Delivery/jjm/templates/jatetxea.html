@@ -3,44 +3,84 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesJatetxea.css' %}">
 <section class="section one" id="home-section">
-    {% for jatetxea in jatetxe %}   
+    {% for jatetxea in jatetxe %}
+    <div class="resenaPop" id="resenaPop">
+        <div class="contentResenaPop">
+            <h1>{{jatetxea.izena}}</h1>
+            <div class="fotoResena"><b>{{user.first_name}} {{user.last_name}}</b><br><span>Este contenido sera publico</span></div>
+            <form method="POST" action="{% url 'show_jatetxea' %}">{% csrf_token %}
+                <div class="rating">
+                    <input type="radio" name="rating" id="rating-5" value="5">
+                    <label for="rating-5"></label>
+                    <input type="radio" name="rating" id="rating-4" value="4">
+                    <label for="rating-4"></label>
+                    <input type="radio" name="rating" id="rating-3" value="3">
+                    <label for="rating-3"></label>
+                    <input type="radio" name="rating" id="rating-2" value="2">
+                    <label for="rating-2"></label>
+                    <input type="radio" name="rating" id="rating-1" value="1">
+                    <label for="rating-1"></label>
+                </div>
+                <textarea  class="inputResena" id="inputResena" name="inputResena"  placeholder="Comparte detalles de tu experiencia en este lugar "></textarea>
+                <input type="text" style="display: none;" name="ratio" id="ratio">
+                <div class="buttonsResena">
+                    <button class="cerrar" id="cerrar">Cancelar</button>
+                    <button class="publicar" id="publicar" type="submit">Publicar</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="banner" id="banner">
         <h2>{{jatetxea.izena}}</h2>
         <h7>1Km · 20-30 min</h7>
-        <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg" >
+        <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg">
 
     </div>
     <div class="content" id="contentItems">
         <span class="jat-info">{{jatetxea.deskripzioa}}</span>
-        <span class="jat-info price"><img src="{% static 'images/AppIcons/icoBike2.png' %}" loading="lazy"><span>3,93€</span></span>
+        <span class="jat-info price"><img src="{% static 'images/AppIcons/icoBike2.png' %}"
+                loading="lazy"><span>3,93€</span></span>
         <span class="jat-adreess">{{jatetxea.helbidea}} · {{jatetxea.telefonoa}} · {{jatetxea.mota}}</span>
-    {% endfor %}
+        {% endfor %}
         <div class="jat-filter" id="jaxlist">
             <ul class="list1">
-                {% for mota10 in motakAll|slice:"10" %}   
-              <li> <a href="#{{mota10.mota}}">{{mota10.mota}}</a></li>
+                {% for mota10 in motakAll|slice:"10" %}
+                <li> <a href="#{{mota10.mota}}">{{mota10.mota}}</a></li>
                 {% endfor %}
-                <li><button id="buttonMore" class="buttonMore">Mas <img src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></button></li>
-                
+                <li><button id="buttonMore" class="buttonMore">Mas <img
+                            src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></button></li>
+
             </ul>
             <ul class="more-filter" id="more-filter">
-                {% for mota in motak %}   
+                {% for mota in motak %}
                 <li>{{mota.mota}}</li>
                 {% endfor %}
             </ul>
         </div>
-        {% for mot in motakAll%}   
-        <div class="contentItems" id="{{mot.mota}}" >
-            <h1 class="titulos" >{{mot.mota}}</h1>
+        {% for mot in motakAll%}
+        <div class="contentItems" id="{{mot.mota}}">
+            <h1 class="titulos">{{mot.mota}}</h1>
             <div class="gridItems">
-                {% for produktua in produktuak %}   
-                    {% if produktua.mota == mot.mota %}
-                    <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button></div>
-                    {% endif %}
+                {% for produktua in produktuak %}
+                {% if produktua.mota == mot.mota %}
+                <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span
+                        class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button
+                        onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button>
+                </div>
+                {% endif %}
                 {% endfor %}
             </div>
+
         </div>
         {% endfor %}
+        <div class="resenas" id="resena">
+            <h4>Reseñas</h4><button class="anadirResena" id="anadirResena">Nueva Reseña</button>
+            <div class="foto">"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
+            <div class="estrella">foto</div>
+            <div class="foto">"Esta perro"</div>
+            <div class="foto">"Esta perro"</div>
+        </div>
+
     </div>
 </section>
 {% block page_scripts %}

@@ -1,14 +1,17 @@
 window.onscroll = function () { scrollFunctionJatetxea() };
 var positionFilter = document.getElementById("jaxlist");
 var navbar = document.getElementById("navbar");
+var contentItems = document.getElementById("contentItems");
+var resena = document.getElementById("resena");
 function scrollFunctionJatetxea() {
     if (getOffset(navbar).top >= getOffset(positionFilter).top) {
         $("#jaxlist").addClass('active');
-        //document.getElementById('buttonShopHide').classList.add("display");
+        $("#resena").addClass('fixedResena');
         $("#myDropdown").hide();
-    }else{
-        //$("#myDropdown").show();
-        //$("#myDropdown").toggle();
+    }
+
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        $("#resena").hide();
     }
     if (window.scrollY >= 1) {
         document.getElementById("navbar").style.background = "#FFE48F";
@@ -16,8 +19,10 @@ function scrollFunctionJatetxea() {
 
     } else {
         $("#jaxlist").removeClass('active');
-       // document.getElementById('buttonShopHide').classList.remove("display");
+        $("#resena").removeClass('fixedResena');
        $('#banner').removeClass('small');
+       $("#resena").show();
+
 
     }
     changeActiveFilter();
@@ -26,6 +31,7 @@ function scrollFunctionJatetxea() {
 var li = [];
 var h1 = [];
 $(document).ready(function () {
+    $( "#publicar" ).prop( "disabled", true );
     var filterList = document.getElementById("jaxlist");
     if ($('#jaxlist ul li').length >= 10) {
         $("#buttonMore").css({ display: "flex" })
@@ -58,8 +64,30 @@ function getOffset(el) {
         top: rect.top + window.scrollY
     };
 }
+$("#anadirResena").on("click",function(){
+    $("#resenaPop").fadeIn();
+})
+$("#cerrar").on("click",function(){
+    $("#resenaPop").fadeOut();
+})
+var inputRadio=false;
 
+$('input[type=radio][name=rating]').change(function() {
+    
+     $("#ratio").val(this.value)
+    if( $(':radio[name="rating"]:checked').length >0) {
+        inputRadio=true;
+    }
+    if (!$("#myTextArea").val() && inputRadio) {
+        $( "#publicar" ).prop( "disabled", false );
+    }
+});
 
+$('#inputResena').change(function() {
+    if (!$("#myTextArea").val() && inputRadio) {
+        $( "#publicar" ).prop( "disabled", false );
+    }
+});
 
 var x = true;
 $("#buttonMore").on("click", function () {

@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^login/', views.loginUser, name='login'),
     url(r'^logout/', views.logoutUser, name='logout'),
     url(r'^register/', views.registerUser, name='register'),
-    url(r'^kmrange/', views.kmRange, name='kmrange'),
+    url(r'^kmrange/', views.kmRange, name='kmrange'),  
     #url(r'^get_hiriakMap/', views.get_hiriakMap, name='get_hiriakMap'),
 
 ]
