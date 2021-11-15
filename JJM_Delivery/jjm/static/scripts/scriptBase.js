@@ -1,7 +1,7 @@
 window.onscroll = function () { scrollFunction() };
 function scrollFunction() {
     if (window.scrollY >= 50) {
-    
+
         document.getElementById("navbar").style.background = "#FFE48F";
         document.getElementById("nav__link").style.color = "#111111";
         document.getElementById("nav__link1").style.color = "#111111";
@@ -11,7 +11,7 @@ function scrollFunction() {
         document.getElementById("buttonShop").style.background = "#FFDA7E url('/static/images/AppIcons/icosShoppingBlack.png') no-repeat 10% center";
         document.getElementById("erabil").style.background = "url('/static/images/AppIcons/LoginIcons/Gris/icoLogin.png') no-repeat center";
         document.getElementById("erabil").style.backgroundSize = "cover";
-     
+
 
     } else {
         document.getElementById("navbar").style.background = "transparent";
@@ -224,8 +224,9 @@ $(document).ready(function () {
         }
     })
     allStorage()
+
 });
-$("#buttonShop").click(function(event){
+$("#buttonShop").click(function (event) {
     $("#myDropdown").toggle();
 })
 
@@ -240,7 +241,7 @@ $(document).mouseup(function (e) {
     if (!container.is(e.target) && container.has(e.target).length === 0) {
         container.fadeOut();
     }
- 
+
 });
 
 var contador = 0 //Items que hay en el carrito
@@ -253,9 +254,9 @@ function addCarrito(idprod, izena, price) {
     if (kantitatea == 0) {
         alert("Como vas a comprar nada de algo???")
     } else if (id) {
-        alert("Ya has comprado eso ape??")
+        moreQty(idprod)
     } else {
-        $("<a class='produktua' id=" + idprod + " href='#'><div>  <input id='" + idprod + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + idprod + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + idprod + "'btn class='deleteproduct' onclick=deleteRow('" + idprod + "')>&#x2715;</button></a>").insertBefore(".divExtra");
+        $("<a class='produktua' id=" + idprod + " href='#'><div>  <input id='" + idprod + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' ></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + idprod + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + idprod + "'btn class='deleteproduct' onclick=deleteRow('" + idprod + "')>&#x2715;</button></a>").insertBefore(".divExtra");
         contador++
         $('#contador').text(contador)
         addProduct(idprod, izena, kantitatea, price)
@@ -266,7 +267,7 @@ function addCarrito(idprod, izena, price) {
 }
 //Lo mismo de arriba
 function addCarritoLS(id, izena, kantitatea, price) {
-    $("<a class='produktua' id=" + id + " href='#'><div>  <input id='" + id + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' onkeyup='if(this.value<0){this.value= this.value * -1}'></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + id + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + id + "'btn class='deleteproduct' onclick=deleteRow('" + id + "')>&#x2715;</button></a>").insertBefore(".divExtra");
+    $("<a class='produktua' id=" + id + " href='#'><div>  <input id='" + id + "Kantitatea' class='kantitateaInput' type='number' min=0 value ='" + kantitatea + "' ></input></div><div class='produkizena'>" + izena + "</div><div class='precio'><span id='" + id + "Prezioa' class='precios'>" + price + "</span>&euro;</div> <button id='" + id + "'btn class='deleteproduct' onclick=deleteRow('" + id + "')>&#x2715;</button></a>").insertBefore(".divExtra");
 }
 //Borrar el div del carrito
 function deleteRow(id) {
@@ -284,13 +285,15 @@ function allStorage() {
     var guztira = 0
     let products = []
     products = JSON.parse(localStorage.getItem('products'));
-    products.forEach(element => {
-        contador++
-        guztira = guztira + (element.kantitatea * element.price)
-        addCarritoLS(element.id, element.izena, element.kantitatea, element.price)
-    });
-    $('#contador').text(contador)
-    $('#preciofinal').text(guztira)
+    if (products) {
+        products.forEach(element => {
+            contador++
+            guztira = guztira + (element.kantitatea * element.price)
+            addCarritoLS(element.id, element.izena, element.kantitatea, element.price)
+        });
+        $('#contador').text(contador)
+        $('#preciofinal').text(guztira)
+    }
 }
 //Borrar el producto del local storage
 function removeProduct(id) {
@@ -313,18 +316,19 @@ function addProduct(id, izena, kantitatea, price) {
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
+
+
 //Logica del carrito
 $(function () {
+    var total
     $(".totalCarrito").click(function () {
-        var total = precioFinal()
+        total = precioFinal()
         if ($(".kantitateaInput")[0]) {
-            if ($('#cubiertos').prop('checked')) {
-                total += 2
-            }
             document.getElementById("preciofinal").innerHTML = total
             alert("Total a pagar: " + total)
             limpiarCarrito()
         } else {
+            $('#cubiertos').prop('checked', false);
             alert("No has comprado nada pedazo de mono")
             document.getElementById("preciofinal").innerHTML = 0
         }
@@ -340,7 +344,7 @@ function precioFinal() {
         totalCantidad.push(parseInt($(this).val()))
     })
     $('.precios').each(function () {
-        totalPrecios.push(parseInt($(this).text()))
+        totalPrecios.push($(this).text())
     })
     for (i = 0; i < totalCantidad.length; i++) {
         total += (totalCantidad[i] * totalPrecios[i])
@@ -351,12 +355,57 @@ function precioFinal() {
 $('#logout').click(function () {
     localStorage.clear();
 });
+$(document).on('click', '#cubiertos', function () {
+    total = parseFloat($('#preciofinal').text())
+    if (this.checked) {
+        total += 2
+    } else if (total != 0) {
+        total -= 2
+    }
+    document.getElementById("preciofinal").innerHTML = total
+})
+function moreQty(id) {  
+    kant = parseInt($('#' + id + "Kantitatea").val())
+    var products = JSON.parse(localStorage.products);
+    for (var i = 0; i < products.length; i++) {
+        if (id === products[i].id) {
+            products[i].kantitatea += 1;
+            kant+=1
+            document.getElementById(id + "Kantitatea").value = kant
+            break;
+        }
+    }
+    localStorage.setItem("products", JSON.stringify(products))
+    total = precioFinal()
+    document.getElementById("preciofinal").innerHTML = total
+    
+}
+$(document).on('input', '.kantitateaInput', function () {
+    id = parseInt(this.id)
+    if (this.value < 0) {
+        this.value = this.value * -1
+    }
+    total = precioFinal()
+    if (isNaN(total)) {
+        this.value = 0
+        total = 0
+    }
+    document.getElementById("preciofinal").innerHTML = total
+    var products = JSON.parse(localStorage.products);
+    for (var i = 0; i < products.length; i++) {
+        if (id === parseInt(products[i].id)) {
+            products[i].kantitatea = parseInt(this.value);
+            break;
+        }
+    }
+    localStorage.setItem("products", JSON.stringify(products))
+});
 function limpiarCarrito() {
     contador = 0
     localStorage.clear();
     $(".produktua").remove()
     $('#contador').text(contador)
     $('#preciofinal').text(0)
-    $('#cubiertos').prop('checked', false);
+
 }
 
