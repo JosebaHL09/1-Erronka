@@ -7,7 +7,8 @@
     <div class="resenaPop" id="resenaPop">
         <div class="contentResenaPop">
             <h1>{{jatetxea.izena}}</h1>
-            <div class="fotoResena"><b>{{user.first_name}} {{user.last_name}}</b><br><span>Este contenido sera publico</span></div>
+            <div class="fotoResena"><b>{{user.first_name}} {{user.last_name}}</b><br><span>Este contenido sera
+                    publico</span></div>
             <form method="POST" action="{% url 'show_jatetxea' %}">{% csrf_token %}
                 <div class="rating">
                     <input type="radio" name="rating" id="rating-5" value="5">
@@ -21,7 +22,8 @@
                     <input type="radio" name="rating" id="rating-1" value="1">
                     <label for="rating-1"></label>
                 </div>
-                <textarea  class="inputResena" id="inputResena" name="inputResena"  placeholder="Comparte detalles de tu experiencia en este lugar "></textarea>
+                <textarea class="inputResena" id="inputResena" name="inputResena"
+                    placeholder="Comparte detalles de tu experiencia en este lugar "></textarea>
                 <input type="text" style="display: none;" name="ratio" id="ratio">
                 <div class="buttonsResena">
                     <button class="cerrar" id="cerrar">Cancelar</button>
@@ -73,14 +75,20 @@
 
         </div>
         {% endfor %}
-        <div class="resenas" id="resena">
-            <h4>Reseñas</h4><button class="anadirResena" id="anadirResena">Nueva Reseña</button>
-            <div class="foto">"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
-            <div class="estrella">foto</div>
-            <div class="foto">"Esta perro"</div>
-            <div class="foto">"Esta perro"</div>
-        </div>
+       
 
+    </div>
+    <div class="resenas" id="resena">
+        <h4>Reseñas</h4><button class="anadirResena" id="anadirResena">Nueva Reseña</button>
+        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
+        <div class="estrella">foto</div>
+        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
+        <div class="estrella">foto</div>
+        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
+        <div class="estrella">foto</div>
+        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
+        <div class="estrella">foto</div>
+      
     </div>
 </section>
 {% block page_scripts %}

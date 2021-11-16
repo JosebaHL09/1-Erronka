@@ -123,11 +123,6 @@ def kmRange(request):
 
 
 
-
-
-
-
-
 def getDistance(lati1,long1,lati2,long2):
     R = 6373.0
 

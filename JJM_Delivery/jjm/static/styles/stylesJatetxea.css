@@ -207,14 +207,14 @@
 }
 
 .contentItems{
-    width: 70%;
+    width: 89%;
     padding-top: 2%;
 }
 .gridItems{
    padding-top: 2%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 3%;
+    grid-gap: 4%;
 }
 .card{
     display: block;
@@ -282,28 +282,31 @@
 .resenas{
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-18%,-50%);
     padding: 1.2rem;
-    width: 20%;
+    width: auto;
+    max-width: 40%;
+    max-height: 60%;
+    overflow: auto;
+    margin: 4% auto;
+    position: relative;
+}
+.resenas h4{
+    width: 70%;
 }
 .foto{
     background: url(../images/AppIcons/LoginIcons/Gris/icoLogin.png) no-repeat left center;
     padding-left: 3rem;
     padding-top: 0.5rem;
     margin-top: 1rem;
+    width: 70%;
 }
 .estrella{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 70%;
 }
-.fixedResena{
-    position: fixed !important;
-    transform: translate(-13%,-50%);
-}
+
 .anadirResena{
     position: absolute;
     top: 6%;

@@ -6,12 +6,12 @@ var resena = document.getElementById("resena");
 function scrollFunctionJatetxea() {
     if (getOffset(navbar).top >= getOffset(positionFilter).top) {
         $("#jaxlist").addClass('active');
-        $("#resena").addClass('fixedResena');
+        //$("#resena").addClass('fixedResena');
         $("#myDropdown").hide();
     }
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        $("#resena").hide();
+       // $("#resena").hide();
     }
     if (window.scrollY >= 1) {
         document.getElementById("navbar").style.background = "#FFE48F";
@@ -19,7 +19,7 @@ function scrollFunctionJatetxea() {
 
     } else {
         $("#jaxlist").removeClass('active');
-        $("#resena").removeClass('fixedResena');
+        //$("#resena").removeClass('fixedResena');
        $('#banner').removeClass('small');
        $("#resena").show();
 
