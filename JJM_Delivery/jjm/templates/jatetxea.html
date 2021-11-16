@@ -68,8 +68,10 @@
                 {% for produktua in produktuak %}
                 {% if produktua.mota == mot.mota %}
                 <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span
-                        class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button
-                        onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button>
+                        class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span>
+                    {% if user.is_authenticated %}
+                        <button onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button>
+                    {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
