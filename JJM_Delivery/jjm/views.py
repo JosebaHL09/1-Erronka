@@ -91,7 +91,7 @@ def show_jatetxea(request):
     motak = (Produktua.objects.filter(jatetxea=request.session['idJat']).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
     jatetxea = Jatetxea.objects.filter(id= request.session['idJat'])
     produktuak = (Produktua.objects.filter(jatetxea=request.session['idJat']).annotate(dcount=Count('mota')).order_by())
-    iruzkinak = Iruzkina.objects.filter(jatetxea_id= request.session['idJat'])
+    iruzkinak = Iruzkina.objects.raw('SELECT jjm_iruzkina.id AS id, jjmdb.auth_user.username, jjmdb.jjm_iruzkina.testua, jjm_iruzkina.kalifikazioa FROM jjmdb.jjm_iruzkina INNER JOIN jjmdb.auth_user ON jjmdb.auth_user.id = jjmdb.jjm_iruzkina.erabiltzailea_id WHERE jjmdb.jjm_iruzkina.jatetxea_id = %s' %(request.session['idJat']))
     if request.method == 'POST':
         print("uwu")
         inputResena = request.POST.get('inputResena')

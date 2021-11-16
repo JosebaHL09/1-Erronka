@@ -87,7 +87,7 @@
         {% endif %}
      
         {% for iruzkin in iruzkinak %}
-            <div class="foto"><div class="estrella"><b>Mikel Rey</b><div>
+            <div class="foto"><div class="estrella"><b>{{iruzkin.username}}</b><div>
                 {% for item in "x"|ljust:iruzkin.kalifikazioa %}
                    <img src="{% static 'images/AppIcons/icoStar.png' %}">
                 {% endfor %}</div></div>"{{iruzkin.testua}}"</div>
