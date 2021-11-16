@@ -37,6 +37,22 @@ $(document).ready(function () {
         $("#buttonMore").css({ display: "flex" })
     }
     allStorage()
+    var latitudJatetxe = $("#latitud").val()
+    var longitudJatetxe = $("#longitud").val()
+    var latitudeUser = localStorage.getItem('latitude')
+    var longitudeUser = localStorage.getItem('longitude')
+
+    var km = calcCrow(latitudeUser, longitudeUser, latitudJatetxe, longitudJatetxe).toFixed(1)
+    $('#distantzia').last().html(km+" km")
+    var tiempo = km * 5
+
+    if (tiempo > 60) {
+        var hours = Math.floor(tiempo / 60);
+        var minutes = parseInt(tiempo % 60);
+        $("#denbora").last().html(hours + "h " + minutes + " min.");
+    } else {
+        $("#denbora").last().html(tiempo + " min.");
+    }
 
 });
 
@@ -103,26 +119,6 @@ $("#buttonMore").on("click", function () {
         x = true;
     }
 });
-$(document).ready(function () {
-    var latitudJatetxe = $("#latitud").val()
-    var longitudJatetxe = $("#longitud").val()
-    var latitudeUser = localStorage.getItem('latitude')
-    var longitudeUser = localStorage.getItem('longitude')
-
-    var km = calcCrow(latitudeUser, longitudeUser, latitudJatetxe, longitudJatetxe).toFixed(1)
-    $('#distantzia').last().html(km+" km")
-    var tiempo = km * 5
-
-    if (tiempo > 60) {
-        var hours = Math.floor(tiempo / 60);
-        var minutes = parseInt(tiempo % 60);
-        $("#denbora").last().html(hours + "h " + minutes + " min.");
-    } else {
-        $("#denbora").last().html(tiempo + " min.");
-    }
-
-
-})
 function calcCrow(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
     var dLat = toRad(lat2 - lat1);

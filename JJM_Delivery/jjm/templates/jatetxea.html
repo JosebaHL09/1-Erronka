@@ -2,8 +2,6 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesJatetxea.css' %}">
-<script type="text/javascript" src="{% static 'scripts/scriptJatetxea.js' %}"></script>
-{% block page_scripts %}
 <section class="section one" id="home-section">
     {% for jatetxea in jatetxe %}
     <div class="resenaPop" id="resenaPop">
@@ -48,6 +46,10 @@
         <span class="jat-info price"><img src="{% static 'images/AppIcons/icoBike2.png' %}"
                 loading="lazy"><span>3,93€</span></span>
         <span class="jat-adreess">{{jatetxea.helbidea}} · {{jatetxea.telefonoa}} · {{jatetxea.mota}}</span>
+        <div>
+            <input id="latitud" type="hidden" value="{{jatetxea.latitud}}" >
+            <input id="longitud" type="hidden" value="{{jatetxea.longitud}}" >
+        </div>
         {% endfor %}
         <div class="jat-filter" id="jaxlist">
             <ul class="list1">
@@ -105,13 +107,8 @@
         {% endfor %}
 
     </div>
-    <div>
-        {% for jatetxea in jatetxe %}
-        <input id="latitud" type="hidden" value="{{jatetxea.latitud}}" >
-        <input id="longitud" type="hidden" value="{{jatetxea.longitud}}" >
-        {% endfor %}
-    </div>
-
 </section>
+{% block page_scripts %}
+<script type="text/javascript" src="{% static 'scripts/scriptJatetxea.js' %}"></script>
 {% endblock %}
 {% endblock content %}
