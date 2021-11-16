@@ -83,25 +83,21 @@ def post_hiriak(request):
     jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria).filter(mota__icontains = mota)
     filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
-idJatetxe = 0
+idArray = []
 def show_jatetxea(request):
-    idArray = []
     id = request.GET.get('id', None)
     if(id is not None):
         idArray.append(id)
-        idJatetxe = idArray[0]
     motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
     motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
     jatetxea = Jatetxea.objects.filter(id= id)
     iruzkinak = Iruzkina.objects.filter(jatetxea_id= id)
     produktuak = (Produktua.objects.filter(jatetxea=id).annotate(dcount=Count('mota')).order_by())
-    for x in idArray:
-        print(x)
     if request.method == 'POST':
         inputResena = request.POST.get('inputResena')
         ratio = request.POST.get('ratio')
         userid = request.user.id
-        iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=idJatetxe)
+        iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=idArray[0])
         iruzkina.save()
         return HttpResponseRedirect('/')
     return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak,"iruzkinak":iruzkinak})
