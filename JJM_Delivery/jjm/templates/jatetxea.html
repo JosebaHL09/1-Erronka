@@ -9,31 +9,33 @@
             <h1>{{jatetxea.izena}}</h1>
             <div class="fotoResena"><b>{{user.first_name}} {{user.last_name}}</b><br><span>Este contenido sera
                     publico</span></div>
-            <form method="POST" action="{% url 'show_jatetxea' %}">{% csrf_token %}
+            <form method="POST" action="{% url 'show_jatetxea' %}" autocomplete="off" role="form" name="formuIr" onsubmit="this.submit(); this.reset(); return false;">{% csrf_token %}
                 <div class="rating">
-                    <input type="radio" name="rating" id="rating-5" value="5">
+                    <input type="radio" name="rating" id="rating-5" value="5" autocomplete='off'>
                     <label for="rating-5"></label>
-                    <input type="radio" name="rating" id="rating-4" value="4">
+                    <input type="radio" name="rating" id="rating-4" value="4" autocomplete='off'>
                     <label for="rating-4"></label>
-                    <input type="radio" name="rating" id="rating-3" value="3">
+                    <input type="radio" name="rating" id="rating-3" value="3" autocomplete='off'>
                     <label for="rating-3"></label>
-                    <input type="radio" name="rating" id="rating-2" value="2">
+                    <input type="radio" name="rating" id="rating-2" value="2" autocomplete='off'>
                     <label for="rating-2"></label>
-                    <input type="radio" name="rating" id="rating-1" value="1">
+                    <input type="radio" name="rating" id="rating-1" value="1" autocomplete='off'>
                     <label for="rating-1"></label>
                 </div>
                 <textarea class="inputResena" id="inputResena" name="inputResena"
-                    placeholder="Comparte detalles de tu experiencia en este lugar "></textarea>
-                <input type="text" style="display: none;" name="ratio" id="ratio">
+                    placeholder="Comparte detalles de tu experiencia en este lugar " autocomplete='off'></textarea>
+                <input type="text" style="display: none;" name="ratio" id="ratio" autocomplete='off'>
+            
                 <div class="buttonsResena">
-                    <button class="cerrar" id="cerrar">Cancelar</button>
+                    <button class="cerrar" type="reset" id="cerrar">Cancelar</button>
                     <button class="publicar" id="publicar" type="submit">Publicar</button>
                 </div>
+
             </form>
         </div>
     </div>
     <div class="banner" id="banner">
-        <h2>{{jatetxea.izena}} {{jatetxea.id}}  </h2>
+        <h2>{{jatetxea.izena}}</h2>
         <h7>1Km · 20-30 min</h7>
         <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg">
 
@@ -79,15 +81,16 @@
 
     </div>
     <div class="resenas" id="resena">
-        <h4>Reseñas</h4><button class="anadirResena" id="anadirResena">Nueva Reseña</button>
-        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
-        <div class="estrella">foto</div>
-        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
-        <div class="estrella">foto</div>
-        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
-        <div class="estrella">foto</div>
-        <div class="foto"><b>Mikel Rey</b><br>"Esta perro Esta perro Esta perro Esta perro Esta perro Esta perro"</div>
-        <div class="estrella">foto</div>
+        <h4>Reseñas</h4> {% if user.is_authenticated %}<button class="anadirResena" id="anadirResena">Nueva Reseña</button>{% else %}   <span class="anadirResena" id="">Saioa hasi iruzkin bat idazteko</span>  
+        {% endif %}
+     
+        {% for iruzkin in iruzkinak %}
+            <div class="foto"><div class="estrella"><b>Mikel Rey</b><div>
+                {% for item in "x"|ljust:iruzkin.kalifikazioa %}
+                   <img src="{% static 'images/AppIcons/icoStar.png' %}">
+                {% endfor %}</div></div>"{{iruzkin.testua}}"</div>
+       
+        {% endfor %}
       
     </div>
 </section>

@@ -69,7 +69,11 @@ $("#anadirResena").on("click",function(){
 })
 $("#cerrar").on("click",function(){
     $("#resenaPop").fadeOut();
+    
 })
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
 var inputRadio=false;
 
 $('input[type=radio][name=rating]').change(function() {

@@ -83,24 +83,22 @@ def post_hiriak(request):
     jatetxea = Jatetxea.objects.filter(helbidea__icontains = hiria).filter(mota__icontains = mota)
     filtroak = (Jatetxea.objects.filter(helbidea__icontains = hiria).values('mota').annotate(dcount=Count('mota')).order_by())   
     return render(request, 'ciudad.html',{"hiria": hiria,"jatetxe":jatetxea,"filtro":filtroak})
-idArray = []
 def show_jatetxea(request):
     id = request.GET.get('id', None)
     if(id is not None):
-        idArray.clear()
-        idArray.append(id)
-    motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
-    motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
-    jatetxea = Jatetxea.objects.filter(id= id)
-    iruzkinak = Iruzkina.objects.filter(jatetxea_id= id)
-    produktuak = (Produktua.objects.filter(jatetxea=id).annotate(dcount=Count('mota')).order_by())
+        request.session['idJat']=id
+    motakAll = (Produktua.objects.filter(jatetxea=request.session['idJat']).values('mota').annotate(dcount=Count('mota')).order_by())
+    motak = (Produktua.objects.filter(jatetxea=request.session['idJat']).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
+    jatetxea = Jatetxea.objects.filter(id= request.session['idJat'])
+    produktuak = (Produktua.objects.filter(jatetxea=request.session['idJat']).annotate(dcount=Count('mota')).order_by())
+    iruzkinak = Iruzkina.objects.filter(jatetxea_id= request.session['idJat'])
     if request.method == 'POST':
+        print("uwu")
         inputResena = request.POST.get('inputResena')
         ratio = request.POST.get('ratio')
         userid = request.user.id
-        iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=idArray[0])
+        iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=request.session['idJat'])
         iruzkina.save()
-        return redirect('../',id=idArray[0])
     return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak,"iruzkinak":iruzkinak})
 
 def get_queryset(request):
