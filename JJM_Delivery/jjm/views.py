@@ -87,6 +87,7 @@ idArray = []
 def show_jatetxea(request):
     id = request.GET.get('id', None)
     if(id is not None):
+        idArray.clear()
         idArray.append(id)
     motakAll = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())
     motak = (Produktua.objects.filter(jatetxea=id).values('mota').annotate(dcount=Count('mota')).order_by())[10:]
@@ -100,7 +101,6 @@ def show_jatetxea(request):
         iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=idArray[0])
         iruzkina.save()
         return redirect('../',id=idArray[0])
-        idArray.clear()
     return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak,"iruzkinak":iruzkinak})
 
 def get_queryset(request):
