@@ -99,7 +99,8 @@ def show_jatetxea(request):
         userid = request.user.id
         iruzkina = Iruzkina.objects.create(testua=inputResena,kalifikazioa=ratio,erabiltzailea_id=userid,jatetxea_id=idArray[0])
         iruzkina.save()
-        return HttpResponseRedirect('/')
+        return redirect('../',id=idArray[0])
+        idArray.clear()
     return render(request, 'jatetxea.html',{"motakAll": motakAll,"motak": motak,"jatetxe":jatetxea,"produktuak":produktuak,"iruzkinak":iruzkinak})
 
 def get_queryset(request):
