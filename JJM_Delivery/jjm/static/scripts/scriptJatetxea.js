@@ -11,7 +11,7 @@ function scrollFunctionJatetxea() {
     }
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-       // $("#resena").hide();
+        // $("#resena").hide();
     }
     if (window.scrollY >= 1) {
         document.getElementById("navbar").style.background = "#FFE48F";
@@ -20,8 +20,8 @@ function scrollFunctionJatetxea() {
     } else {
         $("#jaxlist").removeClass('active');
         //$("#resena").removeClass('fixedResena');
-       $('#banner').removeClass('small');
-       $("#resena").show();
+        $('#banner').removeClass('small');
+        $("#resena").show();
 
 
     }
@@ -31,12 +31,28 @@ function scrollFunctionJatetxea() {
 var li = [];
 var h1 = [];
 $(document).ready(function () {
-    $( "#publicar" ).prop( "disabled", true );
+    $("#publicar").prop("disabled", true);
     var filterList = document.getElementById("jaxlist");
     if ($('#jaxlist ul li').length >= 10) {
         $("#buttonMore").css({ display: "flex" })
     }
     allStorage()
+    var latitudJatetxe = $("#latitud").val()
+    var longitudJatetxe = $("#longitud").val()
+    var latitudeUser = localStorage.getItem('latitude')
+    var longitudeUser = localStorage.getItem('longitude')
+
+    var km = calcCrow(latitudeUser, longitudeUser, latitudJatetxe, longitudJatetxe).toFixed(1)
+    $('#distantzia').last().html(km+" km")
+    var tiempo = km * 5
+
+    if (tiempo > 60) {
+        var hours = Math.floor(tiempo / 60);
+        var minutes = parseInt(tiempo % 60);
+        $("#denbora").last().html(hours + "h " + minutes + " min.");
+    } else {
+        $("#denbora").last().html(tiempo + " min.");
+    }
 
 });
 
@@ -64,32 +80,32 @@ function getOffset(el) {
         top: rect.top + window.scrollY
     };
 }
-$("#anadirResena").on("click",function(){
+$("#anadirResena").on("click", function () {
     $("#resenaPop").fadeIn();
 })
-$("#cerrar").on("click",function(){
+$("#cerrar").on("click", function () {
     $("#resenaPop").fadeOut();
-    
-})
-if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
-}
-var inputRadio=false;
 
-$('input[type=radio][name=rating]').change(function() {
-    
-     $("#ratio").val(this.value)
-    if( $(':radio[name="rating"]:checked').length >0) {
-        inputRadio=true;
+})
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+var inputRadio = false;
+
+$('input[type=radio][name=rating]').change(function () {
+
+    $("#ratio").val(this.value)
+    if ($(':radio[name="rating"]:checked').length > 0) {
+        inputRadio = true;
     }
     if (!$("#myTextArea").val() && inputRadio) {
-        $( "#publicar" ).prop( "disabled", false );
+        $("#publicar").prop("disabled", false);
     }
 });
 
-$('#inputResena').change(function() {
+$('#inputResena').change(function () {
     if (!$("#myTextArea").val() && inputRadio) {
-        $( "#publicar" ).prop( "disabled", false );
+        $("#publicar").prop("disabled", false);
     }
 });
 
@@ -103,4 +119,24 @@ $("#buttonMore").on("click", function () {
         x = true;
     }
 });
+function calcCrow(lat1, lon1, lat2, lon2) {
+    var R = 6371; // km
+    var dLat = toRad(lat2 - lat1);
+    var dLon = toRad(lon2 - lon1);
+    var lat1 = toRad(lat1);
+    var lat2 = toRad(lat2);
+
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c;
+    return d;
+}
+
+// Converts numeric degrees to radians
+function toRad(Value) {
+    return Value * Math.PI / 180;
+}
+
+
 

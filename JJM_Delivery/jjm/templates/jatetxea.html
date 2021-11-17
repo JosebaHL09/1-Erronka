@@ -9,7 +9,8 @@
             <h1>{{jatetxea.izena}}</h1>
             <div class="fotoResena"><b>{{user.first_name}} {{user.last_name}}</b><br><span>Este contenido sera
                     publico</span></div>
-            <form method="POST" action="{% url 'show_jatetxea' %}" autocomplete="off" role="form" name="formuIr" onsubmit="this.submit(); this.reset(); return false;">{% csrf_token %}
+            <form method="POST" action="{% url 'show_jatetxea' %}" autocomplete="off" role="form" name="formuIr"
+                onsubmit="this.submit(); this.reset(); return false;">{% csrf_token %}
                 <div class="rating">
                     <input type="radio" name="rating" id="rating-5" value="5" autocomplete='off'>
                     <label for="rating-5"></label>
@@ -25,7 +26,7 @@
                 <textarea class="inputResena" id="inputResena" name="inputResena"
                     placeholder="Comparte detalles de tu experiencia en este lugar " autocomplete='off'></textarea>
                 <input type="text" style="display: none;" name="ratio" id="ratio" autocomplete='off'>
-            
+
                 <div class="buttonsResena">
                     <button class="cerrar" type="reset" id="cerrar">Cancelar</button>
                     <button class="publicar" id="publicar" type="submit">Publicar</button>
@@ -36,7 +37,7 @@
     </div>
     <div class="banner" id="banner">
         <h2>{{jatetxea.izena}}</h2>
-        <h7>1Km · 20-30 min</h7>
+        <h7><span id="distantzia">1Km</span> · <span id="denbora">20-30</span></h7>
         <img src="/static/images/jatetxeakCut/{{jatetxea.id}}.jpg">
 
     </div>
@@ -45,6 +46,10 @@
         <span class="jat-info price"><img src="{% static 'images/AppIcons/icoBike2.png' %}"
                 loading="lazy"><span>3,93€</span></span>
         <span class="jat-adreess">{{jatetxea.helbidea}} · {{jatetxea.telefonoa}} · {{jatetxea.mota}}</span>
+        <div>
+            <input id="latitud" type="hidden" value="{{jatetxea.latitud}}" >
+            <input id="longitud" type="hidden" value="{{jatetxea.longitud}}" >
+        </div>
         {% endfor %}
         <div class="jat-filter" id="jaxlist">
             <ul class="list1">
@@ -68,8 +73,11 @@
                 {% for produktua in produktuak %}
                 {% if produktua.mota == mot.mota %}
                 <div class="card"><img src="/{{produktua.img_path}}" loading="lazy"><span
-                        class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span><button
+                        class="spanInfo"><b>{{produktua.izena}}</b><br>{{produktua.prezioa}} €</span>
+                    {% if user.is_authenticated %}
+                    <button
                         onclick="addCarrito('{{produktua.id}}','{{produktua.izena}}','{{produktua.prezioa}}')">+</button>
+                    {% endif %}
                 </div>
                 {% endif %}
                 {% endfor %}
@@ -77,21 +85,27 @@
 
         </div>
         {% endfor %}
-       
+
 
     </div>
     <div class="resenas" id="resena">
-        <h4>Reseñas</h4> {% if user.is_authenticated %}<button class="anadirResena" id="anadirResena">Nueva Reseña</button>{% else %}   <span class="anadirResena" id="">Saioa hasi iruzkin bat idazteko</span>  
+        <h4>Reseñas</h4> {% if user.is_authenticated %}<button class="anadirResena" id="anadirResena">Nueva
+            Reseña</button>{% else %} <span class="anadirResena" id="">Saioa hasi iruzkin bat idazteko</span>
         {% endif %}
-     
+
         {% for iruzkin in iruzkinak %}
-            <div class="foto"><div class="estrella"><b>Mikel Rey</b><div>
-                {% for item in "x"|ljust:iruzkin.kalifikazioa %}
-                   <img src="{% static 'images/AppIcons/icoStar.png' %}">
-                {% endfor %}</div></div>"{{iruzkin.testua}}"</div>
-       
+        <div class="foto">
+            <div class="estrella"><b>{{iruzkin.username}}</b>
+                <div>
+                    {% for item in "x"|ljust:iruzkin.kalifikazioa %}
+                    <img src="{% static 'images/AppIcons/icoStar.png' %}">
+                    {% endfor %}
+                </div>
+            </div>"{{iruzkin.testua}}"
+        </div>
+
         {% endfor %}
-      
+
     </div>
 </section>
 {% block page_scripts %}
