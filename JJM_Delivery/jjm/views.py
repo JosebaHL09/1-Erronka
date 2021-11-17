@@ -1,7 +1,9 @@
+from datetime import date
 from json import dumps
 import json
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.http import *
 from django.shortcuts import render, redirect
@@ -126,10 +128,18 @@ def kmRange(request):
 
     return render(request, 'rangoJatetxeak.html',{"restautantes":restaurantesenRango} )
 
+@login_required(login_url='/')
 def resumenCompra(request):
+    if request.method == 'POST':
+        helbidea = request.POST.get('helbidea')
+        telefonoa = request.POST.get('telefonoa')
+        erosketaarray = request.POST.get('erosketa').split(';')
+        saskia = Saskia.objects.create(helbidea=helbidea,telefonoa=telefonoa,data=date.today(),erabiltzailea_id=request.user.id)
+        saskia.save()
+        for x in erosketaarray:
+            erosketa=Erosketa.objects.create(kantitatea=x.split('-')[0],produktua_id=x.split('-')[1],saskia_id=saskia.id)
+            erosketa.save()
     return render(request, 'resumenPedido.html')
-
-
 def getDistance(lati1,long1,lati2,long2):
     R = 6373.0
 

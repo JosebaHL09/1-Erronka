@@ -325,8 +325,9 @@ $(function () {
         total = precioFinal()
         if ($(".kantitateaInput")[0]) {
             document.getElementById("preciofinal").innerHTML = total
-            alert("Total a pagar: " + total)
-            limpiarCarrito()
+            location.href = "../resumen"
+            //alert("Total a pagar: " + total)
+            //limpiarCarrito()
         } else {
             $('#cubiertos').prop('checked', false);
             alert("No has comprado nada pedazo de mono")
