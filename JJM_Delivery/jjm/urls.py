@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^logout/', views.logoutUser, name='logout'),
     url(r'^register/', views.registerUser, name='register'),
     url(r'^kmrange/', views.kmRange, name='kmrange'),  
+    url(r'^resumen/', views.resumenCompra, name='resumen'),  
     #url(r'^get_hiriakMap/', views.get_hiriakMap, name='get_hiriakMap'),
 
 ]

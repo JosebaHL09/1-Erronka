@@ -126,6 +126,8 @@ def kmRange(request):
 
     return render(request, 'rangoJatetxeak.html',{"restautantes":restaurantesenRango} )
 
+def resumenCompra(request):
+    return render(request, 'resumenPedido.html')
 
 
 def getDistance(lati1,long1,lati2,long2):

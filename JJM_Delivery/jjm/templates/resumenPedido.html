@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/stylesResumen.css' %}">
+<section class="section one" id="home-section">
+    <div class="contentResumen">
+        <div><button class="botonAtras" id="botonAtras" ></button><h7>Resumen del pedido</h7><br><h2>Amelie Coffe</h2></div>
+        <div class="subcontent">
+            <div class="resumenPedido" id="resumenPedido">
+                <div class="tituloResumen">
+                    <span>Resumen</span><span class="imagen"></span>
+                </div>
+                <div class="resumen">
+                    <div>Productos</div>
+                    <div>4,50€</div>
+                </div>
+                <div class="resumen">
+                    <div>Entrega y tarifas</div>
+                    <div>4,50€</div>
+                </div>
+                <div class="resumen">
+                    <div>Suplemento de cubiertos</div>
+                    <div>1,50€</div>
+                </div>
+                <div class="resumen uwu">
+                    <div>Total</div>
+                    <div>6,50€</div>
+                </div>
+                <span class="repartidores">Los repartidores ganan de media entre 4 € y 5 € por cada pedido que entregan, más propinas.</span>
+                <button class="confirmarPedido">Confirmar pedido</button>
+            </div>
+            <div class="leftContent">
+                <span class="a">1 producto de <b>Green Coffe</b></span>
+
+                <ul class="resumenDeProductos">
+                    <li><span class="nombreProducto"><b>2</b> UWU</span><span>4,19€</span></li>
+                    <li><span class="nombreProducto"><b>2</b> UWU</span><span>4,19€</span></li>
+                    <li><span class="nombreProducto"><b>2</b> UWU</span><span>4,19€</span></li>
+                    <li><span class="nombreProducto"><b>2</b> UWU</span><span>4,19€</span></li>
+
+                </ul>
+
+                <br>
+                <h1>Detalles de la entrega</h1>
+                <br>
+                    <div class="inputDireccion">
+                        <span class="calle"></span><input type="text" placeholder="Añade direccion de entrega">
+                    </div>
+                    <div class="inputDireccion">
+                        <span class="tel"> </span><input type="text" placeholder="Añade tu numero de telefono">
+                    </div>
+                    <div class="inputDireccion">
+                        <span class="dateImg"> </span><input type="text" id="programar" placeholder="Programa tu pedido">
+                    </div>
+                <br>
+                <h1>Metodos de pago</h1>
+                <br>
+                <div class="metodoPago">
+                    <div class="numeroTarjeta"> <span class="cardImg"></span><input type="text" class="card"  placeholder="Numero de tarjeta"></div>
+                    <div class="fechaCadu"> <span class="dateImg"></span><input type="text" class="date" placeholder="Fecha caducidad"></div>
+                    <div class="ccv"> <span class="keyImg"></span><input type="text" class="key" placeholder="CCV"></div>
+                    <div class="nombreTarjeta"> <span class="nameImg"></span><input type="text" class="nombreCard" placeholder="Nombre"></div>
+                </div>
+             
+            </div>
+        </div>
+      
+    </div>
+
+</section>
+
+{% block page_scripts %}
+<script type="text/javascript" src="{% static 'scripts/scriptResumen.js' %}"></script>
+{% endblock %}
+{% endblock content %}
