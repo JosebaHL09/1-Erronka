@@ -97,8 +97,10 @@
     margin: 2% auto;
     border: none;
     border-radius: 20px;
-    display: flex;
     cursor: pointer;
+    display: block;
+    width: 50%;
+  
 }
 .subcontent{
     position: absolute;
@@ -232,4 +234,38 @@ input:focus{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+input.invalid{
+	border-bottom: 1px solid red !important;
+}
+
+input.valid{
+	border-bottom: 1px solid #4fa03b !important;
+}
+.confirm{
+    height: 50vh !important;
+}
+.contentConfim{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    height: 30vh;
+    color: white;
+    background: #4c8f3b;
+    position: relative;
+    top: 18%;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 2rem 0;
+}
+.contentConfim > * {
+    display: block;
+    color: white;
+
+
+}
+.calle{
+    font-size: 1.5rem;
+    font-weight: bold;
 }

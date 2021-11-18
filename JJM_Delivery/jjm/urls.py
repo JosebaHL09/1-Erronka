@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^register/', views.registerUser, name='register'),
     url(r'^kmrange/', views.kmRange, name='kmrange'),  
     url(r'^resumen/', views.resumenCompra, name='resumen'),  
+     url(r'^confirmacion/', views.confirmacion, name='confirmacion'),  
     #url(r'^get_hiriakMap/', views.get_hiriakMap, name='get_hiriakMap'),
 
 ]

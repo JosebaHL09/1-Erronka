@@ -3,13 +3,13 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesResumen.css' %}">
 <section class="section one" id="home-section">
-
+   
     <div class="contentResumen">
         <div><button class="botonAtras" id="botonAtras"></button>
             <h7>Resumen de tu pedido en</h7><br>
             <h2>JJ&M Delivery</h2>
         </div>
-        <form method="POST" action="{% url 'resumen' %}">{% csrf_token %}
+        <form method="POST" action="{% url 'resumen' %}" autocomplete="off">{% csrf_token %}
             <div class="subcontent">
                 <div class="resumenPedido" id="resumenPedido">
                     <div class="tituloResumen">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="resumen">
                         <div>Productos</div>
-                        <div id="totalProductos">4,50€</div>
+                        <div id="totalProductos">0€</div>
                     </div>
                     <div class="resumen">
                         <div>Entrega y tarifas</div>
@@ -34,7 +34,7 @@
                     <span class="repartidores">Los repartidores ganan de media entre 4 € y 5 € por cada pedido que
                         entregan,
                         más propinas.</span>
-                    <button type="submit" class="confirmarPedido">Confirmar pedido</button>
+                    <button class="confirmarPedido" id="confirmarPedido">Confirmar pedido</button>
                 </div>
                 <div class="leftContent">
                     <span class="a">Tienes un total de <b id="contadorProductos">0</b> productos</span>
@@ -49,23 +49,23 @@
                         <span class="calle"></span><input type="text" name="helbidea" id="helbidea" placeholder="Añade direccion de entrega" required>
                     </div>
                     <div class="inputDireccion">
-                        <span class="tel"> </span><input type="number"  name="telefonoa" id="telefonoa" placeholder="Añade tu numero de telefono" min="111111111" max="999999999" title="Sartu telefono zenbaki egoki bat" required>
+                        <span class="tel"> </span><input type="number"  name="telefonoa" id="telefonoa" placeholder="Añade tu numero de telefono"  title="Sartu telefono zenbaki egoki bat" required>
                     </div><input type="text" style="display: none;" name="erosketa" id="erosketa">
                     <div class="inputDireccion">
-                        <span class="dateImg"> </span><input type="text" id="programar" 
+                        <span class="dateImg"> </span><input type="text" id="programar" name="setTodaysDate"
                             placeholder="Programa tu pedido" required>
                     </div>
                     <br>
                     <h1>Metodos de pago</h1>
                     <br>
                     <div class="metodoPago">
-                        <div class="numeroTarjeta"> <span class="cardImg"></span><input type="text" class="card"
+                        <div class="numeroTarjeta"> <span class="cardImg"></span><input type="text" class="card" id="card"
                                 placeholder="Numero de tarjeta" required></div>
-                        <div class="fechaCadu"> <span class="dateImg"></span><input type="text" class="date"
+                        <div class="fechaCadu"> <span class="dateImg"></span><input type="text" class="date" id="dateCard"
                                 placeholder="Fecha caducidad" required></div>
-                        <div class="ccv"> <span class="keyImg"></span><input type="text" class="key" placeholder="CCV" required> 
+                        <div class="ccv"> <span class="keyImg"></span><input type="text" class="key" placeholder="CCV" id="ccv" required> 
                         </div>
-                        <div class="nombreTarjeta"> <span class="nameImg"></span><input type="text" class="nombreCard"
+                        <div class="nombreTarjeta"> <span class="nameImg"></span><input type="text" class="nombreCard" id="nombreCard"
                                 placeholder="Nombre" required></div>
                     </div>
 

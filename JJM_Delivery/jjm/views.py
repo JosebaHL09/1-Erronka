@@ -139,7 +139,13 @@ def resumenCompra(request):
         for x in erosketaarray:
             erosketa=Erosketa.objects.create(kantitatea=x.split('-')[0],produktua_id=x.split('-')[1],saskia_id=saskia.id)
             erosketa.save()
+            return render(request, 'confirmacion.html',{"calle":helbidea})
     return render(request, 'resumenPedido.html')
+
+@login_required(login_url='/')
+def confirmacion(request):   
+    return render(request, 'confirmacion.html')
+
 def getDistance(lati1,long1,lati2,long2):
     R = 6373.0
 

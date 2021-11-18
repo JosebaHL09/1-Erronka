@@ -521,8 +521,6 @@ function scrollFunctionResumen() {
 $("#programar").click(function () {
   $(this).prop('type', 'date');
 
-
-
 })
 
 function getOffset(el) {
@@ -532,6 +530,9 @@ function getOffset(el) {
     top: rect.top + window.scrollY
   };
 }
+
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("setTodaysDate")[0].setAttribute('min', today);
 
 function cargarLista() {
   $(".resumenDeProductos").empty();
@@ -551,9 +552,99 @@ function cargarLista() {
     guztira+=6
     $('#contadorProductos').text(contador)
     $('#preciofinalresumen').text(guztira+"€")
+
   }
 
 }
+$("#confirmarPedido").click(function( event ) {
+    localStorage.clear()
+    $("#confirmarPedido").submit()
+  
+ });
+
+
 if (window.history.replaceState) {
   window.history.replaceState(null, null, window.location.href);
 }
+$(document).ready(function () {
+  $(".confirmarPedido").css("pointer-events", "none");
+  $(".confirmarPedido").css("background-color", " #C4C6C7");
+  var calle = false;
+  var tel = false;
+  var date = false;
+  var tarjeta = false;
+  var ccv = false;
+  var fechacadu = false;
+  var nombre = false;
+  $('#helbidea').on('input', function () {
+      var input = $(this);
+      if(input.val() != null){
+        input.removeClass("invalid").addClass("valid"); calle = true; 
+      }else{
+        input.removeClass("valid").addClass("invalid"); calle = false;
+      }
+  });
+  $('#telefonoa').on('input', function () {
+      var input = $(this);
+      var re = /^([6-9]{1}[0-9]{8})$/;
+      var is_name = re.test(input.val());
+      if (is_name) { input.removeClass("invalid").addClass("valid"); tel = true; }
+      else { input.removeClass("valid").addClass("invalid"); tel = false; }
+  });
+  $('#programar').on('input', function () {
+    var input = $(this);
+    if(input.val() != null){
+      input.removeClass("invalid").addClass("valid"); date = true; 
+    }else{
+      input.removeClass("valid").addClass("invalid"); date = false;
+    }
+  });
+  $('#dateCard').on('input', function () {
+    var input = $(this);
+    if(input.val() != null){
+      input.removeClass("invalid").addClass("valid"); fechacadu = true; 
+    }else{
+      input.removeClass("valid").addClass("invalid"); fechacadu = false;
+    }
+  });
+  $('#ccv').on('input', function () {
+    var input = $(this);
+    alert('a')
+    if(input.val() != null){
+      input.removeClass("invalid").addClass("valid"); ccv = true; 
+    }else{
+      input.removeClass("valid").addClass("invalid"); ccv = false;
+    }
+  });
+  $('#card').on('input', function () {
+    var input = $(this);
+    if(input.val() != null){
+      input.removeClass("invalid").addClass("valid"); tarjeta = true; 
+    }else{
+      input.removeClass("valid").addClass("invalid"); tarjeta = false;
+    }
+});
+
+  $('#nombreCard').on('input', function () {
+      var input = $(this);
+      var re = /^([[A-Za-z0-9]{1,20})$/;
+      var is_email = re.test(input.val());
+      if (is_email) { input.removeClass("invalid").addClass("valid"); nombre = true; }
+      else { input.removeClass("valid").addClass("invalid"); nombre = false; }
+  
+  });
+
+  
+  $("input").on('input', function () {
+
+      if (nombre && date && tel && calle) {
+        $(".confirmarPedido").css("pointer-events", "auto");
+        $(".confirmarPedido").css("background-color", " #f5a111");
+      } else {
+        $(".confirmarPedido").css("pointer-events", "none");
+        $(".confirmarPedido").css("background-color", " #C4C6C7");
+      }
+  })
+
+
+});
