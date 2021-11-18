@@ -52,6 +52,9 @@ def registerUser(request):
         return render(request, 'register.html')
     context = {}
     return render(request, 'register.html', context)
+def historialCompra(request):
+
+    return HttpResponseRedirect('/')
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:9]
     tenjatetxeak = last_ten.values('jatetxea_id')

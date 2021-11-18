@@ -548,6 +548,7 @@ function cargarLista() {
       $(".resumenDeProductos").append("<li><span class='nombreProducto'><b>"+element.kantitatea+"</b> "+element.izena+"</span><span>"+(element.price * element.kantitatea)+"€</span></li>")
     }); 
     $('#erosketa').val(erosketa.join(';'))
+    $('#totalProductos').text(guztira+"€")
     guztira+=6
     $('#contadorProductos').text(contador)
     $('#preciofinalresumen').text(guztira+"€")

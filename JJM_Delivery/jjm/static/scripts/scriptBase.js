@@ -252,7 +252,6 @@ function addCarrito(idprod, izena, price) {
     var id = document.getElementById(idprod)
     var precioCarrito = parseInt($('#preciofinal').text())
     if (kantitatea == 0) {
-        alert("Como vas a comprar nada de algo???")
     } else if (id) {
         moreQty(idprod)
     } else {
@@ -330,7 +329,6 @@ $(function () {
             //limpiarCarrito()
         } else {
             $('#cubiertos').prop('checked', false);
-            alert("No has comprado nada pedazo de mono")
             document.getElementById("preciofinal").innerHTML = 0
         }
     })
