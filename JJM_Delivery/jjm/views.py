@@ -24,6 +24,7 @@ def loginUser(request):
         user = authenticate(request, username=erabiltzailea, password=pasahitza)
         if user is not None:
             login(request, user)
+            request.session['userId']=user.id
             return HttpResponseRedirect('/')
 
     return render(request, 'index.html')
@@ -39,9 +40,15 @@ def registerUser(request):
         mail = request.POST.get('mail')
         erabiltzailea = request.POST.get('erabiltzailea')
         pasahitza = request.POST.get('pasahitza')
-        if User.objects.filter(username=erabiltzailea).exists() or User.objects.filter(email=mail).exists():
-            print('Username or mail  taken')
-            return render(request, 'register.html')
+        if User.objects.filter(email=mail).exists() and User.objects.filter(username=erabiltzailea).exists():
+            context = {"errorMail": " en uso, cambielo","errorUsername":" en uso, cambielo"}
+            return render(request, 'index.html',context)
+        elif User.objects.filter(email=mail).exists():
+            context = {"errorMail": "en uso, cambielo"}
+            return render(request, 'index.html', context)
+        elif User.objects.filter(username=erabiltzailea).exists():
+            context = {"errorUsername": "en uso, cambielo"}
+            return render(request, 'index.html', context)
         else:
             user = User.objects.create_user(username=erabiltzailea,password=pasahitza,email=mail,first_name=izena,last_name=abizena)
             user.save()
@@ -49,12 +56,9 @@ def registerUser(request):
             login(request,user)
             return HttpResponseRedirect('/')
     else:
-        return render(request, 'register.html')
-    context = {}
-    return render(request, 'register.html', context)
-def historialCompra(request):
-
-    return HttpResponseRedirect('/')
+        return render(request, 'index.html')
+  
+    
 def index (request):
     last_ten = Produktua.objects.all().order_by('id')[:9]
     tenjatetxeak = last_ten.values('jatetxea_id')
@@ -98,7 +102,6 @@ def show_jatetxea(request):
     produktuak = (Produktua.objects.filter(jatetxea=request.session['idJat']).annotate(dcount=Count('mota')).order_by())
     iruzkinak = Iruzkina.objects.raw('SELECT jjm_iruzkina.id AS id, jjmdb.auth_user.username, jjmdb.jjm_iruzkina.testua, jjm_iruzkina.kalifikazioa FROM jjmdb.jjm_iruzkina INNER JOIN jjmdb.auth_user ON jjmdb.auth_user.id = jjmdb.jjm_iruzkina.erabiltzailea_id WHERE jjmdb.jjm_iruzkina.jatetxea_id = %s' %(request.session['idJat']))
     if request.method == 'POST':
-        print("uwu")
         inputResena = request.POST.get('inputResena')
         ratio = request.POST.get('ratio')
         userid = request.user.id
@@ -148,6 +151,12 @@ def resumenCompra(request):
 @login_required(login_url='/')
 def confirmacion(request):   
     return render(request, 'confirmacion.html')
+
+
+
+def error_404_view():
+    return render('404error.html')
+
 
 def getDistance(lati1,long1,lati2,long2):
     R = 6373.0

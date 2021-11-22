@@ -33,14 +33,21 @@
             <div class="filter-price">
                 <div id="slider-range" class="slider" ></div>
             </div>
+          
+         
             {% for jatetxea in jatetxe %}   
             <div class="restaurant" id="{{jatetxea.id}}">
+                
                 <img src="/{{jatetxea.img_path}}" loading="lazy" class="image">
                 <h5 class="izena">{{jatetxea.izena}}</h5>
                 <h7 class="mota">{{jatetxea.mota}}</h7></img>
-                <div class="restaurant-val">
-                    <img src="{% static 'images/AppIcons/icoLike.png' %}" loading="lazy"><span>91%<span style="color: #C4C6C7;"> (350)</span></span>
-                </div>
+                {% load average %} 
+                {% average jatetxea as page_list%}
+                {% for eros in page_list %}
+                    <div class="restaurant-val">
+                        <img src="{% static 'images/AppIcons/icoLike.png' %}" loading="lazy"><span>{{eros.Kalifikazioa|floatformat:2}}<span style="color: #C4C6C7;">&ensp; ({{eros.Count}})</span></span>
+                    </div>
+                    {% endfor %}
                 <h1 class="latitud" style="display: none;">{{jatetxea.latitud}} </h1>
                 <h1 class="longitud" style="display: none;">{{jatetxea.longitud}} </h1> 
                 <h1 class="telefonoa" style="display: none;">{{jatetxea.telefonoa}} </h1>

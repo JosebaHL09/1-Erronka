@@ -56,13 +56,14 @@
                 {% for mota10 in motakAll|slice:"10" %}
                 <li> <a href="#{{mota10.mota}}">{{mota10.mota}}</a></li>
                 {% endfor %}
-                <li><button id="buttonMore" class="buttonMore">Mas <img
-                            src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></button></li>
+                <li><div id="buttonMore" class="buttonMore" >Mas <img
+                            src="{% static 'images/AppIcons/icoArrow.png' %}" loading="lazy"></img></div></li>
 
             </ul>
-            <ul class="more-filter" id="more-filter">
+            <ul class="more-filter" id="more">
+                
                 {% for mota in motak %}
-                <li>{{mota.mota}}</li>
+                <li><a href="#{{mota.mota}}">{{mota.mota}}</a></li>
                 {% endfor %}
             </ul>
         </div>

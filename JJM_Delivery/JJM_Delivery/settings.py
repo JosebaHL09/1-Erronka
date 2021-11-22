@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'jjmDB',
         'USER': 'erabiltzailea',
         'PASSWORD': '1234',
-        'HOST': '192.168.73.6',
+        'HOST': '192.168.73.99',
         'PORT': '3306',
     }
 }

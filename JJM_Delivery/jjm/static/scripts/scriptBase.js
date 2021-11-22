@@ -152,6 +152,12 @@ $("#nav__link3").click(function (event) {
 $("#closeRegister").click(function (event) {
     $(".popRegister").fadeOut();
 });
+$("#history").click(function (event) {
+    $(".popHistorial").show();
+})
+$("#closeRegister").click(function (event) {
+    $(".popRegister").fadeOut();
+});
 $(document).ready(function () {
     $(".btn").prop("disabled", true);
     var nombre = false;

@@ -31,6 +31,7 @@ function scrollFunctionJatetxea() {
 var li = [];
 var h1 = [];
 $(document).ready(function () {
+    
     $("#publicar").prop("disabled", true);
     var filterList = document.getElementById("jaxlist");
     if ($('#jaxlist ul li').length >= 10) {
@@ -109,14 +110,21 @@ $('#inputResena').change(function () {
     }
 });
 
-var x = true;
-$("#buttonMore").on("click", function () {
-    if (x) {
-        $("#more-filter").addClass('importantRule');
-        x = false;
-    } else {
-        $("#more-filter").removeClass('importantRule');
-        x = true;
+
+$("#buttonMore").on("click", function () { 
+   
+        $("#more").show()
+       
+   
+   
+});
+$(document).mouseup(function(e) 
+{
+    var container = $("#more");
+
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
     }
 });
 function calcCrow(lat1, lon1, lat2, lon2) {

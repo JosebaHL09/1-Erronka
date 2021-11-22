@@ -28,12 +28,15 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script
+    src="https://kit.fontawesome.com/66aa7c98b3.js"
+    crossorigin="anonymous"
+  ></script>
     <title>J.J&M Delivery</title>
 
 </head>
 
 <body oncontextmenu="return false;">
-  
     <header id="header">
         <div class="smalllogo">
             <a href="{% url 'jjm_index' %}" class="logolink">
@@ -82,8 +85,8 @@
                             <label style="color:#E5E5E5;">En nuestra familia desde</label><br>
                             <label>{{user.date_joined}}</label><br>
                         </span>
-                        <span class="welcome nombre">
-                            <a href="{% url 'history' %}" id="logout">Erosketen historiala</a><br><br>
+                        <span class="welcome links">
+                            <a  id="history">Erosketen historiala</a>
                             <a href="{% url 'logout' %}" id="logout">Saioa Itxi</a>
                         </span>
                     </div>
@@ -135,6 +138,22 @@
             </ul>
         </nav>
     </header>
+    {% if user.is_authenticated %}
+    <div class="popHistorial" id="popHistorial">
+        <div class="popHistorial-content">
+            {% load historial %} 
+            {% showHistorial user as page_list %}
+            {% for eros in page_list %}
+            <br>
+                <h4>{{eros.data|date:"M d, Y" }}</h4><br>
+                <div class="produktoHistorial">
+                    <img src="{{eros.img_path}}"><span class="datosFinos"><b>{{eros.izena}}</b><br><p>{{eros.kantitatea}} · {{eros.prezioa}}€</p></span>
+                    <span class="nombreRestaurante">{{eros.jatizena}}</span>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+    {% endif %}
     <div class="popRegister">
         <div class="containerRegister">
             <h1>Registrate en J.J. & M</h1>
@@ -170,11 +189,11 @@
                 </div>
                 <div class="formulario">
                     <div class="email" id="email"></div>
-                    <input type="email" placeholder="Email" id="mail" name="mail" autocomplete="off" required>
+                    <input type="email" placeholder="Email {{errorMail}}" id="mail" name="mail" autocomplete="off" required >
                 </div>
                 <div class="formulario">
                     <div class="user" id="user"></div>
-                    <input type="text" placeholder="Usuario" id="erabiltzailea" name="erabiltzailea" autocomplete="off"
+                    <input type="text" placeholder="Usuario {{errorUsername}}" id="erabiltzailea" name="erabiltzailea" autocomplete="off"
                         required>
                 </div>
                 <input class="btn" id="btn" type="submit" value="Registrarse"></input>

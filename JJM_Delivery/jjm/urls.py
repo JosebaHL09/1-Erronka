@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from django.conf.urls import handler404
 
 
 urlpatterns = [
@@ -12,7 +13,7 @@ urlpatterns = [
     url(r'^register/', views.registerUser, name='register'),
     url(r'^kmrange/', views.kmRange, name='kmrange'),  
     url(r'^resumen/', views.resumenCompra, name='resumen'),  
-     url(r'^confirmacion/', views.confirmacion, name='confirmacion'),  
+    url(r'^confirmacion/', views.confirmacion, name='confirmacion'),
     #url(r'^get_hiriakMap/', views.get_hiriakMap, name='get_hiriakMap'),
-
+    
 ]

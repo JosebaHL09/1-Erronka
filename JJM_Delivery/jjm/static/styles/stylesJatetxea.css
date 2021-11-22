@@ -104,7 +104,7 @@
     text-overflow: ellipsis;
 
 }
-.jat-filter ul{
+.jat-filter .list1{
     display: flex;
     justify-content: flex-start;
 }
@@ -140,8 +140,8 @@
     background-color: white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 1rem;
-    display: none !important;
     z-index: 999;
+    display: none;
 }
 .importantRule{
     display: grid !important;
@@ -149,6 +149,8 @@
 .more-filter li{
     margin: 2% 0;
 }
+
+
 .active{
     background-color: white;
     position: fixed !important;
@@ -227,8 +229,10 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     object-fit: cover;
+    
 
 }
+
 .card button{
     background-color: #FFB600;
     border: none;
