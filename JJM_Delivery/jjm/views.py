@@ -1,13 +1,18 @@
 from datetime import date
+from email.message import EmailMessage
 from json import dumps
 import json
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
+from django.core.mail import EmailMultiAlternatives
 from django.http import *
 from django.shortcuts import render, redirect
 from django.db.models import Count
+from django.template.loader import get_template, render_to_string
+
+from JJM_Delivery import settings
 from .forms import *
 from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
@@ -145,6 +150,7 @@ def resumenCompra(request):
         for x in erosketaarray:
             erosketa=Erosketa.objects.create(kantitatea=x.split('-')[0],produktua_id=x.split('-')[1],saskia_id=saskia.id)
             erosketa.save()
+            send_email2(request.user.email)
             return render(request, 'confirmacion.html',{"calle":helbidea})
     return render(request, 'resumenPedido.html')
 
@@ -152,6 +158,21 @@ def resumenCompra(request):
 def confirmacion(request):   
     return render(request, 'confirmacion.html')
 
+def send_email2(mail):
+    context = {'mail': mail}
+    print("prueba email2:"+mail)
+    template = get_template('correo.html')
+    content = template.render(context)
+    email = EmailMultiAlternatives(
+        ' JJ&M Delivery Ticket',
+        'iepa',
+        settings.EMAIL_HOST_USER,
+        [mail],
+    )
+
+    print(settings.EMAIL_HOST_USER + " pueba email")
+    email.attach_alternative(content, 'text/html')
+    email.send()
 
 
 def error_404_view():

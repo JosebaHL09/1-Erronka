@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'jjmDB',
         'USER': 'erabiltzailea',
         'PASSWORD': '1234',
-        'HOST': '192.168.73.99',
+        'HOST': '192.168.73.6',
         'PORT': '3306',
     }
 }
@@ -137,3 +137,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jjmdeliveryinfo@gmail.com'
+#EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'erabil1234'
+EMAIL_USE_TLS = True

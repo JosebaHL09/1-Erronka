@@ -15,7 +15,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="icon"  href="../../jjm/static/images/AppIcons/logo_small.png" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/AppIcons/logo.svg' %}"/>
+
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -82,7 +83,7 @@
                         <span class="welcome nombre">
                             <label style="color:#E5E5E5;">Erabiltzailea</label><br>
                             <label>{{user.username}}</label><br>
-                            <label style="color:#E5E5E5;">En nuestra familia desde</label><br>
+                            <label style="color:#E5E5E5;">Gure familian</label><br>
                             <label>{{user.date_joined}}</label><br>
                         </span>
                         <span class="welcome links">
@@ -92,19 +93,23 @@
                     </div>
                 </li>
                 <li class="nav__item dropdown">
-                    <button class="buttonShop" id="buttonShop">Carrito · <span id="contador">0</span></button>
+                    <button class="buttonShop" id="buttonShop">Carritoa · <span id="contador">0</span></button>
                     <div id="myDropdown" class="dropdown-content">
                         <div class=".title">
-                            <h1>Tu pedido</h1>
-                            <h4>De <span>JJ&M</span></h4>
+                            <h1>Zure eskaera</h1>
+                            <h4><span>JJ&M</span></h4>
                         </div>
                         <div class="divExtra">
-                            <label for="cubiertos">Pedir cubiertos, pajitas, etc.</label>
+                            <label for="cubiertos">
+                                Mahai-tresnak, lastotxoak eta abar eskatu.
+                                </label>
                             <input type="checkbox" id="cubiertos" name="cubiertos" value="cubiertos">
                             
                         </div>
                         <div class="totalCarrito">
-                            <p>Siguiente pago: <span id="preciofinalDolar">€</span><span id="preciofinal">0</span> </p>
+                            <p>
+                                Hurrengo ordainketa:
+                                 <span id="preciofinalDolar">€</span><span id="preciofinal">0</span> </p>
                         </div>
                     </div>
                 </li>
@@ -120,12 +125,12 @@
                         <form method="POST" action="{% url 'login' %}">{% csrf_token %}
                             <div class="formulario">
                                 <div class="user" id="userImg"></div>
-                                <input type="text" placeholder="Usuario" id="userLogin" name="userLogin"
+                                <input type="text" placeholder="Erabiltzailea" id="userLogin" name="userLogin"
                                     autocomplete="off" required>
                             </div>
                             <div class="formulario">
                                 <div class="pass1" id="passImg"></div>
-                                <input type="password" placeholder="Contraseña" id="pasLogin" name="pasLogin"
+                                <input type="password" placeholder="Pasahitza" id="pasLogin" name="pasLogin"
                                     autocomplete="off" required>
                             </div>
                             <input class="btnLogin" type="submit" value="Iniciar sesion">
@@ -164,24 +169,24 @@
                 </div>
                 <div class="formulario">
                     <div class="name" id="name"></div>
-                    <input type="text" placeholder="Nombre" id="nombre" name="izena" autocomplete="off" required>
+                    <input type="text" placeholder="Izena" id="nombre" name="izena" autocomplete="off" required>
                     <span class="error">This field is required</span>
                 </div>
                 <div class="formulario">
                     <div class="lastname" id="lastname"></div>
-                    <input type="text" placeholder="Apellido" id="apellido" name="abizena" autocomplete="off" required>
+                    <input type="text" placeholder="Abizena" id="apellido" name="abizena" autocomplete="off" required>
 
                 </div>
                 <div class="formulario">
                     <div class="pass1" id="pass1"></div>
-                    <input type="password" placeholder="Contrase&ntilde;a" id="pasahitza" class="contra"
+                    <input type="password" placeholder="Pasahitza" id="pasahitza" class="contra"
                         name="pasahitza" autocomplete="off" required></input>
                     <span class="errorPass" id="errorPasskonplexua">Pasahitza konplexua</span>
                     <span class="showPass"></span>
                 </div>
                 <div class="formulario">
                     <div class="pass2" id="pass2"></div>
-                    <input type="password" placeholder="Repetir Contrase&ntilde;a" id="cont2" class="contra"
+                    <input type="password" placeholder="Errepikatu Pasahitza" id="cont2" class="contra"
                         autocomplete="off" required></input>
                     <span class="errorPass errorPassSame" id="errorPassSame">Pasahitzak berdinak izan behar dira</span>
                     <span class="showPass"></span>
@@ -189,18 +194,24 @@
                 </div>
                 <div class="formulario">
                     <div class="email" id="email"></div>
-                    <input type="email" placeholder="Email {{errorMail}}" id="mail" name="mail" autocomplete="off" required >
+                    <input type="email" placeholder="Emaila {{errorMail}}" id="mail" name="mail" autocomplete="off" required >
                 </div>
                 <div class="formulario">
                     <div class="user" id="user"></div>
-                    <input type="text" placeholder="Usuario {{errorUsername}}" id="erabiltzailea" name="erabiltzailea" autocomplete="off"
+                    <input type="text" placeholder="Erabiltzailea {{errorUsername}}" id="erabiltzailea" name="erabiltzailea" autocomplete="off"
                         required>
                 </div>
                 <input class="btn" id="btn" type="submit" value="Registrarse"></input>
             </form>
-            <p>&iquest;Ya tienes una cuenta? <span><a href="login.html">Inicia sesion</a></span></p>
-            <p>Al registrarte, aceptas nuestras <span><a href="">Condiciones de servicio</a></span> y <span><a
-                        href="">Politica de privacidad</a></span></p>
+            <p>&iquest;
+                Baduzu kontu bat?
+                 <span><a href="login.html">Saioa Hasi</a></span></p>
+            <p>
+                Erregistratzean, onartzen dituzu gure
+                 <span><a href="">
+                    Zerbitzuaren baldintzak
+                    </a></span> y <span><a
+                        href="">Pribatutasun-politika</a></span></p>
         </div>
     </div>
     {% block content %}{% endblock content %}
@@ -220,9 +231,13 @@
 
                 </div>
                 <div>
-                    <span class="condicion">CONDICIONES DE USO</span><br>
-                    <span class="follow">POLITICA DE PRIVACIDAD</span><br>
-                    <span class="follow">POLITICA DE COOKIES</span>
+                    <span class="condicion">
+                        ERABILERA BALDINTZAK
+                        </span><br>
+                    <span class="follow">PRIBATASUN-POLITIKA</span><br>
+                    <span class="follow">
+                        COOKIEN POLITIKA
+                        </span>
                 </div>
             </div>
         </div>
