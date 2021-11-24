@@ -145,7 +145,7 @@
     </header>
     {% if user.is_authenticated %}
     <div class="popHistorial" id="popHistorial">
-        <div class="popHistorial-content">
+        <div class="popHistorial-content" id="popHistorial-content">
             {% load historial %} 
             {% showHistorial user as page_list %}
             {% for eros in page_list %}

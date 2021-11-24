@@ -413,5 +413,13 @@ function limpiarCarrito() {
     $('#preciofinal').text(0)
 
 }
-
+$(document).mouseup(function(e) 
+{
+    var container = $("#popHistorial-content");
+    var container2 = $("#popHistorial");
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container2.fadeOut();
+    }
+});
 
